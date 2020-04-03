@@ -31,8 +31,9 @@ int main() {
     t.insertarNodo(Nodo(25));
    
  t.insertarNodo(Nodo(4));
+ t.insertarNodo(Nodo(4));
    
-
+ 
 
     //    t.insertarNodo(Nodo(3));
     ///  t.insertarNodo(Nodo(27));

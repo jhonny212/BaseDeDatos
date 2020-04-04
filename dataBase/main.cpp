@@ -23,20 +23,17 @@ using namespace std;
 
 int main() {
     BinaryThreeForInt t = BinaryThreeForInt();
-    t.insertarNodo(Nodo(10));
-    t.insertarNodo(Nodo(5));
-
     t.insertarNodo(Nodo(15));
-    t.insertarNodo(Nodo(20));
-    t.insertarNodo(Nodo(25));
-   
- t.insertarNodo(Nodo(4));
- t.insertarNodo(Nodo(4));
-   
- 
+    t.insertarNodo(Nodo(16));
+    t.insertarNodo(Nodo(10));
 
-    //    t.insertarNodo(Nodo(3));
-    ///  t.insertarNodo(Nodo(27));
+    t.insertarNodo(Nodo(11));
+    t.insertarNodo(Nodo(5));
+    t.insertarNodo(Nodo(4));
+    //  t.insertarNodo(Nodo(6));
+    // t.insertarNodo(Nodo(30));
+
+
 
     cout << "TERMINADO--------------------->" << endl;
 

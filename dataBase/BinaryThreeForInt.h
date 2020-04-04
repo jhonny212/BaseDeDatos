@@ -26,6 +26,9 @@ public:
     void starPrint(Nodo *father);
     void SimpleRotationTurnLeft(Nodo *param);
     void SimpleRotationTurnRight(Nodo *param);
+    void RotationLeftRight(Nodo *param);
+    void RotationRightLeft(Nodo *param);
+    void RotationRightLeftType2(Nodo *param);
     int detectRotation(Nodo *param);
     void fixSize(Nodo *aux);
     Nodo *lastInserted;

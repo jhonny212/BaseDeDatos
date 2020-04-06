@@ -1,8 +1,3 @@
-build/Debug/GNU-Linux/columnasData.o: columnasData.cpp columnasData.h \
- Nodo.h columna.h
+build/Debug/GNU-Linux/columnasData.o: columnasData.cpp columnasData.h
 
 columnasData.h:
-
-Nodo.h:
-
-columna.h:

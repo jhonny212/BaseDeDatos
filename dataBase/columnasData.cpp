@@ -15,29 +15,36 @@
 using namespace std;
 
 columnasData::columnasData() {
-    valor = NULL;
-    sigu = NULL;
+    //valor = NULL;
+    //sigu = NULL;
+    size=0;
 }
 
 
-
+/*
 void columnasData::add(columna c) {
     if (sigu == NULL) {
         sigu = new Nodo(c);
         valor = sigu;
+        size+=1;
     } else {
         sigu->siguiente = new Nodo(c);
         sigu = sigu->siguiente;
+        size+=1;
     }
 }
 
-void columnasData::get() {
+void columnasData::get(int i) {
 
     if (valor != NULL) {
-        columna c = valor->column;
-        cout << c.getName() << " " << c.getType() << endl;
-        valor = valor->siguiente;
+        Nodo *aux=valor;
+        for (int j = 0; j < i; j++) {
+            cout<<" Nombre de columna "<<aux->column.getName()<<endl;
+            cout<<" typo "<<aux->column.getType()<<endl;
+            aux=aux->siguiente;
+       }
+
     }
 }
 
-
+*/

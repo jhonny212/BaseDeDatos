@@ -23,8 +23,8 @@ public:
     mensajes(const mensajes& orig);
     void welcome();
     int opcion();
-    string nameDatabase();
-    
+    int seleccion();
+    int typeQuery();
     virtual ~mensajes();
     
 private:

@@ -5,17 +5,22 @@
  */
 
 /* 
- * File:   BinaryThreeForString.cpp
+ * File:   Table.cpp
  * Author: jhonny
  * 
- * Created on 2 de abril de 2020, 08:52 PM
+ * Created on 6 de abril de 2020, 09:34 AM
  */
 
-#include "BinaryThreeForString.h"
+#include "Table.h"
 
-BinaryThreeForString::BinaryThreeForString() {
+Table::Table() {
+}
+Table::Table(int size){
+
+}
+Table::Table(const Table& orig) {
 }
 
-void BinaryThreeForString::insertarNodo(Nodo nodo){
-
+Table::~Table() {
 }
+

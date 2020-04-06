@@ -13,20 +13,18 @@
 
 #ifndef COLUMNASDATA_H
 #define COLUMNASDATA_H
-#include "Nodo.h"
-#include "columna.h"
 
 class columnasData {
 public:
     columnasData();
-    void add(columna c);
-    void get();
-    Nodo *valor;
-    Nodo *sigu;
-   
+    //void add(columna c);
+   // void get(int i);
+    //Nodo *valor;
+    //Nodo *sigu;
+    
     
 private:
-
+    int size;
 };
 
 #endif /* COLUMNASDATA_H */

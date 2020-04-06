@@ -14,7 +14,7 @@
 #ifndef BINARYTHREEFORINT_H
 #define BINARYTHREEFORINT_H
 #include "ArbolBinario.h"
-
+using namespace std;
 class BinaryThreeForInt : public ArbolBinario {
 public:
     BinaryThreeForInt();
@@ -28,12 +28,12 @@ public:
     void SimpleRotationTurnRight(Nodo *param);
     void RotationLeftRight(Nodo *param);
     void RotationRightLeft(Nodo *param);
-    void RotationRightLeftType2(Nodo *param);
     int detectRotation(Nodo *param);
     void fixSize(Nodo *aux);
+    void FixLevelNodo(Nodo *param);
     Nodo *lastInserted;
 private:
-
+    string textoGrafica;
 };
 
 #endif /* BINARYTHREEFORINT_H */

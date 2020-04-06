@@ -20,11 +20,11 @@ columna::columna(string _name, string _type){
 }
 
 string columna::getName(){
-    return type;
+    return name;
 }
 
 string columna::getType(){
-    return name;
+    return type;
 }
 
 columna::columna(){

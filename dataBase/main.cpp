@@ -19,110 +19,128 @@
 #include <time.h> 
 #include "ArbolBinario.h"
 #include "BinaryThreeForInt.h"
+
+#include "columnasData.h"
+#include <vector>
+#include <fstream>
 using namespace std;
+void querys(int);
+void createDatabase();
+void menuSeleccion();
+void insertar();
+void select();
+void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector);
+int Cuenta(string s, const char Separadorr, int &TotalChars);
+//dataBase bs;
+string name;
 
 int main() {
-    BinaryThreeForInt t = BinaryThreeForInt();
-    t.insertarNodo(Nodo(15));
-    t.insertarNodo(Nodo(16));
-    t.insertarNodo(Nodo(10));
+    /*
+    mensajes msj = mensajes();
+    msj.welcome();
+    int opc = msj.opcion();
+    switch (opc) {
+        case 1:
+            cout << "Escriba el nombre de las base de datos" << endl;
+            cin>>name;
+            createDatabase();
 
-    t.insertarNodo(Nodo(11));
-    t.insertarNodo(Nodo(5));
-    t.insertarNodo(Nodo(4));
-    //  t.insertarNodo(Nodo(6));
-    // t.insertarNodo(Nodo(30));
-
-
-
-    cout << "TERMINADO--------------------->" << endl;
-
-    /*  t.insertarNodo(Nodo(100));
-      t.insertarNodo(Nodo(99));
-      t.insertarNodo(Nodo(89));
-      t.insertarNodo(Nodo(105));
-      t.insertarNodo(Nodo(104));
-      t.insertarNodo(Nodo(600));
-      t.insertarNodo(Nodo(602));
-      t.insertarNodo(Nodo(601));
-     */
-
-    t.showIntegerThree();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* mensajes msj= mensajes();
-     msj.welcome();
-     int op=msj.opcion();
-     switch(op){
-         case 1:
-            
-             break;
-         case 2:
-            
-             break;
-    
-     }
-     */
-
-    /*columnasData t=columnasData();
-    columna c=columna("Nombre","string");
-    columna d=columna("edad","int");
-    columna e=columna("caracter","char");
-    columna f=columna("decimal","flooat");
-    t.add(c);
-    t.add(d);
-    t.add(e);
-    t.add(f);*/
-    /*  string valor="10.f";
-       try {
-          int i = std::stoi(valor);
-          string str = to_string(i);
-          if (valor.length() == str.length()) {
-               cout << "numero" << endl;
-             // indiceTypeHash = 1;
-          }
-      } catch (std::invalid_argument const &e) {
-      } catch (std::out_of_range const &e) {
-      }
-    
-      double s = 46;
-      int a = s;
-      if (a < s) {
-          cout << "decimal" << endl;
-
-      } else {
-         cout << "numero" << endl;
-
-      }
-  string num = "0";
-  double temp = -10;
-  temp=atof(num.c_str());
-  cout<<temp;
-     */
-
-
-    return 0;
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
 }
 
+void createDatabase() {
+   /* columnasData cd=columnasData();
+    string Palabra;
+    cout << "Create table..." << endl;
+    cin>> Palabra;
+    getline(cin, Palabra);
+/*
+    vector<string> TempBuff(0);
+    int TotalVector;
+    split(Palabra, *" ", TempBuff, TotalVector);
+
+    cout << TotalVector << endl; // Devuelve tamaño del vector: 3
+    string name = TempBuff[2];
+    for (int i = 4; i < TotalVector-1; i+=3) {
+        columna c=columna(TempBuff[i],TempBuff[i+1]);
+        cd.add(c);
+    }*/
+    
+    
+
+
+
+}
+
+void menuSeleccion() {
+   /* mensajes msj = mensajes();
+    int opc = 0;
+
+    while (opc != 4) {
+        opc = msj.seleccion();
+        switch (opc) {
+            case 1:
+                opc = msj.typeQuery();
+                querys(opc);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+    }
+*/
+}
+
+void querys(int opc) {
+    cout << "Inserte el query" << endl;
+    switch (opc) {
+        case 1:
+            break;
+        case 2:
+
+            break;
+        default:
+            break;
+    }
+}
+
+void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector) {
+    TempBuff.resize(0);
+    TotalVector = 0;
+    int Nums = -1;
+    int NumPos = -1;
+    int ValorNum = 0;
+    int TotalChars = 0;
+    int TotalEspacios = Linea.length();
+    string Valor;
+    int size = 0;
+    Cuenta(Linea, Separador, TotalChars);
+    if (TotalChars != 0) {
+        while (Nums < TotalChars) {
+            Nums++;
+            ValorNum = Linea.find(Separador, NumPos + 1);
+            Valor = Linea.substr(NumPos + 1, ValorNum);
+            Valor = Valor.substr(0, Valor.find_first_of(Separador));
+            TempBuff.push_back(Valor);
+            size = size + 1;
+            NumPos = ValorNum;
+            TotalEspacios++;
+        }
+        TotalVector = size;
+    } else {
+        TotalVector = 0;
+    }
+}
+
+int Cuenta(string s, const char Separadorr, int &TotalChars) {
+    for (int i = 0; i < s.size(); i++)
+        if (s[i] == Separadorr) TotalChars++;
+}

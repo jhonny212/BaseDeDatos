@@ -37,8 +37,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/ArbolBinario.o \
 	${OBJECTDIR}/BinaryThreeForInt.o \
-	${OBJECTDIR}/BinaryThreeForString.o \
 	${OBJECTDIR}/Nodo.o \
+	${OBJECTDIR}/NuevaTabla.o \
+	${OBJECTDIR}/Tabla.o \
+	${OBJECTDIR}/TablaHash.o \
+	${OBJECTDIR}/Table.o \
 	${OBJECTDIR}/columna.o \
 	${OBJECTDIR}/columnasData.o \
 	${OBJECTDIR}/dataBase.o \
@@ -81,15 +84,30 @@ ${OBJECTDIR}/BinaryThreeForInt.o: BinaryThreeForInt.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForInt.o BinaryThreeForInt.cpp
 
-${OBJECTDIR}/BinaryThreeForString.o: BinaryThreeForString.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForString.o BinaryThreeForString.cpp
-
 ${OBJECTDIR}/Nodo.o: Nodo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nodo.o Nodo.cpp
+
+${OBJECTDIR}/NuevaTabla.o: NuevaTabla.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NuevaTabla.o NuevaTabla.cpp
+
+${OBJECTDIR}/Tabla.o: Tabla.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tabla.o Tabla.cpp
+
+${OBJECTDIR}/TablaHash.o: TablaHash.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TablaHash.o TablaHash.cpp
+
+${OBJECTDIR}/Table.o: Table.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Table.o Table.cpp
 
 ${OBJECTDIR}/columna.o: columna.cpp
 	${MKDIR} -p ${OBJECTDIR}

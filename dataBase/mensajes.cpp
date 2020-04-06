@@ -21,24 +21,39 @@ mensajes::mensajes(const mensajes& orig) {
 
 mensajes::~mensajes() {
 }
-
-void mensajes::welcome(){
-    cout<<"BIENVENIDO A GUATEMALA'S BD"<<endl;
+/*
+void mensajes::welcome() {
+    cout << "BIENVENIDO A GUATEMALA'S BD" << endl;
 }
-int mensajes::opcion(){
+
+int mensajes::opcion() {
     int x;
-    cout<<"¿Que desea hacer?"<<endl;
-    cout<<"1. Crear base de datos"<<endl;
-    cout<<"2. Acceder a una base de datos"<<endl;
+    cout << "¿Que desea hacer?" << endl;
+    cout << "1. Crear base de datos" << endl;
+    cout << "2. Acceder a una base de datos" << endl;
+    cout << "3. Salir " << endl;
     cin>>x;
     return x;
 }
 
-string mensajes::nameDatabase(){
-    string name;
-    cout<<"Ingrese el nombre de la base de datos"<<endl;
-    cin>>name;
+int mensajes::seleccion() {
+    int x;
+    cout << "¿Que desea hacer?" << endl;
+    cout << "1. Ejecutar querys" << endl;
+    cout << "2. Reportes" << endl;
+    cout << "3. Añadir una columna mas" << endl;
+    cout << "4. salir" << endl;
+    cin>> x;
+
 }
 
+int mensajes::typeQuery() {
+    int x;
+    cout << "1. Hacer select" << endl;
+    cout << "2. Hacer Insert" << endl;
+    cout << "3. Hacer delete" << endl;
+    cin>>x;
+}
 
+*/
 

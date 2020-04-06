@@ -5,23 +5,23 @@
  */
 
 /* 
- * File:   dataBase.h
+ * File:   TablaHash.h
  * Author: jhonny
  *
- * Created on 6 de abril de 2020, 03:28 PM
+ * Created on 5 de abril de 2020, 06:34 PM
  */
 
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef TABLAHASH_H
+#define TABLAHASH_H
 
-class dataBase {
+class TablaHash {
 public:
-    dataBase();
-    dataBase(const dataBase& orig);
-    virtual ~dataBase();
+    TablaHash();
+    TablaHash(const TablaHash& orig);
+    virtual ~TablaHash();
 private:
 
 };
 
-#endif /* DATABASE_H */
+#endif /* TABLAHASH_H */
 

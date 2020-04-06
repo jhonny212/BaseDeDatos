@@ -8,22 +8,24 @@
  * File:   dataBase.cpp
  * Author: jhonny
  * 
- * Created on 1 de abril de 2020, 02:49 PM
+ * Created on 6 de abril de 2020, 03:28 PM
  */
 
 #include "dataBase.h"
-#include <string>
 
 dataBase::dataBase() {
 }
 
-dataBase::dataBase(columnasData cd, string name) {
-    Columnas = cd;
-    Name = name;
+dataBase::dataBase(const dataBase& orig) {
 }
 
-columnasData dataBase::getColumnas() {
-    return Columnas;
+dataBase::~dataBase() {
+}
+
+/*
+dataBase::dataBase( string name) {
+   
+    Name = name;
 }
 
 string dataBase::getName() {
@@ -77,3 +79,4 @@ int dataBase::getInt2(string valor) {
 }
 
 
+*/

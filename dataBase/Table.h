@@ -5,23 +5,25 @@
  */
 
 /* 
- * File:   dataBase.h
+ * File:   Table.h
  * Author: jhonny
  *
- * Created on 6 de abril de 2020, 03:28 PM
+ * Created on 6 de abril de 2020, 09:34 AM
  */
 
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef TABLE_H
+#define TABLE_H
 
-class dataBase {
+class Table {
 public:
-    dataBase();
-    dataBase(const dataBase& orig);
-    virtual ~dataBase();
+    Table();
+    Table(const Table& orig);
+    Table (int size);
+    
+    virtual ~Table();
 private:
 
 };
 
-#endif /* DATABASE_H */
+#endif /* TABLE_H */
 

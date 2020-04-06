@@ -23,14 +23,16 @@ Nodo::Nodo(columna c) {
     siguiente = NULL;
 }
 
+
 Nodo::Nodo(int data) {
     valorInt = data;
     siguiente = NULL;
     left = NULL;
     right = NULL;
     dad = NULL;
-    NivelIzq=0;
-    NivelDer=0;
+    NivelIzq = 0;
+    NivelDer = 0;
+    valueCompare=data;
 }
 
 Nodo::Nodo(string data) {
@@ -39,8 +41,8 @@ Nodo::Nodo(string data) {
     left = NULL;
     right = NULL;
     dad = NULL;
-    NivelIzq=0;
-    NivelDer=0;
+    NivelIzq = 0;
+    NivelDer = 0;
 }
 
 Nodo::Nodo(char data) {
@@ -49,8 +51,8 @@ Nodo::Nodo(char data) {
     left = NULL;
     right = NULL;
     dad = NULL;
-    NivelIzq=0;
-    NivelDer=0;
+    NivelIzq = 0;
+    NivelDer = 0;
 }
 
 Nodo::Nodo(double data) {
@@ -59,10 +61,10 @@ Nodo::Nodo(double data) {
     left = NULL;
     right = NULL;
     dad = NULL;
-    NivelIzq=0;
-    NivelDer=0;
+    NivelIzq = 0;
+    NivelDer = 0;
 }
 
-int Nodo::getValueOfInt(){
+int Nodo::getValueOfInt() {
     return valorInt;
 }

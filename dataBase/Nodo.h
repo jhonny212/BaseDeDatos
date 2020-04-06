@@ -13,7 +13,10 @@
 
 #ifndef NODO_H
 #define NODO_H
+
+using namespace std;
 #include "columna.h"
+#include "Nodo.h"
 
 class Nodo {
 public:
@@ -23,6 +26,7 @@ public:
     Nodo (string data);
     Nodo (char data);
     Nodo (double data);
+   
     columna column;
     Nodo *siguiente;
     Nodo *left;
@@ -35,6 +39,8 @@ public:
     char getValueOfChar();
     double getValueOfDouble();
     bool isEmptyNodo();
+    int valueCompare;
+    
 private:
     int valorInt;
     string valorString;

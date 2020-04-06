@@ -5,23 +5,23 @@
  */
 
 /* 
- * File:   dataBase.h
+ * File:   NuevaTabla.h
  * Author: jhonny
  *
- * Created on 6 de abril de 2020, 03:28 PM
+ * Created on 6 de abril de 2020, 03:29 PM
  */
 
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef NUEVATABLA_H
+#define NUEVATABLA_H
 
-class dataBase {
+class NuevaTabla {
 public:
-    dataBase();
-    dataBase(const dataBase& orig);
-    virtual ~dataBase();
+    NuevaTabla();
+    NuevaTabla(const NuevaTabla& orig);
+    virtual ~NuevaTabla();
 private:
 
 };
 
-#endif /* DATABASE_H */
+#endif /* NUEVATABLA_H */
 

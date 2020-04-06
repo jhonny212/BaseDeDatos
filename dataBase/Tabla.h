@@ -5,23 +5,23 @@
  */
 
 /* 
- * File:   dataBase.h
+ * File:   Tabla.h
  * Author: jhonny
  *
  * Created on 6 de abril de 2020, 03:28 PM
  */
 
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef TABLA_H
+#define TABLA_H
 
-class dataBase {
+class Tabla {
 public:
-    dataBase();
-    dataBase(const dataBase& orig);
-    virtual ~dataBase();
+    Tabla();
+    Tabla(const Tabla& orig);
+    virtual ~Tabla();
 private:
 
 };
 
-#endif /* DATABASE_H */
+#endif /* TABLA_H */
 

@@ -15,13 +15,13 @@
 using namespace std;
 
 columnasData::columnasData() {
-    //valor = NULL;
-    //sigu = NULL;
+    valor = NULL;
+    sigu = NULL;
     size=0;
 }
 
 
-/*
+
 void columnasData::add(columna c) {
     if (sigu == NULL) {
         sigu = new Nodo(c);
@@ -47,4 +47,4 @@ void columnasData::get(int i) {
     }
 }
 
-*/
+

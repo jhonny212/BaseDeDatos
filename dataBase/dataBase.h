@@ -13,14 +13,34 @@
 
 #ifndef DATABASE_H
 #define DATABASE_H
+#include <string.h> 
+#include <iostream>
+#include <string>
+#include <sstream>
+#include "Tabla.h"
+#include "columnasData.h"
+
+
+using namespace std;
 
 class dataBase {
 public:
     dataBase();
     dataBase(const dataBase& orig);
+    dataBase(Tabla tb, string v);
+    string  getName();
+    int getTypeHashFunction(string valor);
+    int getInt(string valor);
+    int getInt2(string valor);
+    void addTable(columnasData tb, string name);
     virtual ~dataBase();
+    void get(string par);
 private:
-
+    Tabla tabla;
+    Tabla *valor;
+    Tabla *sigu;
+    string Name;
+   
 };
 
 #endif /* DATABASE_H */

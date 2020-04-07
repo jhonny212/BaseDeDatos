@@ -43,12 +43,6 @@ void hashFunctions::getIdForString(string value) {
         }
         indice += numcar;
     }
-    //  cout << indice << "before:" << endl;
-    /* int aux = (indice / 100);
-     if (indice > 100) {
-         indice -= 100;
-     }
- cout << indice << "indiceHash:" << endl;*/
 }
 
 void hashFunctions::getIdForChar(char value) {
@@ -66,7 +60,6 @@ void hashFunctions::getIdForChar(char value) {
 }
 
 void hashFunctions::getIdForInt(int value) {
-
     string str = to_string(value);
     char tab2[str.length()];
     strcpy(tab2, str.c_str());

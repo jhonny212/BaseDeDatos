@@ -36,7 +36,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/ArbolBinario.o \
+	${OBJECTDIR}/BinaryThreeForChar.o \
+	${OBJECTDIR}/BinaryThreeForFloat.o \
 	${OBJECTDIR}/BinaryThreeForInt.o \
+	${OBJECTDIR}/BinaryThreeForString.o \
 	${OBJECTDIR}/Nodo.o \
 	${OBJECTDIR}/NuevaTabla.o \
 	${OBJECTDIR}/Tabla.o \
@@ -79,10 +82,25 @@ ${OBJECTDIR}/ArbolBinario.o: ArbolBinario.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArbolBinario.o ArbolBinario.cpp
 
+${OBJECTDIR}/BinaryThreeForChar.o: BinaryThreeForChar.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForChar.o BinaryThreeForChar.cpp
+
+${OBJECTDIR}/BinaryThreeForFloat.o: BinaryThreeForFloat.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForFloat.o BinaryThreeForFloat.cpp
+
 ${OBJECTDIR}/BinaryThreeForInt.o: BinaryThreeForInt.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForInt.o BinaryThreeForInt.cpp
+
+${OBJECTDIR}/BinaryThreeForString.o: BinaryThreeForString.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForString.o BinaryThreeForString.cpp
 
 ${OBJECTDIR}/Nodo.o: Nodo.cpp
 	${MKDIR} -p ${OBJECTDIR}

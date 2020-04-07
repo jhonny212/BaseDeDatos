@@ -18,20 +18,20 @@ using namespace std;
 class BinaryThreeForInt : public ArbolBinario {
 public:
     BinaryThreeForInt();
-    void insertarNodo(Nodo nodo);
-    int addInteger(Nodo *add, int data);
+    //void insertarNodo(Nodo nodo);
+    //int addInteger(Nodo *add, double data);
     void showIntegerThree();
     void printLeft(Nodo *izq);
     void printRight(Nodo *der);
     void starPrint(Nodo *father);
-    void SimpleRotationTurnLeft(Nodo *param);
+  /*  void SimpleRotationTurnLeft(Nodo *param);
     void SimpleRotationTurnRight(Nodo *param);
     void RotationLeftRight(Nodo *param);
-    void RotationRightLeft(Nodo *param);
-    int detectRotation(Nodo *param);
-    void fixSize(Nodo *aux);
-    void FixLevelNodo(Nodo *param);
-    Nodo *lastInserted;
+    void RotationRightLeft(Nodo *param);*/
+    //int detectRotation(Nodo *param);
+    //void fixSize(Nodo *aux);
+  //  void FixLevelNodo(Nodo *param);
+    
 private:
     string textoGrafica;
 };

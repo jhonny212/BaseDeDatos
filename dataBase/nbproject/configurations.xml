@@ -5,7 +5,10 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>ArbolBinario.h</itemPath>
+      <itemPath>BinaryThreeForChar.h</itemPath>
+      <itemPath>BinaryThreeForFloat.h</itemPath>
       <itemPath>BinaryThreeForInt.h</itemPath>
+      <itemPath>BinaryThreeForString.h</itemPath>
       <itemPath>Nodo.h</itemPath>
       <itemPath>NuevaTabla.h</itemPath>
       <itemPath>Tabla.h</itemPath>
@@ -25,7 +28,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>ArbolBinario.cpp</itemPath>
+      <itemPath>BinaryThreeForChar.cpp</itemPath>
+      <itemPath>BinaryThreeForFloat.cpp</itemPath>
       <itemPath>BinaryThreeForInt.cpp</itemPath>
+      <itemPath>BinaryThreeForString.cpp</itemPath>
       <itemPath>Nodo.cpp</itemPath>
       <itemPath>NuevaTabla.cpp</itemPath>
       <itemPath>Tabla.cpp</itemPath>
@@ -64,9 +70,21 @@
       </item>
       <item path="ArbolBinario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="BinaryThreeForChar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BinaryThreeForChar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BinaryThreeForFloat.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BinaryThreeForFloat.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="BinaryThreeForInt.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="BinaryThreeForInt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BinaryThreeForString.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BinaryThreeForString.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Nodo.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -135,9 +153,21 @@
       </item>
       <item path="ArbolBinario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="BinaryThreeForChar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BinaryThreeForChar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BinaryThreeForFloat.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BinaryThreeForFloat.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="BinaryThreeForInt.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="BinaryThreeForInt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BinaryThreeForString.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BinaryThreeForString.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Nodo.cpp" ex="false" tool="1" flavor2="0">
       </item>

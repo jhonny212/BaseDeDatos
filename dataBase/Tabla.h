@@ -13,14 +13,23 @@
 
 #ifndef TABLA_H
 #define TABLA_H
+#include "columnasData.h"
+#include <iostream>
 
+#include <string.h> 
+#include <string>
+#include <sstream>
+
+using namespace std;
 class Tabla {
 public:
     Tabla();
-    Tabla(const Tabla& orig);
-    virtual ~Tabla();
+      Tabla(columnasData, string data  );
+      Tabla *siguiente;
+      string nombre;
 private:
-
+    columnasData columns;
+    
 };
 
 #endif /* TABLA_H */

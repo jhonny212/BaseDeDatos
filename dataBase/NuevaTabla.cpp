@@ -13,8 +13,9 @@
 
 #include "NuevaTabla.h"
 
-NuevaTabla::NuevaTabla() {
-}
+/*NuevaTabla::NuevaTabla(columnasData c) {
+    colum=c;
+}*/
 
 NuevaTabla::NuevaTabla(const NuevaTabla& orig) {
 }

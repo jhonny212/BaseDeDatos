@@ -17,9 +17,9 @@ BinaryThreeForInt::BinaryThreeForInt() {
     raiz = NULL;
     lastInserted = NULL;
 }
-
-int BinaryThreeForInt::addInteger(Nodo* add, int data) {
-    int valor1 = add->getValueOfInt();
+/*
+int BinaryThreeForInt::addInteger(Nodo* add, double data) {
+    int valor1 = add->valueToCompare;
     int retorno = 0;
     if (data > valor1) {
         if (add->right == NULL) {
@@ -31,16 +31,7 @@ int BinaryThreeForInt::addInteger(Nodo* add, int data) {
 
             if (add->left == NULL) {
                 retorno = 1;
-            }/* else {
-                int DerLeft = add->left->NivelDer;
-                int DerRight = add->left->NivelIzq;
-                if (DerLeft == 0 && DerRight == 0) {
-                    retorno = 0;
-                } else {
-                    retorno = 1;
-                }
-
-            }*/
+            }
         } else {
 
             retorno = addInteger(add->right, data);
@@ -65,15 +56,7 @@ int BinaryThreeForInt::addInteger(Nodo* add, int data) {
 
             if (add->right == NULL) {
                 retorno = 1;
-            } /*else {
-                int DerLeft = add->right->NivelDer;
-                int DerRight = add->right->NivelIzq;
-                if (DerLeft == 0 && DerRight == 0) {
-                    retorno = 0;
-                } else {
-                    retorno = 1;
-                }
-            }*/
+            } 
         } else {
             retorno = addInteger(add->left, data);
 
@@ -86,20 +69,18 @@ int BinaryThreeForInt::addInteger(Nodo* add, int data) {
             } else if (x == y) {
                 add->NivelIzq = x + 1;
             }
-            // add->NivelIzq = add->NivelIzq + retorno;
-
-
         }
     }
     return retorno;
 }
+ */
 
-void BinaryThreeForInt::insertarNodo(Nodo nodo) {
+/*void BinaryThreeForInt::insertarNodo(Nodo nodo) {
     if (raiz == NULL) {
         raiz = new Nodo(nodo);
         lastInserted = raiz;
     } else {
-        int x = addInteger(raiz, nodo.getValueOfInt());
+        int x = addInteger(raiz, nodo.valueToCompare);
         if (raiz->right != NULL) {
             int x = raiz->right->NivelDer;
             int y = raiz->right->NivelIzq;
@@ -128,73 +109,60 @@ void BinaryThreeForInt::insertarNodo(Nodo nodo) {
     }
 
 
-}
+}*/
 
 void BinaryThreeForInt::showIntegerThree() {
     if (raiz != NULL) {
+        cout<<raiz->left->valorInt<<endl;
+        cout<<raiz->right->valorInt<<endl;
+        
         int i = raiz->getValueOfInt();
-            string padre = to_string(i);
-            if (raiz->left != NULL) {
-                int j = raiz->left->getValueOfInt();
-                string izq = to_string(j);
-                textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
-            }
+        string padre = to_string(i);
+        if (raiz->left != NULL) {
+            int j = raiz->left->getValueOfInt();
+            string izq = to_string(j);
+            textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
+        }
 
-            if (raiz->right != NULL) {
-                int k = raiz->right->getValueOfInt();
-                string der = to_string(k);
-                textoGrafica = textoGrafica + padre + " -> " + der + " \n";
-            }
+        if (raiz->right != NULL) {
+            int k = raiz->right->getValueOfInt();
+            string der = to_string(k);
+            textoGrafica = textoGrafica + padre + " -> " + der + " \n";
+        }
         starPrint(raiz);
         cout << textoGrafica << endl;
     }
 }
 
 void BinaryThreeForInt::starPrint(Nodo* father) {
-    
-    if (father != NULL) {
-        int iz = father->NivelIzq;
-        int der = father->NivelDer;
 
+    if (father != NULL) {
         if (father->dad != NULL) {
             int i = father->getValueOfInt();
             string padre = to_string(i);
             if (father->left != NULL) {
+
                 int j = father->left->getValueOfInt();
                 string izq = to_string(j);
                 textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
             }
 
             if (father->right != NULL) {
+
                 int k = father->right->getValueOfInt();
                 string der = to_string(k);
                 textoGrafica = textoGrafica + padre + " -> " + der + " \n";
             }
 
         }
-        /* cout << "Padre " << father->getValueOfInt() << endl;
-         cout << " cant de hijos a la derecha " << der << endl;
-         cout << " cant de hijos a la izquierda " << iz << endl;
-         if (father->left != NULL) {
-             cout << "        hijo izq " << father->left->getValueOfInt() << endl;
-         } else {
-             cout << "             No tiene izq" << endl;
-         }
-         if (father->right != NULL) {
-             cout << "        hijo der " << father->right->getValueOfInt() << endl;
-         } else {
-             cout << "             No tiene der" << endl;
-         }*/
-
         printLeft(father->left);
         printRight(father->right);
-
-
     }
 }
 
 void BinaryThreeForInt::printLeft(Nodo* izq) {
     if (izq != NULL) {
+        cout<<izq->getValueOfInt()<<endl;
         starPrint(izq);
     }
 }
@@ -204,7 +172,7 @@ void BinaryThreeForInt::printRight(Nodo* der) {
         starPrint(der);
     }
 }
-
+/*
 int BinaryThreeForInt::detectRotation(Nodo* param) {
     int retorno = 0;
     if (param != NULL) {
@@ -238,8 +206,9 @@ int BinaryThreeForInt::detectRotation(Nodo* param) {
     }
     return retorno;
 }
+ */
 
-void BinaryThreeForInt::SimpleRotationTurnLeft(Nodo *param) {
+/*void BinaryThreeForInt::SimpleRotationTurnLeft(Nodo *param) {
     int iz = param->NivelIzq;
     int der = param->NivelDer;
 
@@ -278,9 +247,9 @@ void BinaryThreeForInt::SimpleRotationTurnLeft(Nodo *param) {
         FixLevelNodo(param);
 
     }
-}
+}*/
 
-void BinaryThreeForInt::SimpleRotationTurnRight(Nodo *param) {
+/*void BinaryThreeForInt::SimpleRotationTurnRight(Nodo *param) {
     int iz = param->NivelIzq;
     int der = param->NivelDer;
     if (param->dad == NULL) {
@@ -321,9 +290,9 @@ void BinaryThreeForInt::SimpleRotationTurnRight(Nodo *param) {
         FixLevelNodo(param);
     }
 
-}
+}*/
 
-void BinaryThreeForInt::FixLevelNodo(Nodo* param) {
+/*void BinaryThreeForInt::FixLevelNodo(Nodo* param) {
     if (param->dad != NULL) {
         Nodo *aux = param->dad;
         while (aux != NULL) {
@@ -353,10 +322,8 @@ void BinaryThreeForInt::FixLevelNodo(Nodo* param) {
         }
     }
 }
-
-void BinaryThreeForInt::RotationLeftRight(Nodo *param) {
-
-    //    Nodo *n1 = param;
+ */
+/*void BinaryThreeForInt::RotationLeftRight(Nodo *param) {
     Nodo *n2 = param->left;
     Nodo *aux = param->left->right->left;
     int x = param->left->right->NivelIzq;
@@ -370,9 +337,9 @@ void BinaryThreeForInt::RotationLeftRight(Nodo *param) {
 
     SimpleRotationTurnRight(param);
 
-}
+}*/
 
-void BinaryThreeForInt::RotationRightLeft(Nodo* param) {
+/*void BinaryThreeForInt::RotationRightLeft(Nodo* param) {
 
     Nodo *n1 = param;
     Nodo *n2 = param->right;
@@ -387,39 +354,6 @@ void BinaryThreeForInt::RotationRightLeft(Nodo* param) {
     param->right->right->left = aux;
     param->right->right->NivelIzq = x;
     SimpleRotationTurnLeft(param);
-    /* Nodo *N1 = param->dad;
-     Nodo *N2 = param;
-     Nodo *N3 = param->left;
-     Nodo *N4 = param->left->right;
 
-     N2->dad = N4;
-
-     N3->dad = N4;
-
-     N4->left = N3;
-     N4->right = N2;
-
-     N4->dad = N1;
-     N1->left = N4;
-
-     N2->left = NULL;
-     N3->right = NULL;
-     N2->NivelIzq = 0;
-     N3->NivelDer = 0;
-
-
-     N4->NivelIzq = N3->NivelIzq + 1;
-     N4->NivelDer = N2->NivelDer + 1;
-     N4 = NULL;
-     N3 = NULL;
-     N2 = NULL;
-
-     N1 = NULL;
-     Nodo *aux = param->dad->dad;
-
-     while (aux != NULL) {
-         aux->NivelIzq = aux->NivelIzq - 1;
-         aux = aux->dad;
-     }*/
-}
+}*/
 

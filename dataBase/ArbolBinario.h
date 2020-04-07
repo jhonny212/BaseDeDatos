@@ -18,19 +18,26 @@
 class ArbolBinario {
 public:
     ArbolBinario();
-    virtual void insertarNodo(Nodo nodo)=0;
-    /*void insertarNodoINT(int nodo);
-    bool isEmpty();
-    int addInteger(Nodo *add, int data);
-    
-    */
-    virtual void showIntegerThree()=0;
-    virtual void printLeft(Nodo *izq)=0;
-    virtual void printRight(Nodo *der)=0;
-    virtual void starPrint(Nodo *father)=0;
+    void insertarNodo(Nodo );
+    int addInteger(Nodo *add, Nodo data);
+
+    virtual void showIntegerThree() = 0;
+    virtual void printLeft(Nodo *izq) = 0;
+    virtual void printRight(Nodo *der) = 0;
+    virtual void starPrint(Nodo *father) = 0;
+
+    int detectRotation(Nodo *param);
+
+    void SimpleRotationTurnLeft(Nodo *param);
+    void SimpleRotationTurnRight(Nodo *param);
+    void RotationLeftRight(Nodo *param);
+    void RotationRightLeft(Nodo *param);
+    void FixLevelNodo(Nodo *param);
+
 protected:
+    Nodo *lastInserted;
     Nodo *raiz;
-    
+
 };
 
 #endif /* ARBOLBINARIO_H */

@@ -13,10 +13,13 @@
 
 #ifndef NODO_H
 #define NODO_H
-
 using namespace std;
 #include "columna.h"
-#include "Nodo.h"
+#include "NuevaTabla.h"
+#include <stdio.h>
+#include <string.h> /* Archivo que contiene la definción de funciones que trabajan con caracteres.*/
+#include <math.h>  /* Para que funcione  sqrt  */   
+#include <time.h>    
 
 class Nodo {
 public:
@@ -26,6 +29,7 @@ public:
     Nodo (string data);
     Nodo (char data);
     Nodo (double data);
+    Nodo (NuevaTabla data);
    
     columna column;
     Nodo *siguiente;
@@ -40,9 +44,10 @@ public:
     double getValueOfDouble();
     bool isEmptyNodo();
     int valueCompare;
-    
-private:
+    double valueToCompare;
     int valorInt;
+private:
+    
     string valorString;
     char valorChar;
     double valorDouble;

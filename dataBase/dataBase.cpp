@@ -21,15 +21,39 @@ dataBase::dataBase(const dataBase& orig) {
 
 dataBase::~dataBase() {
 }
-
-/*
-dataBase::dataBase( string name) {
-   
+void dataBase::get(string par){
+    Tabla *aux=valor;
+  while(aux!=NULL){
+      if(par==aux->nombre){
+          cout<<" el valor es"<<aux->nombre<<endl;
+          break;
+      }else{
+          aux=aux->siguiente;
+      }
+  }
+  
+}
+dataBase::dataBase(Tabla tb, string name) {
+    tabla = tb;
     Name = name;
+    valor = &tb;
+    sigu = NULL;
+   
 }
 
 string dataBase::getName() {
+    cout<<"el nombre es"<<tabla.nombre<<endl;
     return Name;
+}
+
+void dataBase::addTable(columnasData tb, string name){
+    if (valor == NULL) {
+        sigu = new Tabla(tb, name);
+        valor = sigu;
+    } else {
+        sigu->siguiente = new Tabla(tb,name);
+        sigu = sigu->siguiente;
+    }
 }
 
 int dataBase::getTypeHashFunction(string valor) {
@@ -79,4 +103,3 @@ int dataBase::getInt2(string valor) {
 }
 
 
-*/

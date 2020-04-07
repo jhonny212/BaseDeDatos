@@ -21,7 +21,7 @@ mensajes::mensajes(const mensajes& orig) {
 
 mensajes::~mensajes() {
 }
-/*
+
 void mensajes::welcome() {
     cout << "BIENVENIDO A GUATEMALA'S BD" << endl;
 }
@@ -55,5 +55,5 @@ int mensajes::typeQuery() {
     cin>>x;
 }
 
-*/
+
 

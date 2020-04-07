@@ -19,10 +19,12 @@
 #include <time.h> 
 #include "ArbolBinario.h"
 #include "BinaryThreeForInt.h"
-
 #include "columnasData.h"
 #include <vector>
 #include <fstream>
+#include "dataBase.h"
+#include "Tabla.h"
+
 using namespace std;
 void querys(int);
 void createDatabase();
@@ -31,12 +33,16 @@ void insertar();
 void select();
 void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector);
 int Cuenta(string s, const char Separadorr, int &TotalChars);
-//dataBase bs;
+dataBase bs;
 string name;
 
 int main() {
-    /*
-    mensajes msj = mensajes();
+
+    
+    
+   
+   // t.showIntegerThree();
+    /*mensajes msj = mensajes();
     msj.welcome();
     int opc = msj.opcion();
     switch (opc) {
@@ -44,7 +50,7 @@ int main() {
             cout << "Escriba el nombre de las base de datos" << endl;
             cin>>name;
             createDatabase();
-
+           // insertar();
             break;
         case 2:
             break;
@@ -52,35 +58,33 @@ int main() {
             break;
         default:
             break;
-    }
+    }*/
 }
 
 void createDatabase() {
-   /* columnasData cd=columnasData();
+    columnasData cd = columnasData();
     string Palabra;
     cout << "Create table..." << endl;
     cin>> Palabra;
     getline(cin, Palabra);
-/*
+
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
 
     cout << TotalVector << endl; // Devuelve tamaño del vector: 3
-    string name = TempBuff[2];
-    for (int i = 4; i < TotalVector-1; i+=3) {
-        columna c=columna(TempBuff[i],TempBuff[i+1]);
+    string nameD = TempBuff[2];
+    for (int i = 4; i < TotalVector - 1; i += 3) {
+        columna c = columna(TempBuff[i], TempBuff[i + 1]);
         cd.add(c);
-    }*/
-    
-    
-
-
-
+    }
+    Tabla tab = Tabla(cd, nameD);
+    bs = dataBase(tab, name);
+   
 }
 
 void menuSeleccion() {
-   /* mensajes msj = mensajes();
+    mensajes msj = mensajes();
     int opc = 0;
 
     while (opc != 4) {
@@ -96,7 +100,7 @@ void menuSeleccion() {
                 break;
         }
     }
-*/
+
 }
 
 void querys(int opc) {
@@ -105,10 +109,34 @@ void querys(int opc) {
         case 1:
             break;
         case 2:
-
+            insertar();
             break;
         default:
             break;
+    }
+}
+
+void insertar() {
+    string Palabra;
+    cin>> Palabra;
+    getline(cin, Palabra);
+    vector<string> TempBuff(0);
+    int TotalVector;
+    split(Palabra, *" ", TempBuff, TotalVector);
+    int distancia;
+    for (int i = 4; i < TotalVector; i++) {
+        if (TempBuff[i] == "(") {
+            distancia = i;
+        }
+    }
+    for (int i = 4; i < TotalVector - 1; i += 2) {
+        if (TempBuff[i] != "VALUES") {
+            cout << " COLUMNA" << TempBuff[i] << endl;
+            cout << " VALOR " << TempBuff[distancia + 1] << "\n" << endl;
+            distancia += 2;
+        } else {
+            break;
+        }
     }
 }
 

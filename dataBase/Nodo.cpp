@@ -23,7 +23,6 @@ Nodo::Nodo(columna c) {
     siguiente = NULL;
 }
 
-
 Nodo::Nodo(int data) {
     valorInt = data;
     siguiente = NULL;
@@ -32,7 +31,8 @@ Nodo::Nodo(int data) {
     dad = NULL;
     NivelIzq = 0;
     NivelDer = 0;
-    valueCompare=data;
+    valueToCompare = data;
+    
 }
 
 Nodo::Nodo(string data) {
@@ -43,6 +43,17 @@ Nodo::Nodo(string data) {
     dad = NULL;
     NivelIzq = 0;
     NivelDer = 0;
+
+    char tab2[data.length()];
+    strcpy(tab2, data.c_str());
+    int indice = 0;
+    for (int i = 0; i < data.length(); i++) {
+        char car = tab2[i];
+        int numcar;
+        numcar = int(car);
+        indice += numcar;
+    }
+    valueToCompare = indice;
 }
 
 Nodo::Nodo(char data) {
@@ -53,6 +64,10 @@ Nodo::Nodo(char data) {
     dad = NULL;
     NivelIzq = 0;
     NivelDer = 0;
+    char car = data;
+    int numcar;
+    numcar = int(car);
+    valueToCompare=numcar;
 }
 
 Nodo::Nodo(double data) {
@@ -63,6 +78,7 @@ Nodo::Nodo(double data) {
     dad = NULL;
     NivelIzq = 0;
     NivelDer = 0;
+    valueToCompare=data;
 }
 
 int Nodo::getValueOfInt() {

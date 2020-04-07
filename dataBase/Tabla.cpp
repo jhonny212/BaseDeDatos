@@ -13,12 +13,13 @@
 
 #include "Tabla.h"
 
-Tabla::Tabla() {
+
+
+Tabla::Tabla(columnasData c, string name){
+    columns=c;
+    nombre=name;
+}
+Tabla::Tabla(){
 }
 
-Tabla::Tabla(const Tabla& orig) {
-}
-
-Tabla::~Tabla() {
-}
 

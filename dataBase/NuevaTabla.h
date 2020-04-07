@@ -16,11 +16,11 @@
 
 class NuevaTabla {
 public:
-    NuevaTabla();
+   // NuevaTabla(columnasData c);
     NuevaTabla(const NuevaTabla& orig);
     virtual ~NuevaTabla();
 private:
-
+   // columnasData colum;
 };
 
 #endif /* NUEVATABLA_H */

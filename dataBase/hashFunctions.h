@@ -23,9 +23,6 @@ using namespace std;
 class hashFunctions {
 public:
     hashFunctions();
-    hashFunctions(const hashFunctions& orig);
-    virtual ~hashFunctions();
-    void getId(int typeHash);
 
     int getIdForString(string value);
     int getIdForInt(int value);

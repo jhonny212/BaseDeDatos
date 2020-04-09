@@ -13,30 +13,38 @@
 
 #ifndef BINARYTHREEFORINT_H
 #define BINARYTHREEFORINT_H
-#include "ArbolBinario.h"
-
+#include "Nodo.h"
+#include <stdio.h>
+#include <cstdlib>
+#include <iostream>
 using namespace std;
 
-class BinaryThreeForInt : public ArbolBinario {
+class BinaryThreeForInt  {
 public:
     BinaryThreeForInt();
-    //void insertarNodo(Nodo nodo);
-    //int addInteger(Nodo *add, double data);
+    void insertarNodo(Nodo);
+    int addInteger(Nodo *add, Nodo data);
     void showIntegerThree();
     void printLeft(Nodo *izq);
     void printRight(Nodo *der);
     void starPrint(Nodo *father);
-  /*  void SimpleRotationTurnLeft(Nodo *param);
+
+    void SimpleRotationTurnLeft(Nodo *param);
     void SimpleRotationTurnRight(Nodo *param);
     void RotationLeftRight(Nodo *param);
-    void RotationRightLeft(Nodo *param);*/
-    //int detectRotation(Nodo *param);
-    //void fixSize(Nodo *aux);
-  //  void FixLevelNodo(Nodo *param);
-   // string textoGrafica;
+    void RotationRightLeft(Nodo *param);
+    int detectRotation(Nodo *param);
+    void FixLevelNodo(Nodo *param);
     
+    
+    int TamanoArbol;
+    string textoGrafica;
+    Nodo *lastInserted;
+    Nodo *raiz=NULL;
+    bool isEmpty;
+    void setString(string nuevotxt);
 private:
-    
+
 };
 
 #endif /* BINARYTHREEFORINT_H */

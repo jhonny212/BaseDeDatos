@@ -22,24 +22,25 @@ using namespace std;
 class ArbolBinario {
 public:
     ArbolBinario();
-    void insertarNodo(Nodo );
-    int addInteger(Nodo *add, Nodo data);
+    //void insertarNodo(Nodo );
+    //int addInteger(Nodo *add, Nodo data);
 
-    virtual void showIntegerThree() = 0;
-    virtual void printLeft(Nodo *izq) = 0;
-    virtual void printRight(Nodo *der) = 0;
-    virtual void starPrint(Nodo *father) = 0;
+    //virtual void showIntegerThree() = 0;
+    //virtual void printLeft(Nodo *izq) = 0;
+    //virtual void printRight(Nodo *der) = 0;
+    //virtual void starPrint(Nodo *father) = 0;
 
-    int detectRotation(Nodo *param);
+    //int detectRotation(Nodo *param);
 
-    void SimpleRotationTurnLeft(Nodo *param);
+    /*void SimpleRotationTurnLeft(Nodo *param);
     void SimpleRotationTurnRight(Nodo *param);
     void RotationLeftRight(Nodo *param);
     void RotationRightLeft(Nodo *param);
-    void FixLevelNodo(Nodo *param);
+    void FixLevelNodo(Nodo *param);*/
+    
+protected:
     int TamanoArbol;
     string textoGrafica;
-protected:
     Nodo *lastInserted;
     Nodo *raiz;
     

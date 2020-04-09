@@ -14,19 +14,10 @@
 #include "Table.h"
 
 Table::Table() {
-    
+ tablaSiguiente=NULL;
+ content=NULL;
+ arbolInt = BinaryThreeForInt();
 }
-
-/*Table::Table(int _size) {
-    size = _size;
-    cout<<"entro aca size"<<endl;
-    
-}*/
-
-/*Table::Table(const Table& orig) {
- cout<<"entro aca const"<<endl;
-    
-}*/
 
 /*Table::Table(Table array[]) {
     content = array;
@@ -35,8 +26,8 @@ Table::Table() {
    
    // arbolInt = BinaryThreeForInt();
    // arbolFloat = BinaryThreeForFloat();
-}
-*/
+}*/
+
 Table::~Table() {
 }
 

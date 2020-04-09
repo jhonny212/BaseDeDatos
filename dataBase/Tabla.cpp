@@ -15,10 +15,10 @@
 
 
 
-Tabla::Tabla(columnasData c, string name){
+/*Tabla::Tabla(columnasData c, string name){
     columns=c;
     nombre=name;
-}
+}*/
 Tabla::Tabla(){
 }
 

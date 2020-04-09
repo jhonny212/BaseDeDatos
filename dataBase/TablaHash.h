@@ -26,20 +26,20 @@ using namespace std;
 class TablaHash {
 public:
     TablaHash();
-   // TablaHash(string);
     void createInitialTable();
-    void makeRehashing(Table obj[]);
-    //TablaHash(const TablaHash& orig);
+    void makeRehashing();
     void get(int);
-   // virtual ~TablaHash();
     int getSize();
     void insertData( int indice, int tipo_,string valor);
+    void actualizarInicio();
     string tipo;
-private:
+    
     Table *start=NULL;
     Table *next=NULL;
     Table array[5];
     int size;
+private:
+    
   
 
 };

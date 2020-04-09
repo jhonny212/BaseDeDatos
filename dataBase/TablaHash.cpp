@@ -15,37 +15,28 @@
 
 TablaHash::TablaHash() {
     size = 1;
+    start = NULL;
+    next = NULL;
     createInitialTable();
 
 }
 
-/*TablaHash::TablaHash(string t) {
-    tipo = t;
-    size = 1;
-    cout << "entro aca ostia" << endl;
-    //  createInitialTable();
-}*/
-
-/*TablaHash::TablaHash(const TablaHash& orig) {
-    
-}*/
-
 void TablaHash::createInitialTable() {
     for (int i = 0; i < 5; i++) {
-
-        array[i].arbolInt.TamanoArbol = 0;
+        array[i] = Table();
     }
-    start = array;
     size = 1;
+    start = &array[0];
+    next = &array[4];
 
-    //cout<<(start+1)->size<<endl;
-
+    
 }
 
-void TablaHash::makeRehashing(Table obj[]) {
-    //    next->tablaSiguiente = new Table(obj);
-    //    next = next->tablaSiguiente;
-    //    size += 1;
+void TablaHash::makeRehashing() {
+    Table obj[5];
+    next->tablaSiguiente = obj;
+    next = next->tablaSiguiente;
+    size += 1;
 }
 
 void TablaHash::get(int x) {
@@ -62,16 +53,19 @@ void TablaHash::get(int x) {
 int TablaHash::getSize() {
     return size;
 }
-
+void TablaHash::actualizarInicio(){
+    start=array;
+    next=&array[4];
+}
 void TablaHash::insertData(int indice, int tipo_, string valor) {
+    
     if (size != 0) {
         bool isFound = true;
         int auxInd = (indice / 5) + 1;
-        Table *aux = start;
-        for (int i = 0; i < auxInd; i++) {
+        Table *aux =start;
+        /*for (int i = 0; i < auxInd; i++) {
             aux = aux->tablaSiguiente;
-        }
-
+        }*/
         while (isFound) {
             int index = indice % 10;
             if (index >= 5) {
@@ -95,11 +89,15 @@ void TablaHash::insertData(int indice, int tipo_, string valor) {
 
                 int k = stoi(valor);
                 nodoSave = Nodo(k);
-                nodo = &nodoSave;
-                aux->arbolInt.insertarNodo(nodoSave);
-                aux->href = &nodoSave;
+                //nodo = &nodoSave;
+                //Table *d=&array[0];
 
-                 aux->arbolInt.showIntegerThree();
+                aux->arbolInt.insertarNodo(nodoSave);
+                aux->arbolInt.showIntegerThree();
+                // aux->href = &nodoSave;
+                // aux->arbolInt.showIntegerThree();
+
+                // aux->arbolInt.showIntegerThree();
                 isFound = false;
             } else if (tipo_ == 4) {
                 double j = atof(valor.c_str());

@@ -48,10 +48,14 @@ string dataBase::getName() {
 
 void dataBase::addTable(columnasData tb, string name){
     if (valor == NULL) {
-        sigu = new Tabla(tb, name);
+        sigu = new Tabla();
+        sigu->columns=tb;
+        sigu->nombre=name;
         valor = sigu;
     } else {
-        sigu->siguiente = new Tabla(tb,name);
+        sigu->siguiente = new Tabla();
+        sigu->siguiente->columns=tb;
+        sigu->siguiente->nombre=name;
         sigu = sigu->siguiente;
     }
 }

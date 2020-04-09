@@ -14,13 +14,13 @@
 #include "ArbolBinario.h"
 
 ArbolBinario::ArbolBinario() {
-    raiz = NULL;
+    /*raiz = NULL;
     lastInserted = NULL;
     TamanoArbol = 0;
-    textoGrafica="";
+    textoGrafica="";*/
 }
 
-void ArbolBinario::insertarNodo(Nodo nodo) {
+/*void ArbolBinario::insertarNodo(Nodo nodo) {
     if (TamanoArbol==16) {
         raiz = new Nodo(nodo.valorInt);
         lastInserted = raiz;
@@ -286,4 +286,4 @@ void ArbolBinario::FixLevelNodo(Nodo* param) {
             aux = aux->dad;
         }
     }
-}
+}*/

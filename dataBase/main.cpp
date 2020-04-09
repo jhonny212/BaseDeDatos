@@ -40,7 +40,17 @@ dataBase bs;
 string name;
 
 int main() {
+    /*BinaryThreeForInt D = BinaryThreeForInt();
+    BinaryThreeForInt *t = &D;
 
+    Nodo n=Nodo(10);
+    Nodo n1=Nodo(20);
+    Nodo n2=Nodo(5);
+    D.insertarNodo(n);
+    D.insertarNodo(n1);
+    D.insertarNodo(n2);
+    D.showIntegerThree();
+     */
     /*
     int *get=indice;
     cout<<*(get+3)<<endl;
@@ -63,6 +73,7 @@ int main() {
             cin>>name;
             createDatabase();
             insertar();
+             insertar();
             break;
         case 2:
             break;
@@ -74,8 +85,7 @@ int main() {
 }
 
 void createDatabase() {
-    columnasData cd = columnasData();
-    string Palabra = "create table alumnos ( nombre int , edad int );";
+    string Palabra = "create table alumnos ( nombre string );";
     cout << "Create table..." << endl;
     // cin>> Palabra;
     // getline(cin, Palabra);
@@ -86,16 +96,21 @@ void createDatabase() {
 
     //  cout << TotalVector << endl; // Devuelve tamaño del vector: 3
     string nameD = TempBuff[2];
+    columnasData cd = columnasData();
+
     for (int i = 4; i < TotalVector - 1; i += 3) {
         cout << "creando columna" << endl;
         columna c = columna();
         c.name = TempBuff[i];
         c.type = TempBuff[i + 1];
         cd.add(c);
-       
+
     }
-    Tabla tab = Tabla(cd, nameD);
+    Tabla tab = Tabla();
+    tab.columns = cd;
+    tab.nombre = name;
     bs = dataBase(tab, name);
+   
 
 }
 
@@ -133,7 +148,7 @@ void querys(int opc) {
 }
 
 void insertar() {
-    string Palabra = "insert into alumnos ( nombre , edad ) VALUES ( 20 , 10 );";
+    string Palabra = "insert into alumnos ( nombre ) VALUES ( ostia );";
     //cin>> Palabra;
     // getline(cin, Palabra);
     vector<string> TempBuff(0);
@@ -150,7 +165,7 @@ void insertar() {
 
             //cout << " COLUMNA" << TempBuff[i] << endl;
             // cout << " VALOR " << TempBuff[distancia + 1] << "\n" << endl;
-
+            
             bs.tabla.columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
             distancia += 2;
         } else {

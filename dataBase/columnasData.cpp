@@ -15,6 +15,7 @@
 using namespace std;
 
 columnasData::columnasData() {
+    cout << "entro here" << endl;
     valor = NULL;
     sigu = NULL;
     size = 0;
@@ -29,20 +30,23 @@ void columnasData::add(columna c) {
         valor = sigu;
         sigu->siguiente = NULL;
         size += 1;
+        t->column.tablaHash.actualizarInicio();
     } else {
         if (sigu->siguiente == NULL) {
             NodoColumna *t = new NodoColumna();
             t->column = c;
             t->siguiente = NULL;
             sigu->siguiente = t;
+            t->column.tablaHash.actualizarInicio();
         }
         sigu = sigu->siguiente;
         size += 1;
+
     }
 }
 
 void columnasData::get(int i) {
-    if (valor != NULL) {
+    /*if (valor != NULL) {
         NodoColumna *aux = valor;
         for (int j = 0; j < i; j++) {
             cout << " Nombre de columna " << aux->column.getName() << endl;
@@ -50,7 +54,7 @@ void columnasData::get(int i) {
             aux = aux->siguiente;
         }
 
-    }
+    }*/
 }
 
 void columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
@@ -59,6 +63,7 @@ void columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
         NodoColumna *aux = valor;
         for (int i = 0; i < size; i++) {
             if (aux->column.getName() == nameColumn) {
+
                 aux->column.insertarDato(valorRecibido);
                 break;
             }

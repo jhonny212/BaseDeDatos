@@ -16,15 +16,9 @@
 hashFunctions::hashFunctions() {
 }
 
-hashFunctions::hashFunctions(const hashFunctions& orig) {
-}
 
-hashFunctions::~hashFunctions() {
-}
 
-void hashFunctions::getId(int typeHash) {
-    int cod = -1;
-}
+
 
 int hashFunctions::getIdForString(string value) {
     char tab2[value.length()];

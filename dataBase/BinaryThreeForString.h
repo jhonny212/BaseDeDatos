@@ -19,10 +19,21 @@ using namespace std;
 class BinaryThreeForString : public ArbolBinario {
 public:
     BinaryThreeForString();
-    void showIntegerThree();
+    void showStringThree();
     void printLeft(Nodo *izq);
     void printRight(Nodo *der);
     void starPrint(Nodo *father);
+
+    void insertarNodo(Nodo);
+    int addInteger(Nodo *add, Nodo data);
+
+    void SimpleRotationTurnLeft(Nodo *param);
+    void SimpleRotationTurnRight(Nodo *param);
+    void RotationLeftRight(Nodo *param);
+    void RotationRightLeft(Nodo *param);
+    int detectRotation(Nodo *param);
+    void FixLevelNodo(Nodo *param);
+
 private:
     string textoGrafica;
 };

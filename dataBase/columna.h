@@ -21,16 +21,22 @@ using namespace std;
 
 class columna {
 public:
-    //columna(string _name, string _type);
     columna();
     void inicializarArboles();
     string getName();
     string getType();
-    //virtual ~columna();
     void insertarDato(std::string dato);
     TablaHash tablaHash;
+    
+    int getIdForString(string value);
+    int getIdForInt(string value, int plus);
+    int getIdForChar(char value);
+    int getIdForDouble(double value);
+    int getIndex(int clave,int espacio);
+    
     string name, type;
-
+    int key;
+    int Index;
 private:
    
  

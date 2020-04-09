@@ -23,15 +23,15 @@ using namespace std;
 
 class Nodo {
 public:
-    Nodo ();
-  //  Nodo (columna c);
-    Nodo (int data);
-    Nodo (string data);
-    Nodo (char data);
-    Nodo (double data);
-  //  Nodo (NuevaTabla data);
-   
-//    columna column;
+    Nodo();
+    //  Nodo (columna c);
+    Nodo(int data);
+    Nodo(string data);
+    Nodo(char data);
+    Nodo(double data);
+    //  Nodo (NuevaTabla data);
+
+    //    columna column;
     Nodo *siguiente;
     Nodo *left;
     Nodo *right;
@@ -46,12 +46,14 @@ public:
     int valueCompare;
     double valueToCompare;
     int valorInt;
-private:
-    
+
     string valorString;
     char valorChar;
     double valorDouble;
-   
+
+private:
+
+
 };
 
 #endif /* NODO_H */

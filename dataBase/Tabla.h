@@ -25,7 +25,7 @@ using namespace std;
 class Tabla {
 public:
     Tabla();
-    Tabla(columnasData, string data);
+   // Tabla(columnasData, string data);
     Tabla *siguiente;
     string nombre;
     columnasData columns;

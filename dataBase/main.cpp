@@ -24,6 +24,9 @@
 #include <fstream>
 #include "dataBase.h"
 #include "Tabla.h"
+#include "TablaHash.h"
+#include "hashFunctions.h"
+
 
 using namespace std;
 void querys(int);
@@ -38,11 +41,20 @@ string name;
 
 int main() {
 
-    
-    
-   
-   // t.showIntegerThree();
-    /*mensajes msj = mensajes();
+    /*
+    int *get=indice;
+    cout<<*(get+3)<<endl;
+     *(get+3)=40;
+    cout<<*(get+3)<<endl;
+     */
+
+    //int num;
+    // num=int(50*(41*(0.4)-int(41*0.4)));
+
+
+    // t.showIntegerThree();
+
+    mensajes msj = mensajes();
     msj.welcome();
     int opc = msj.opcion();
     switch (opc) {
@@ -50,7 +62,7 @@ int main() {
             cout << "Escriba el nombre de las base de datos" << endl;
             cin>>name;
             createDatabase();
-           // insertar();
+            insertar();
             break;
         case 2:
             break;
@@ -58,29 +70,33 @@ int main() {
             break;
         default:
             break;
-    }*/
+    }
 }
 
 void createDatabase() {
     columnasData cd = columnasData();
-    string Palabra;
+    string Palabra = "create table alumnos ( nombre int , edad int );";
     cout << "Create table..." << endl;
-    cin>> Palabra;
-    getline(cin, Palabra);
+    // cin>> Palabra;
+    // getline(cin, Palabra);
 
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
 
-    cout << TotalVector << endl; // Devuelve tamaño del vector: 3
+    //  cout << TotalVector << endl; // Devuelve tamaño del vector: 3
     string nameD = TempBuff[2];
     for (int i = 4; i < TotalVector - 1; i += 3) {
-        columna c = columna(TempBuff[i], TempBuff[i + 1]);
+        cout << "creando columna" << endl;
+        columna c = columna();
+        c.name = TempBuff[i];
+        c.type = TempBuff[i + 1];
         cd.add(c);
+       
     }
     Tabla tab = Tabla(cd, nameD);
     bs = dataBase(tab, name);
-   
+
 }
 
 void menuSeleccion() {
@@ -117,9 +133,9 @@ void querys(int opc) {
 }
 
 void insertar() {
-    string Palabra;
-    cin>> Palabra;
-    getline(cin, Palabra);
+    string Palabra = "insert into alumnos ( nombre , edad ) VALUES ( 20 , 10 );";
+    //cin>> Palabra;
+    // getline(cin, Palabra);
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -131,8 +147,11 @@ void insertar() {
     }
     for (int i = 4; i < TotalVector - 1; i += 2) {
         if (TempBuff[i] != "VALUES") {
-            cout << " COLUMNA" << TempBuff[i] << endl;
-            cout << " VALOR " << TempBuff[distancia + 1] << "\n" << endl;
+
+            //cout << " COLUMNA" << TempBuff[i] << endl;
+            // cout << " VALOR " << TempBuff[distancia + 1] << "\n" << endl;
+
+            bs.tabla.columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
             distancia += 2;
         } else {
             break;

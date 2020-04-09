@@ -13,13 +13,34 @@
 
 #ifndef TABLAHASH_H
 #define TABLAHASH_H
+#include "Table.h"
+#include "Nodo.h"
+
+#include <stdio.h>
+#include <cstdlib>
+#include <iostream>
+
+
+using namespace std;
 
 class TablaHash {
 public:
     TablaHash();
-    TablaHash(const TablaHash& orig);
-    virtual ~TablaHash();
+   // TablaHash(string);
+    void createInitialTable();
+    void makeRehashing(Table obj[]);
+    //TablaHash(const TablaHash& orig);
+    void get(int);
+   // virtual ~TablaHash();
+    int getSize();
+    void insertData( int indice, int tipo_,string valor);
+    string tipo;
 private:
+    Table *start=NULL;
+    Table *next=NULL;
+    Table array[5];
+    int size;
+  
 
 };
 

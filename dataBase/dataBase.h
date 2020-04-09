@@ -35,8 +35,9 @@ public:
     void addTable(columnasData tb, string name);
     virtual ~dataBase();
     void get(string par);
-private:
     Tabla tabla;
+private:
+    
     Tabla *valor;
     Tabla *sigu;
     string Name;

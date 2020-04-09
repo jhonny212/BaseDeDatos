@@ -26,12 +26,18 @@ public:
     hashFunctions(const hashFunctions& orig);
     virtual ~hashFunctions();
     void getId(int typeHash);
-private:
-    void getIdForString(string value);
-    void getIdForInt(int value);
-    void getIdForChar(char value);
-    void getIdForDouble(double value);
+
+    int getIdForString(string value);
+    int getIdForInt(int value);
+    int getIdForChar(char value);
+    int getIdForDouble(double value);
     
+    int getIndex(int clave,int espacio);
+    
+
+private:
+
+
 };
 
 #endif /* HASHFUNCTIONS_H */

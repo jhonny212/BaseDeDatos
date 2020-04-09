@@ -17,32 +17,54 @@ using namespace std;
 columnasData::columnasData() {
     valor = NULL;
     sigu = NULL;
-    size=0;
+    size = 0;
 }
-
-
 
 void columnasData::add(columna c) {
     if (sigu == NULL) {
-        sigu = new Nodo(c);
+        NodoColumna *t = new NodoColumna();
+        t->column = c;
+        t->siguiente = NULL;
+        sigu = t;
         valor = sigu;
-        size+=1;
+        sigu->siguiente = NULL;
+        size += 1;
     } else {
-        sigu->siguiente = new Nodo(c);
+        if (sigu->siguiente == NULL) {
+            NodoColumna *t = new NodoColumna();
+            t->column = c;
+            t->siguiente = NULL;
+            sigu->siguiente = t;
+        }
         sigu = sigu->siguiente;
-        size+=1;
+        size += 1;
     }
 }
 
 void columnasData::get(int i) {
-
     if (valor != NULL) {
-        Nodo *aux=valor;
+        NodoColumna *aux = valor;
         for (int j = 0; j < i; j++) {
-            cout<<" Nombre de columna "<<aux->column.getName()<<endl;
-            cout<<" typo "<<aux->column.getType()<<endl;
-            aux=aux->siguiente;
-       }
+            cout << " Nombre de columna " << aux->column.getName() << endl;
+            cout << " typo " << aux->column.getType() << endl;
+            aux = aux->siguiente;
+        }
+
+    }
+}
+
+void columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
+    if (valor != NULL) {
+        cout << " buscando columna " << nameColumn << endl;
+        NodoColumna *aux = valor;
+        for (int i = 0; i < size; i++) {
+            if (aux->column.getName() == nameColumn) {
+                aux->column.insertarDato(valorRecibido);
+                break;
+            }
+            aux = aux->siguiente;
+        }
+
 
     }
 }

@@ -14,20 +14,26 @@
 #ifndef COLUMNA_H
 #define COLUMNA_H
 #include <iostream>
+#include "TablaHash.h"
+#include "hashFunctions.h"
+
 using namespace std;
 
 class columna {
 public:
-    columna(string _name,string _type);
+    //columna(string _name, string _type);
     columna();
+    void inicializarArboles();
     string getName();
     string getType();
-    
-    virtual ~columna();
-private:
-    string name,type;
-    
+    //virtual ~columna();
+    void insertarDato(std::string dato);
+    TablaHash tablaHash;
+    string name, type;
 
+private:
+   
+ 
 };
 
 #endif /* COLUMNA_H */

@@ -13,15 +13,36 @@
 
 #ifndef TABLE_H
 #define TABLE_H
+#include "BinaryThreeForInt.h"
+#include "BinaryThreeForString.h"
+#include "BinaryThreeForChar.h"
+#include "BinaryThreeForFloat.h"
+#include "Nodo.h"
 
 class Table {
 public:
     Table();
-    Table(const Table& orig);
-    Table (int size);
-    
+    Table(string _type);
+   // Table(const Table& orig);
+//    Table (Table array[]);
     virtual ~Table();
+    int getSize();
+//    Table(int);
+    int getFactorDeCarga();
+    Table* tablaSiguiente;
+    Table* content;  
+    int size;
+    BinaryThreeForInt arbolInt;//=BinaryThreeForInt();
+    /*BinaryThreeForInt arbolInt;
+    BinaryThreeForString arbolString;
+    BinaryThreeForChar arbolChar;
+    BinaryThreeForFloat arbolFloat;*/
+    Nodo *href;
+    
 private:
+    int factroDeCarga;
+    
+    
 
 };
 

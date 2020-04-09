@@ -26,40 +26,40 @@ void hashFunctions::getId(int typeHash) {
     int cod = -1;
 }
 
-void hashFunctions::getIdForString(string value) {
+int hashFunctions::getIdForString(string value) {
     char tab2[value.length()];
     strcpy(tab2, value.c_str());
     int indice = 0;
+    int aux = int (tab2[(int) (value.length() / 2)]);
+    if (aux >= 97) {
+        aux -= 97;
+    } else if (aux >= 65 && aux < 97) {
+        aux -= 64;
+    }
     for (int i = 0; i < value.length(); i++) {
         char car = tab2[i];
         int numcar;
+
         numcar = int(car);
-        if (numcar != 32) {
-            if (numcar < 100) {
-                numcar -= 64;
-            } else {
-                numcar -= 99;
-            }
+        if (numcar >= 97) {
+            numcar -= 97;
+        } else if (numcar >= 65 && numcar < 97) {
+            numcar -= 64;
         }
         indice += numcar;
     }
+    indice += aux;
+    return indice;
 }
 
-void hashFunctions::getIdForChar(char value) {
-    char car = value;
-    int numcar;
-    numcar = int(car);
-    if (numcar != 32) {
-        if (numcar < 100) {
-            numcar -= 43;
-        } else {
-            numcar -= 100;
-        }
-    }
-    cout << numcar << endl;
+int hashFunctions::getIdForChar(char value) {
+    int numcar = (int) value;
+    numcar -= 32;
+   // cout << numcar << endl;
+    return numcar;
 }
 
-void hashFunctions::getIdForInt(int value) {
+int hashFunctions::getIdForInt(int value) {
     string str = to_string(value);
     char tab2[str.length()];
     strcpy(tab2, str.c_str());
@@ -73,13 +73,11 @@ void hashFunctions::getIdForInt(int value) {
 
     }
     indice += value;
-    if (value > 100) {
-        indice -= 100;
-    }
-    cout << indice << endl;
+   // cout << indice << endl;
+    return indice;
 }
 
-void hashFunctions::getIdForDouble(double value) {
+int hashFunctions::getIdForDouble(double value) {
     string str = to_string(value);
     cout << str << endl;
     char tab2[str.length()];
@@ -104,8 +102,12 @@ void hashFunctions::getIdForDouble(double value) {
         }
     }
     indice += value;
-    if (value > 100) {
-        indice -= 100;
-    }
-    cout << indice << endl;
+    //cout << indice << endl;
+    return indice;
+}
+
+int hashFunctions::getIndex(int clave, int espacio) {
+    
+    int num = int((espacio*5) * (clave * (0.4) - int(clave * 0.4)));
+    return num;
 }

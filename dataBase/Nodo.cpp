@@ -12,16 +12,12 @@
  */
 
 #include "Nodo.h"
-#include "columna.h"
 
 Nodo::Nodo() {
     siguiente = NULL;
 }
 
-Nodo::Nodo(columna c) {
-    column = c;
-    siguiente = NULL;
-}
+
 
 Nodo::Nodo(int data) {
     valorInt = data;

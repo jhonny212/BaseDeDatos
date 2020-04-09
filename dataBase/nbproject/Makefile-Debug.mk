@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/BinaryThreeForInt.o \
 	${OBJECTDIR}/BinaryThreeForString.o \
 	${OBJECTDIR}/Nodo.o \
+	${OBJECTDIR}/NodoColumna.o \
 	${OBJECTDIR}/NuevaTabla.o \
 	${OBJECTDIR}/Tabla.o \
 	${OBJECTDIR}/TablaHash.o \
@@ -106,6 +107,11 @@ ${OBJECTDIR}/Nodo.o: Nodo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nodo.o Nodo.cpp
+
+${OBJECTDIR}/NodoColumna.o: NodoColumna.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoColumna.o NodoColumna.cpp
 
 ${OBJECTDIR}/NuevaTabla.o: NuevaTabla.cpp
 	${MKDIR} -p ${OBJECTDIR}

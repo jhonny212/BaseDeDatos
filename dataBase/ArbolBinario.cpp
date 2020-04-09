@@ -14,13 +14,20 @@
 #include "ArbolBinario.h"
 
 ArbolBinario::ArbolBinario() {
+    raiz = NULL;
+    lastInserted = NULL;
+    TamanoArbol = 0;
+    textoGrafica="";
 }
 
 void ArbolBinario::insertarNodo(Nodo nodo) {
-    if (raiz == NULL) {
+    if (TamanoArbol==16) {
         raiz = new Nodo(nodo.valorInt);
         lastInserted = raiz;
-    } else {
+
+
+    } else  {
+        
         int x = addInteger(raiz, nodo);
         if (raiz->right != NULL) {
             int x = raiz->right->NivelDer;
@@ -45,7 +52,7 @@ void ArbolBinario::insertarNodo(Nodo nodo) {
             }
         }
 
-        detectRotation(lastInserted->dad);
+      //  detectRotation(lastInserted->dad);
 
     }
 }

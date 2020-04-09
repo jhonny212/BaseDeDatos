@@ -14,8 +14,10 @@
 #include "BinaryThreeForInt.h"
 
 BinaryThreeForInt::BinaryThreeForInt() {
+    TamanoArbol=0;
     raiz = NULL;
     lastInserted = NULL;
+    textoGrafica="";
 }
 /*
 int BinaryThreeForInt::addInteger(Nodo* add, double data) {
@@ -113,50 +115,54 @@ int BinaryThreeForInt::addInteger(Nodo* add, double data) {
 
 void BinaryThreeForInt::showIntegerThree() {
     if (raiz != NULL) {
+        
+        if(raiz->left!=NULL){
         cout<<raiz->left->valorInt<<endl;
+        }
+        if(raiz->right!=NULL){
         cout<<raiz->right->valorInt<<endl;
+        }
         
         int i = raiz->getValueOfInt();
         string padre = to_string(i);
         if (raiz->left != NULL) {
             int j = raiz->left->getValueOfInt();
             string izq = to_string(j);
-            textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
+           // textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
         }
 
         if (raiz->right != NULL) {
             int k = raiz->right->getValueOfInt();
             string der = to_string(k);
-            textoGrafica = textoGrafica + padre + " -> " + der + " \n";
+           // textoGrafica = textoGrafica + padre + " -> " + der + " \n";
         }
         starPrint(raiz);
-        cout << textoGrafica << endl;
+     //   cout << textoGrafica << endl;
     }
 }
 
 void BinaryThreeForInt::starPrint(Nodo* father) {
-
     if (father != NULL) {
-        if (father->dad != NULL) {
+        /*if (father->dad != NULL) {
             int i = father->getValueOfInt();
             string padre = to_string(i);
             if (father->left != NULL) {
 
                 int j = father->left->getValueOfInt();
                 string izq = to_string(j);
-                textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
+             //   textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
             }
 
             if (father->right != NULL) {
 
                 int k = father->right->getValueOfInt();
                 string der = to_string(k);
-                textoGrafica = textoGrafica + padre + " -> " + der + " \n";
+              //  textoGrafica = textoGrafica + padre + " -> " + der + " \n";
             }
 
         }
         printLeft(father->left);
-        printRight(father->right);
+        printRight(father->right);*/
     }
 }
 

@@ -14,7 +14,8 @@
 #ifndef COLUMNASDATA_H
 #define COLUMNASDATA_H
 #include "columna.h"
-#include "Nodo.h"
+#include "NodoColumna.h"
+
 
 
 class columnasData {
@@ -22,9 +23,11 @@ public:
     columnasData();
     void add(columna c);
     void get(int i);
-    Nodo *valor;
-    Nodo *sigu;
-    
+   // Nodo *valor;
+   // Nodo *sigu;
+    NodoColumna *valor;
+    NodoColumna *sigu;
+    void insertarEnColumna(string nameColumn,string);
     
 private:
     int size;

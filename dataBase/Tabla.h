@@ -21,15 +21,17 @@
 #include <sstream>
 
 using namespace std;
+
 class Tabla {
 public:
     Tabla();
-      Tabla(columnasData, string data  );
-      Tabla *siguiente;
-      string nombre;
-private:
+    Tabla(columnasData, string data);
+    Tabla *siguiente;
+    string nombre;
     columnasData columns;
-    
+private:
+
+
 };
 
 #endif /* TABLA_H */

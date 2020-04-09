@@ -1,10 +1,6 @@
 build/Debug/GNU-Linux/ArbolBinario.o: ArbolBinario.cpp ArbolBinario.h \
- Nodo.h columna.h NuevaTabla.h
+ Nodo.h
 
 ArbolBinario.h:
 
 Nodo.h:
-
-columna.h:
-
-NuevaTabla.h:

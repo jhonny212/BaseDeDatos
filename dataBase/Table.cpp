@@ -14,13 +14,59 @@
 #include "Table.h"
 
 Table::Table() {
-}
-Table::Table(int size){
-
-}
-Table::Table(const Table& orig) {
+    
 }
 
+/*Table::Table(int _size) {
+    size = _size;
+    cout<<"entro aca size"<<endl;
+    
+}*/
+
+/*Table::Table(const Table& orig) {
+ cout<<"entro aca const"<<endl;
+    
+}*/
+
+/*Table::Table(Table array[]) {
+    content = array;
+    //arbolString = BinaryThreeForString();
+    //arbolChar = BinaryThreeForChar();
+   
+   // arbolInt = BinaryThreeForInt();
+   // arbolFloat = BinaryThreeForFloat();
+}
+*/
 Table::~Table() {
 }
+
+int Table::getFactorDeCarga() {
+    return factroDeCarga;
+}
+
+int Table::getSize() {
+    return size;
+}
+
+Table::Table(string _type) {
+      
+    //arbolString = BinaryThreeForString();
+    //arbolChar = BinaryThreeForChar();
+     
+   
+   // arbolInt = BinaryThreeForInt();
+   // arbolFloat = BinaryThreeForFloat();
+   
+    /*if (_type == "string") {
+        arbolString = BinaryThreeForString();
+    } else if (_type == "char") {
+        arbolChar = BinaryThreeForChar();
+    } else if (_type == "int") {
+        cout<<"inicializando arbol binario int"<<endl;
+        arbolInt = BinaryThreeForInt();
+    } else if (_type == "double") {
+        arbolFloat = BinaryThreeForFloat();
+    }*/
+}
+
 

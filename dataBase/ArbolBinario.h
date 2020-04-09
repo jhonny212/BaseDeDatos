@@ -14,6 +14,10 @@
 #ifndef ARBOLBINARIO_H
 #define ARBOLBINARIO_H
 #include "Nodo.h"
+#include <stdio.h>
+#include <cstdlib>
+#include <iostream>
+using namespace std;
 
 class ArbolBinario {
 public:
@@ -33,10 +37,12 @@ public:
     void RotationLeftRight(Nodo *param);
     void RotationRightLeft(Nodo *param);
     void FixLevelNodo(Nodo *param);
-
+    int TamanoArbol;
+    string textoGrafica;
 protected:
     Nodo *lastInserted;
     Nodo *raiz;
+    
 
 };
 

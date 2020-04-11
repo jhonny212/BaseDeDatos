@@ -15,10 +15,12 @@
 using namespace std;
 
 columnasData::columnasData() {
-    cout << "entro here" << endl;
     valor = NULL;
     sigu = NULL;
     size = 0;
+}
+
+columnasData::~columnasData() {
 }
 
 void columnasData::add(columna c) {
@@ -45,26 +47,63 @@ void columnasData::add(columna c) {
     }
 }
 
-void columnasData::get(int i) {
-    /*if (valor != NULL) {
-        NodoColumna *aux = valor;
-        for (int j = 0; j < i; j++) {
-            cout << " Nombre de columna " << aux->column.getName() << endl;
-            cout << " typo " << aux->column.getType() << endl;
-            aux = aux->siguiente;
+void columnasData::addC(string simple) {
+    if (sigu == NULL) {
+        NodoColumna *t = new NodoColumna();
+        t->name=simple;
+        t->siguiente = NULL;
+        sigu = t;
+        valor = sigu;
+        sigu->siguiente = NULL;
+        size += 1;
+       
+    } else {
+        if (sigu->siguiente == NULL) {
+            NodoColumna *t = new NodoColumna();
+            t->name=simple;
+            t->siguiente = NULL;
+            sigu->siguiente = t;
         }
+        sigu = sigu->siguiente;
+        size += 1;
 
-    }*/
+    }
+
 }
 
-void columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
+Nodo* columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
     if (valor != NULL) {
-        cout << " buscando columna " << nameColumn << endl;
         NodoColumna *aux = valor;
         for (int i = 0; i < size; i++) {
-            if (aux->column.getName() == nameColumn) {
-
+            if (aux->column.name == nameColumn) {
                 aux->column.insertarDato(valorRecibido);
+                return aux->column.ultimo;
+                break;
+            }
+            aux = aux->siguiente;
+        }
+    }
+}
+
+void columnasData::actualizarColumnas(string nameColumn, string valorRecibido) {
+    if (valor != NULL) {
+        NodoColumna *aux = valor;
+        for (int i = 0; i < size; i++) {
+            if (aux->column.name == nameColumn) {
+                aux->column.actualizarDato(valorRecibido);
+                break;
+            }
+            aux = aux->siguiente;
+        }
+    }
+}
+
+void columnasData::buscarColumna(string nameColumn) {
+    if (valor != NULL) {
+        NodoColumna *aux = valor;
+        for (int i = 0; i < size; i++) {
+            if (aux->column.name == nameColumn) {
+                aux->column.search();
                 break;
             }
             aux = aux->siguiente;

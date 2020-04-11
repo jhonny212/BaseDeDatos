@@ -73,7 +73,6 @@ int hashFunctions::getIdForInt(int value) {
 
 int hashFunctions::getIdForDouble(double value) {
     string str = to_string(value);
-    cout << str << endl;
     char tab2[str.length()];
     strcpy(tab2, str.c_str());
     int indice = 0;

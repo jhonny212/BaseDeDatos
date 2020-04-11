@@ -5,35 +5,26 @@
  */
 
 /* 
- * File:   Tabla.h
+ * File:   claseDePrueba.h
  * Author: jhonny
  *
- * Created on 6 de abril de 2020, 03:28 PM
+ * Created on 9 de abril de 2020, 05:23 PM
  */
 
-#ifndef TABLA_H
-#define TABLA_H
-#include "columnasData.h"
+#ifndef CLASEDEPRUEBA_H
+#define CLASEDEPRUEBA_H
 #include <iostream>
-
 #include <string.h> 
-#include <string>
-#include <sstream>
-
 using namespace std;
-
-class Tabla {
+class claseDePrueba {
 public:
-    Tabla();
-    Tabla *siguiente;
-    virtual ~Tabla();
-    string nombre;
-    columnasData columns;
-
+    claseDePrueba();
+    claseDePrueba(const claseDePrueba& orig);
+    virtual ~claseDePrueba();
+    string d;
 private:
-
 
 };
 
-#endif /* TABLA_H */
+#endif /* CLASEDEPRUEBA_H */
 

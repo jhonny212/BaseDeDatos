@@ -16,8 +16,7 @@
 dataBase::dataBase() {
 }
 
-dataBase::dataBase(const dataBase& orig) {
-}
+
 
 dataBase::~dataBase() {
 }

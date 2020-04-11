@@ -14,21 +14,12 @@
 #include "Table.h"
 
 Table::Table() {
- tablaSiguiente=NULL;
- content=NULL;
- arbolInt = BinaryThreeForInt();
-}
-
-/*Table::Table(Table array[]) {
-    content = array;
-    //arbolString = BinaryThreeForString();
-    //arbolChar = BinaryThreeForChar();
-   
-   // arbolInt = BinaryThreeForInt();
-   // arbolFloat = BinaryThreeForFloat();
-}*/
-
-Table::~Table() {
+    tablaSiguiente = NULL;
+    encolado = NULL;
+    inicio=NULL;
+    arbolInt = BinaryThreeForInt();
+    bandera=false;
+    size=0;
 }
 
 int Table::getFactorDeCarga() {
@@ -38,26 +29,13 @@ int Table::getFactorDeCarga() {
 int Table::getSize() {
     return size;
 }
-
-Table::Table(string _type) {
-      
-    //arbolString = BinaryThreeForString();
-    //arbolChar = BinaryThreeForChar();
-     
+Table::~Table(){
    
-   // arbolInt = BinaryThreeForInt();
-   // arbolFloat = BinaryThreeForFloat();
-   
-    /*if (_type == "string") {
-        arbolString = BinaryThreeForString();
-    } else if (_type == "char") {
-        arbolChar = BinaryThreeForChar();
-    } else if (_type == "int") {
-        cout<<"inicializando arbol binario int"<<endl;
-        arbolInt = BinaryThreeForInt();
-    } else if (_type == "double") {
-        arbolFloat = BinaryThreeForFloat();
-    }*/
 }
+
+void Table::addForColisions(Table* t){
+
+}
+
 
 

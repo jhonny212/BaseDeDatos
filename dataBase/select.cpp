@@ -5,22 +5,20 @@
  */
 
 /* 
- * File:   NodoColumna.cpp
+ * File:   select.cpp
  * Author: jhonny
  * 
- * Created on 8 de abril de 2020, 12:01 PM
+ * Created on 10 de abril de 2020, 08:23 PM
  */
 
-#include "NodoColumna.h"
+#include "select.h"
 
-NodoColumna::NodoColumna() {
-    
+select::select() {
 }
 
-
-NodoColumna::NodoColumna(const NodoColumna& orig) {
+select::select(const select& orig) {
 }
 
-NodoColumna::~NodoColumna() {
+select::~select() {
 }
 

@@ -5,22 +5,20 @@
  */
 
 /* 
- * File:   NodoColumna.cpp
+ * File:   claseDePrueba.cpp
  * Author: jhonny
  * 
- * Created on 8 de abril de 2020, 12:01 PM
+ * Created on 9 de abril de 2020, 05:23 PM
  */
 
-#include "NodoColumna.h"
+#include "claseDePrueba.h"
 
-NodoColumna::NodoColumna() {
-    
+claseDePrueba::claseDePrueba() {
 }
 
-
-NodoColumna::NodoColumna(const NodoColumna& orig) {
+claseDePrueba::claseDePrueba(const claseDePrueba& orig) {
 }
 
-NodoColumna::~NodoColumna() {
+claseDePrueba::~claseDePrueba() {
 }
 

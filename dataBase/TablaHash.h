@@ -30,17 +30,22 @@ public:
     void makeRehashing();
     void get(int);
     int getSize();
-    void insertData( int indice, int tipo_,string valor);
+    Nodo* insertData(int indice, int tipo_, string valor,string);
+   
     void actualizarInicio();
     string tipo;
-    
-    Table *start=NULL;
-    Table *next=NULL;
+    void searchData(string);
+    virtual ~TablaHash();
+    Table *start = NULL;
+    Table *next = NULL;
     Table array[5];
+    Table d[1];
+    //Table *f;
     int size;
 private:
-    
-  
+    double factorDeCarga;
+    int datasInsert;
+
 
 };
 

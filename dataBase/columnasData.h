@@ -15,20 +15,26 @@
 #define COLUMNASDATA_H
 #include "columna.h"
 #include "NodoColumna.h"
+#include "Nodo.h"
 
+#include <iostream>
 
+using namespace std;
 
 class columnasData {
 public:
     columnasData();
+    virtual ~columnasData();
     void add(columna c);
+    void addC(string simple);
     void get(int i);
-   // Nodo *valor;
-   // Nodo *sigu;
+    void buscarColumna(string nameColumn);
     NodoColumna *valor;
     NodoColumna *sigu;
-    void insertarEnColumna(string nameColumn,string);
+    Nodo* insertarEnColumna(string nameColumn,string);
+    void actualizarColumnas(string nameColumn,string);
     
+   
 private:
     int size;
 };

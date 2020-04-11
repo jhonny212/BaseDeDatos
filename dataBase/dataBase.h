@@ -26,7 +26,6 @@ using namespace std;
 class dataBase {
 public:
     dataBase();
-    dataBase(const dataBase& orig);
     dataBase(Tabla tb, string v);
     string  getName();
     int getTypeHashFunction(string valor);

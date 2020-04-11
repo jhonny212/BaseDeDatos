@@ -15,9 +15,14 @@
 
 Nodo::Nodo() {
     siguiente = NULL;
+    encolado = NULL;
+    right = NULL;
+    left = NULL;
+    dad = NULL;;
 }
 
-
+Nodo::~Nodo() {
+}
 
 Nodo::Nodo(int data) {
     valorInt = data;
@@ -28,7 +33,10 @@ Nodo::Nodo(int data) {
     NivelIzq = 0;
     NivelDer = 0;
     valueToCompare = data;
-    
+    typodeSeleccion = 1;
+    encolado = NULL;
+    nodoSiguiente=NULL;
+    nodoPrevio=NULL;
 }
 
 Nodo::Nodo(string data) {
@@ -39,7 +47,7 @@ Nodo::Nodo(string data) {
     dad = NULL;
     NivelIzq = 0;
     NivelDer = 0;
-
+    encolado = NULL;
     char tab2[data.length()];
     strcpy(tab2, data.c_str());
     int indice = 0;
@@ -50,6 +58,9 @@ Nodo::Nodo(string data) {
         indice += numcar;
     }
     valueToCompare = indice;
+    typodeSeleccion = 2;
+      nodoSiguiente=NULL;
+    nodoPrevio=NULL;
 }
 
 Nodo::Nodo(char data) {
@@ -63,18 +74,26 @@ Nodo::Nodo(char data) {
     char car = data;
     int numcar;
     numcar = int(car);
-    valueToCompare=numcar;
+    valueToCompare = numcar;
+    typodeSeleccion = 3;
+    encolado = NULL;
+      nodoSiguiente=NULL;
+    nodoPrevio=NULL;
 }
 
 Nodo::Nodo(double data) {
-    valorDouble = data;
+    valorDouble = 10.2;
     siguiente = NULL;
     left = NULL;
     right = NULL;
     dad = NULL;
     NivelIzq = 0;
     NivelDer = 0;
-    valueToCompare=data;
+    valueToCompare = data;
+    typodeSeleccion = 4;
+    encolado = NULL;
+      nodoSiguiente=NULL;
+    nodoPrevio=NULL;
 }
 
 int Nodo::getValueOfInt() {

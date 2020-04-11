@@ -13,10 +13,10 @@
 
 #ifndef BINARYTHREEFORSTRING_H
 #define BINARYTHREEFORSTRING_H
-#include "ArbolBinario.h"
+#include "Nodo.h"
 using namespace std;
 
-class BinaryThreeForString : public ArbolBinario {
+class BinaryThreeForString {
 public:
     BinaryThreeForString();
     void showStringThree();
@@ -36,6 +36,11 @@ public:
 
 private:
     string textoGrafica;
+
+    int TamanoArbol;
+    Nodo *lastInserted;
+    Nodo *raiz;
+
 };
 
 #endif /* BINARYTHREEFORSTRING_H */

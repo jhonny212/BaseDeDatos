@@ -20,21 +20,17 @@
 class Table {
 public:
     Table();
-    //Table(Table array[]);
-    Table(string _type);
     virtual ~Table();
+    void addForColisions(Table* t);
     int getSize();
     int getFactorDeCarga();
     Table* tablaSiguiente;
-    Table* content;
+    Nodo *encolado;
+    Nodo *inicio;
     int size;
     BinaryThreeForInt arbolInt;
-    /*BinaryThreeForInt arbolInt;
-    BinaryThreeForString arbolString;
-    BinaryThreeForChar arbolChar;
-    BinaryThreeForFloat arbolFloat;*/
     Nodo *href;
-   
+    bool bandera;
 private:
     int factroDeCarga;
 

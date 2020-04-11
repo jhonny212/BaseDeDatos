@@ -14,15 +14,17 @@
 #ifndef NODOCOLUMNA_H
 #define NODOCOLUMNA_H
 #include "columna.h"
+#include <iostream>
 
+using namespace std;
 class NodoColumna {
 public:
     NodoColumna();
-    //NodoColumna(columna);
     NodoColumna(const NodoColumna& orig);
     virtual ~NodoColumna();
     columna column;
     NodoColumna *siguiente;
+    string name;
 private:
 
 };

@@ -36,8 +36,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/ArbolBinario.o \
-	${OBJECTDIR}/BinaryThreeForChar.o \
-	${OBJECTDIR}/BinaryThreeForFloat.o \
 	${OBJECTDIR}/BinaryThreeForInt.o \
 	${OBJECTDIR}/BinaryThreeForString.o \
 	${OBJECTDIR}/Nodo.o \
@@ -46,12 +44,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/Tabla.o \
 	${OBJECTDIR}/TablaHash.o \
 	${OBJECTDIR}/Table.o \
+	${OBJECTDIR}/claseDePrueba.o \
 	${OBJECTDIR}/columna.o \
 	${OBJECTDIR}/columnasData.o \
 	${OBJECTDIR}/dataBase.o \
 	${OBJECTDIR}/hashFunctions.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/mensajes.o
+	${OBJECTDIR}/mensajes.o \
+	${OBJECTDIR}/select.o
 
 
 # C Compiler Flags
@@ -82,16 +82,6 @@ ${OBJECTDIR}/ArbolBinario.o: ArbolBinario.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArbolBinario.o ArbolBinario.cpp
-
-${OBJECTDIR}/BinaryThreeForChar.o: BinaryThreeForChar.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForChar.o BinaryThreeForChar.cpp
-
-${OBJECTDIR}/BinaryThreeForFloat.o: BinaryThreeForFloat.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForFloat.o BinaryThreeForFloat.cpp
 
 ${OBJECTDIR}/BinaryThreeForInt.o: BinaryThreeForInt.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -133,6 +123,11 @@ ${OBJECTDIR}/Table.o: Table.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Table.o Table.cpp
 
+${OBJECTDIR}/claseDePrueba.o: claseDePrueba.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/claseDePrueba.o claseDePrueba.cpp
+
 ${OBJECTDIR}/columna.o: columna.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -162,6 +157,11 @@ ${OBJECTDIR}/mensajes.o: mensajes.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mensajes.o mensajes.cpp
+
+${OBJECTDIR}/select.o: select.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/select.o select.cpp
 
 # Subprojects
 .build-subprojects:

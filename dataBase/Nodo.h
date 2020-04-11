@@ -24,18 +24,17 @@ using namespace std;
 class Nodo {
 public:
     Nodo();
-    //  Nodo (columna c);
     Nodo(int data);
     Nodo(string data);
     Nodo(char data);
     Nodo(double data);
-    //  Nodo (NuevaTabla data);
-
-    //    columna column;
     Nodo *siguiente;
     Nodo *left;
     Nodo *right;
     Nodo *dad;
+    Nodo *encolado;
+    Nodo *nodoSiguiente;
+    Nodo *nodoPrevio;
     int NivelIzq;
     int NivelDer;
     int getValueOfInt();
@@ -46,11 +45,12 @@ public:
     int valueCompare;
     double valueToCompare;
     int valorInt;
-
+    virtual ~Nodo();
     string valorString;
+    string nombreDeColumna;
     char valorChar;
     double valorDouble;
-
+    int typodeSeleccion;
 private:
 
 

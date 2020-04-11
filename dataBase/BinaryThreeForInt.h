@@ -19,12 +19,14 @@
 #include <iostream>
 using namespace std;
 
-class BinaryThreeForInt  {
+class BinaryThreeForInt {
 public:
     BinaryThreeForInt();
-    void insertarNodo(Nodo);
+
+    virtual ~BinaryThreeForInt();
+    void insertarNodo(Nodo nodo);
     int addInteger(Nodo *add, Nodo data);
-    void showIntegerThree();
+    void showIntegerThree(int);
     void printLeft(Nodo *izq);
     void printRight(Nodo *der);
     void starPrint(Nodo *father);
@@ -35,12 +37,12 @@ public:
     void RotationRightLeft(Nodo *param);
     int detectRotation(Nodo *param);
     void FixLevelNodo(Nodo *param);
-    
-    
+
+    int opc;
     int TamanoArbol;
     string textoGrafica;
     Nodo *lastInserted;
-    Nodo *raiz=NULL;
+    Nodo *raiz = NULL;
     bool isEmpty;
     void setString(string nuevotxt);
 private:

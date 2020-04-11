@@ -19,66 +19,123 @@ BinaryThreeForInt::BinaryThreeForInt() {
     lastInserted = NULL;
     textoGrafica = "";
     isEmpty = false;
-
+    opc = 0;
 
 }
 
-void BinaryThreeForInt::showIntegerThree() {
+BinaryThreeForInt::~BinaryThreeForInt() {
+    cout << raiz;
+}
 
-    if (raiz != NULL) {
+void BinaryThreeForInt::showIntegerThree(int opc) {
+
+    /*if (raiz != NULL) {
+        string padre;
+        if (opc == 1) {
+            int i = raiz->getValueOfInt();
+            padre = to_string(i);
+        } else if (opc == 2) {
+            padre = raiz->valorString;
+        } else if (opc == 3) {
+            padre = raiz->valorChar;
+        } else if (opc == 4) {
+            padre = to_string(raiz->valorDouble);
+        }
+
         if (raiz->left != NULL) {
-            cout << raiz->left->valorInt << endl;
+            string izq;
+            if (opc == 1) {
+                int j = raiz->left->getValueOfInt();
+                izq = to_string(j);
+
+            } else if (opc == 2) {
+                izq = raiz->left->valorString;
+            } else if (opc == 3) {
+                izq = raiz->left->valorChar;
+            } else if (opc == 4) {
+                izq = to_string(raiz->left->valorDouble);
+            }
+            textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
+            cout << padre << " -> " << izq << endl;
         }
+
         if (raiz->right != NULL) {
-            cout << raiz->right->valorInt << endl;
-        }
+            string der;
 
-        int i = raiz->getValueOfInt();
-        string padre = to_string(i);
-        if (raiz->left != NULL) {
-            int j = raiz->left->getValueOfInt();
-            string izq = to_string(j);
-            cout << " padre " << padre << " -> izq " << izq << endl;
-             textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
-        }
+            if (opc == 1) {
+                int k = raiz->right->getValueOfInt();
+                der = to_string(k);
 
-        if (raiz->right != NULL) {
-            int k = raiz->right->getValueOfInt();
-            string der = to_string(k);
-            cout << " padre " << padre << " -> der " << der << endl;
-
-             textoGrafica = textoGrafica + padre + " -> " + der + " \n";
+            } else if (opc == 2) {
+                der = raiz->right->valorString;
+            } else if (opc == 3) {
+                der = raiz->right->valorChar;
+            } else if (opc == 4) {
+                der = to_string(raiz->right->valorDouble);
+            }
+            textoGrafica = textoGrafica + padre + " -> " + der + " \n";
+            cout << padre << " -> " << der << endl;
         }
         if (raiz != NULL) {
             starPrint(raiz);
         }
 
-           cout << textoGrafica << endl;
-    }
+         cout << textoGrafica << endl;
+    }*/
 }
 
 void BinaryThreeForInt::starPrint(Nodo* father) {
     if (father != NULL) {
         if (father->dad != NULL) {
-            int i = father->getValueOfInt();
-            string padre = to_string(i);
+            string padre;
+            int opc = father->typodeSeleccion;
+
+            if (opc == 1) {
+                int i = father->getValueOfInt();
+                padre = to_string(i);
+            } else if (opc == 2) {
+                padre = father->valorString;
+            } else if (opc == 3) {
+                padre = father->valorChar;
+            } else if (opc == 4) {
+                padre = to_string(father->valorDouble);
+            }
+
 
             if (father->left != NULL) {
+                string izq;
+                if (opc == 1) {
+                    int j = father->left->getValueOfInt();
+                    izq = to_string(j);
 
-                int j = father->left->getValueOfInt();
-                string izq = to_string(j);
-                cout << " padre " << padre << " -> izq " << izq << endl;
-
+                } else if (opc == 2) {
+                    izq = father->left->valorString;
+                } else if (opc == 3) {
+                    izq = father->left->valorChar;
+                } else if (opc == 4) {
+                    izq = to_string(father->left->valorDouble);
+                }
                 textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
+
+                cout << padre << " -> " << izq << endl;
             }
 
             if (father->right != NULL) {
+                string der;
+                if (opc == 1) {
+                    int k = father->right->getValueOfInt();
+                    der = to_string(k);
 
-                int k = father->right->getValueOfInt();
-                string der = to_string(k);
-                cout << " padre " << padre << " -> der " << der << endl;
-
+                } else if (opc == 2) {
+                    der = father->right->valorString;
+                } else if (opc == 3) {
+                    der = father->right->valorChar;
+                } else if (opc == 4) {
+                    der = to_string(father->right->valorDouble);
+                }
                 textoGrafica = textoGrafica + padre + " -> " + der + " \n";
+
+                cout << padre << " -> " << der << endl;
             }
 
         }
@@ -104,15 +161,32 @@ void BinaryThreeForInt::setString(string nuevotxt) {
     textoGrafica = nuevotxt;
 }
 
-
 void BinaryThreeForInt::insertarNodo(Nodo nodo) {
-    if (raiz == NULL) {
 
-        raiz = new Nodo(nodo.getValueOfInt());
+    if (raiz == NULL) {
+        switch (nodo.typodeSeleccion) {
+            case 1:
+                raiz = new Nodo(nodo.getValueOfInt());
+                raiz->nombreDeColumna=nodo.nombreDeColumna;
+                break;
+            case 2:
+                raiz = new Nodo(nodo.valorString);
+                raiz->nombreDeColumna=nodo.nombreDeColumna;
+                break;
+            case 3:
+                raiz = new Nodo(nodo.valorChar);
+                raiz->nombreDeColumna=nodo.nombreDeColumna;
+                break;
+            case 4:
+                raiz = new Nodo(nodo.valorDouble);
+                raiz->nombreDeColumna=nodo.nombreDeColumna;
+                
+                break;
+        }
         lastInserted = raiz;
 
     } else {
-        int x = addInteger(raiz, nodo);
+        addInteger(raiz, nodo);
         if (raiz->right != NULL) {
             int x = raiz->right->NivelDer;
             int y = raiz->right->NivelIzq;
@@ -135,11 +209,9 @@ void BinaryThreeForInt::insertarNodo(Nodo nodo) {
                 raiz->NivelIzq = x + 1;
             }
         }
-
-          detectRotation(lastInserted->dad);
-
+        detectRotation(lastInserted->dad);
     }
-
+   // cout<<lastInserted<<"dir"<<endl;
 
 }
 
@@ -148,8 +220,24 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
     int retorno = 0;
     if (data.valueToCompare > valor1) {
         if (add->right == NULL) {
-
-            add->right = new Nodo(data.getValueOfInt());
+            switch (data.typodeSeleccion) {
+                case 1:
+                    add->right = new Nodo(data.getValueOfInt());
+                    add->right->nombreDeColumna=data.nombreDeColumna;
+                    break;
+                case 2:
+                    add->right = new Nodo(data.valorString);
+                    add->right->nombreDeColumna=data.nombreDeColumna;
+                    break;
+                case 3:
+                    add->right = new Nodo(data.valorChar);
+                    add->right->nombreDeColumna=data.nombreDeColumna;
+                    break;
+                case 4:
+                    add->right = new Nodo(data.valorDouble);
+                    add->right->nombreDeColumna=data.nombreDeColumna;
+                    break;
+            }
             add->right->dad = add;
             lastInserted = add->right;
 
@@ -159,8 +247,7 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
                 retorno = 1;
             }
         } else {
-
-            retorno = addInteger(add->right, data.valueToCompare);
+            retorno = addInteger(add->right, data);
             int x = add->right->NivelDer;
             int y = add->right->NivelIzq;
             if (x > y) {
@@ -173,9 +260,27 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
         }
     } else {
         if (add->left == NULL) {
-            //    cout<<"tratando de registrar este"<<endl;
 
-            add->left = new Nodo(data.getValueOfInt());
+            switch (data.typodeSeleccion) {
+                case 1:
+                    add->left = new Nodo(data.getValueOfInt());
+                    add->left->nombreDeColumna=data.nombreDeColumna;
+                    break;
+                case 2:
+
+                    add->left = new Nodo(data.valorString);
+                    add->left->nombreDeColumna=data.nombreDeColumna;
+                    break;
+                case 3:
+                    add->left = new Nodo(data.valorChar);
+                    add->left->nombreDeColumna=data.nombreDeColumna;
+                    break;
+                case 4:
+                    add->left = new Nodo(data.valorDouble);
+                    add->left->nombreDeColumna=data.nombreDeColumna;
+                    break;
+            }
+
             add->left->dad = add;
             lastInserted = add->left;
             add->NivelIzq = add->NivelIzq + 1;
@@ -184,7 +289,7 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
                 retorno = 1;
             }
         } else {
-            retorno = addInteger(add->left, data.valueToCompare);
+            retorno = addInteger(add->left, data);
 
             int x = add->left->NivelDer;
             int y = add->left->NivelIzq;

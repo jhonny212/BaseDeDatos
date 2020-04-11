@@ -21,5 +21,6 @@
 }*/
 Tabla::Tabla(){
 }
+Tabla::~Tabla(){}
 
 

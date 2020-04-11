@@ -27,12 +27,12 @@
 #include "TablaHash.h"
 #include "hashFunctions.h"
 
-
 using namespace std;
 void querys(int);
 void createDatabase();
 void menuSeleccion();
 void insertar();
+
 void select();
 void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector);
 int Cuenta(string s, const char Separadorr, int &TotalChars);
@@ -40,61 +40,53 @@ dataBase bs;
 string name;
 
 int main() {
-    /*BinaryThreeForInt D = BinaryThreeForInt();
-    BinaryThreeForInt *t = &D;
-
-    Nodo n=Nodo(10);
-    Nodo n1=Nodo(20);
-    Nodo n2=Nodo(5);
-    D.insertarNodo(n);
-    D.insertarNodo(n1);
-    D.insertarNodo(n2);
-    D.showIntegerThree();
-     */
-    /*
-    int *get=indice;
-    cout<<*(get+3)<<endl;
-     *(get+3)=40;
-    cout<<*(get+3)<<endl;
-     */
-
-    //int num;
-    // num=int(50*(41*(0.4)-int(41*0.4)));
+    cout << "Escriba el nombre de las base de datos" << endl;
+    cin>>name;
+    createDatabase();
+    insertar();
+   // select();
+    /*cout << "Escriba el nombre de las base de datos" << endl;
+    cin>>name;
+    createDatabase();
+    insertar();
+    insertar();
+    insertar();*/
 
 
-    // t.showIntegerThree();
 
-    mensajes msj = mensajes();
-    msj.welcome();
-    int opc = msj.opcion();
-    switch (opc) {
-        case 1:
-            cout << "Escriba el nombre de las base de datos" << endl;
-            cin>>name;
-            createDatabase();
-            insertar();
-             insertar();
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        default:
-            break;
-    }
+    //ArbolBinario t = ArbolBinario((tmp+3)->arbolInt.raiz,4);
+    //t.print();
+
+    //(tmp+3)->arbolInt.showIntegerThree(4);
+    // ((bs.tabla.columns.valor->column.tablaHash.start->tablaSiguiente)+3)->arbolInt.showIntegerThree(4);
+    /*mensajes msj = mensajes();
+      msj.welcome();
+      int opc = msj.opcion();
+      switch (opc) {
+          case 1:
+              cout << "Escriba el nombre de las base de datos" << endl;
+              cin>>name;
+              createDatabase();
+             // insertar();
+             //  insertar();
+              break;
+          case 2:
+              break;
+          case 3:
+              break;
+          default:
+              break;
+      }*/
 }
 
 void createDatabase() {
-    string Palabra = "create table alumnos ( nombre string );";
+    string Palabra = "create table alumnos ( nombre double , edad double );";
     cout << "Create table..." << endl;
     // cin>> Palabra;
     // getline(cin, Palabra);
-
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
-
-    //  cout << TotalVector << endl; // Devuelve tamaño del vector: 3
     string nameD = TempBuff[2];
     columnasData cd = columnasData();
 
@@ -110,7 +102,7 @@ void createDatabase() {
     tab.columns = cd;
     tab.nombre = name;
     bs = dataBase(tab, name);
-   
+
 
 }
 
@@ -148,7 +140,10 @@ void querys(int opc) {
 }
 
 void insertar() {
-    string Palabra = "insert into alumnos ( nombre ) VALUES ( ostia );";
+    Nodo *tmP = NULL;
+    Nodo *tmP2 = NULL;
+
+    string Palabra = "insert into alumnos ( nombre , edad ) VALUES ( 10.2 , 9.2 );";
     //cin>> Palabra;
     // getline(cin, Palabra);
     vector<string> TempBuff(0);
@@ -160,18 +155,69 @@ void insertar() {
             distancia = i;
         }
     }
+    int aux = distancia;
+    int count = 0;
     for (int i = 4; i < TotalVector - 1; i += 2) {
         if (TempBuff[i] != "VALUES") {
 
-            //cout << " COLUMNA" << TempBuff[i] << endl;
-            // cout << " VALOR " << TempBuff[distancia + 1] << "\n" << endl;
-            
-            bs.tabla.columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
+            if (count == 0) {
+                tmP = bs.tabla.columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
+
+            } else {
+                tmP2 = bs.tabla.columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
+                tmP2->nodoPrevio = tmP;
+                tmP->nodoSiguiente = tmP2;
+                tmP = tmP2;
+            }
+            count += 1;
             distancia += 2;
         } else {
             break;
         }
     }
+    distancia = aux;
+}
+
+void select() {
+    columnasData cd=columnasData();
+    
+    string Palabra = "select nombre , edad from alumnos ;";
+    //cin>> Palabra;
+    // getline(cin, Palabra);
+    vector<string> TempBuff(0);
+    int TotalVector;
+    split(Palabra, *" ", TempBuff, TotalVector);
+
+    string string2 = "WHERE";
+    if (Palabra.find(string2) != string::npos) {
+        cout << "found!" << '\n';
+    } else {
+        string tabla = TempBuff[TotalVector - 2];
+
+        if (TempBuff[2] == "*") {
+            
+        } else {
+            for (int i = 1; i < TotalVector; i++) {
+                if (TempBuff[i] != "FROM" && TempBuff[i] != "from") {
+                    if (TempBuff[i] != ",") {
+                        cd.addC(TempBuff[i]);
+                        //bs.tabla.columns.buscarColumna(TempBuff[i]);
+                    }
+                } else {
+                    break;
+                }
+            }
+            
+            
+            
+        }
+
+    }
+
+
+
+
+
 }
 
 void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector) {

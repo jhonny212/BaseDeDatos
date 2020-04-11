@@ -14,12 +14,15 @@
 #include "BinaryThreeForString.h"
 
 BinaryThreeForString::BinaryThreeForString() {
+    TamanoArbol = 0;
     raiz = NULL;
     lastInserted = NULL;
+    textoGrafica = "";
 }
 
 void BinaryThreeForString::showStringThree() {
     if (raiz != NULL) {
+        
         string padre = raiz->valorString;
         if (raiz->left != NULL) {
             string izq = raiz->left->valorString;
@@ -39,14 +42,14 @@ void BinaryThreeForString::starPrint(Nodo* father) {
 
     if (father != NULL) {
         if (father->dad != NULL) {
-            string padre = raiz->valorString;
+            string padre = father->valorString;
             if (father->left != NULL) {
-                string izq = raiz->left->valorString;
+                string izq = father->left->valorString;
                 textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
             }
 
             if (father->right != NULL) {
-                string der = raiz->right->valorString;
+                string der = father->right->valorString;
                 textoGrafica = textoGrafica + padre + " -> " + der + " \n";
             }
 
@@ -67,7 +70,6 @@ void BinaryThreeForString::printRight(Nodo* der) {
         starPrint(der);
     }
 }
-
 
 void BinaryThreeForString::insertarNodo(Nodo nodo) {
     if (raiz == NULL) {
@@ -100,9 +102,10 @@ void BinaryThreeForString::insertarNodo(Nodo nodo) {
             }
         }
 
-          detectRotation(lastInserted->dad);
+        detectRotation(lastInserted->dad);
 
     }
+    cout<<lastInserted->valorString<<endl;
 
 
 }
@@ -112,8 +115,9 @@ int BinaryThreeForString::addInteger(Nodo* add, Nodo data) {
     int retorno = 0;
     if (data.valueToCompare > valor1) {
         if (add->right == NULL) {
-
             add->right = new Nodo(data.valorString);
+            
+            //add->right = new Nodo(data.valorString);
             add->right->dad = add;
             lastInserted = add->right;
 

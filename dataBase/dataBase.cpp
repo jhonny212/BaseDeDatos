@@ -17,6 +17,8 @@ dataBase::dataBase() {
 }
 
 dataBase::~dataBase() {
+
+    cout << " delete " << endl;
 }
 
 void dataBase::get(string par) {
@@ -32,13 +34,27 @@ void dataBase::get(string par) {
 
 }
 
+Tabla* dataBase::getT(string par) {
+    Tabla *aux = valor;
+    for (int i = 0; i < tamTabla; i++) {
+        if (aux->nombre == par) {
+            return aux;
+            break;
+        }
+        aux = aux->siguiente;
+    }
+
+}
+
 dataBase::dataBase(Tabla tb, string name) {
+    valor = NULL;
     tabla = tb;
+    tabla.siguiente = NULL;
     Name = name;
-    valor = &tb;
+    valor = &tabla;
+    valor->siguiente = NULL;
     sigu = NULL;
     tamTabla = 1;
-
 }
 
 void dataBase::cantOfColumns() {
@@ -87,7 +103,8 @@ string dataBase::getName() {
 }
 
 void dataBase::addTable(columnasData tb, string name) {
-    if (valor == NULL) {
+
+    if (valor->siguiente == NULL) {
         sigu = new Tabla();
         sigu->columns = tb;
         sigu->nombre = name;
@@ -100,6 +117,7 @@ void dataBase::addTable(columnasData tb, string name) {
         sigu = sigu->siguiente;
         tamTabla += 1;
     }
+
 }
 
 int dataBase::getTypeHashFunction(string valor) {

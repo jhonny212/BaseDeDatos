@@ -19,6 +19,7 @@
 #include <sstream>
 #include "Tabla.h"
 #include "columnasData.h"
+#include "Nodo.h"
 
 
 using namespace std;
@@ -27,7 +28,7 @@ class dataBase {
 public:
     dataBase();
     dataBase(Tabla tb, string v);
-    string  getName();
+    string getName();
     int getTypeHashFunction(string valor);
     int getInt(string valor);
     int getInt2(string valor);
@@ -37,12 +38,14 @@ public:
     void equalsCantTypeRowsForATable(string param);
     virtual ~dataBase();
     void get(string par);
+    Tabla* getT(string);
     Tabla tabla;
-        string nombreDeLaBaseDeDatos;
+    string nombreDeLaBaseDeDatos;
+    Tabla *valor;
+    Tabla *tablaAux;
 
 private:
-    
-    Tabla *valor;
+
     Tabla *sigu;
     int tamTabla;
     string Name;

@@ -30,6 +30,7 @@ public:
     string nombre;
     columnasData columns;
     int totalD;
+
 private:
 
 

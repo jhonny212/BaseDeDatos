@@ -52,7 +52,7 @@ void columna::search(seleccion* cd) {
     
 }
 
-void columna::insertarDato(std::string dato) {
+void columna::insertarDato(string dato) {
     if (type == "string") {
         int clave = getIdForString(dato);
         int index = getIndex(clave, tablaHash.getSize());

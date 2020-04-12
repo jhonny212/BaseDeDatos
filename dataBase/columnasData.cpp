@@ -20,15 +20,15 @@ columnasData::columnasData() {
     size = 0;
     count = 0;
     fc = 0;
-  
+
 }
 
 columnasData::~columnasData() {
-    
+
 }
 
 void columnasData::add(columna c) {
-   
+
     if (sigu == NULL) {
         NodoColumna *t = new NodoColumna();
         t->column = c;
@@ -50,7 +50,7 @@ void columnasData::add(columna c) {
         size += 1;
 
     }
-  
+
 }
 
 Nodo* columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
@@ -59,7 +59,7 @@ Nodo* columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
         for (int i = 0; i < size; i++) {
             if (aux->column.name == nameColumn) {
                 aux->column.insertarDato(valorRecibido);
-                count+=1;
+                count += 1;
                 return aux->column.ultimo;
                 break;
             }
@@ -138,12 +138,13 @@ void columnasData::types() {
 
 }
 
-void columnasData::actualizarDato(){
-    fc=0;
+void columnasData::actualizarDato() {
+    fc = 0;
 }
+
 void columnasData::dataForColumns() {
-    cout<<" ostia "<<count<<endl;
-  
+    cout << " ostia " << count << endl;
+
 }
 
 string columnasData::get(int x) {

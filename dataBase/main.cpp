@@ -46,9 +46,9 @@ int main() {
     cin>>name;
     createDatabase();
     insertar();
-    reportes(2);
-
-    // reportes(2);
+    insertar();
+    select();
+    // reportes(3);
     /*cout << "Escriba el nombre de las base de datos" << endl;
     cin>>name;
     createDatabase();
@@ -117,7 +117,7 @@ void createDatabase() {
     bs = dataBase(tab, name);
     bs.nombreDeLaBaseDeDatos = name;
     bs.tabla.columns.count = 0;
-
+    bs.valor = &(bs.tabla);
 
 }
 
@@ -189,16 +189,17 @@ void insertar() {
             distancia = i;
         }
     }
+    string nombreTabla = TempBuff[2];
+
     int aux = distancia;
     int count = 0;
     for (int i = 4; i < TotalVector - 1; i += 2) {
         if (TempBuff[i] != "VALUES") {
-
+            Tabla *auxD = bs.getT(nombreTabla);
             if (count == 0) {
-                tmP = bs.tabla.columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
-
+                tmP = auxD->columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
             } else {
-                tmP2 = bs.tabla.columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
+                tmP2 = auxD->columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
                 tmP2->nodoPrevio = tmP;
                 tmP->nodoSiguiente = tmP2;
                 tmP = tmP2;
@@ -209,12 +210,11 @@ void insertar() {
             break;
         }
     }
-    distancia = aux;
+
 }
 
 void select() {
     seleccion os = seleccion();
-
     string Palabra = "select *  from alumnos ;";
     //cin>> Palabra;
     // getline(cin, Palabra);
@@ -227,18 +227,19 @@ void select() {
         cout << "found!" << '\n';
     } else {
         string tabla = TempBuff[TotalVector - 2];
+        Tabla *auxD = bs.getT(tabla);
         string param = "";
         int count = 0;
         if (TempBuff[1] == "*") {
             param = "*";
             string insertData;
             os.addC("*");
-            for (int i = 0; i < bs.tabla.columns.size + 1; i++) {
-                insertData = bs.tabla.columns.get(i);
+            for (int i = 0; i < auxD->columns.size + 1; i++) {
+                insertData = auxD->columns.get(i);
                 os.addC(insertData);
             }
-            bs.tabla.columns.buscarColumna("*", &os);
-            bs.tabla.columns.createDiagram(bs.tabla.nombre);
+            auxD->columns.buscarColumna("*", &os);
+            auxD->columns.createDiagram(auxD->nombre);
         } else {
             for (int i = 1; i < TotalVector; i++) {
                 if (TempBuff[i] != "FROM" && TempBuff[i] != "from") {
@@ -248,19 +249,14 @@ void select() {
                             count++;
                         }
                         os.addC(TempBuff[i]);
-
                     }
                 } else {
                     break;
                 }
             }
-            bs.tabla.columns.buscarColumna(param, &os);
+            auxD->columns.buscarColumna(param, &os);
         }
-
-
     }
-
-
 }
 
 void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector) {

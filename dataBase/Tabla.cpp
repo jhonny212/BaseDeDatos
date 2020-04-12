@@ -21,7 +21,11 @@
 }*/
 Tabla::Tabla(){
     totalD=0;
+    siguiente=NULL;
+    
 }
-Tabla::~Tabla(){}
+Tabla::~Tabla(){
+    cout<<&columns<<endl;
+}
 
 

@@ -59,19 +59,72 @@ void TablaHash::actualizarInicio() {
     // makeRehashing();
 }
 
-void TablaHash::searchData(string column) {
+void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
     Table *tmp = start;
     Table *aux = NULL;
+    Nodo *getStart = NULL;
+    Nodo *encolaAux = NULL;
     for (int i = 0; i < size; i++) {
         for (int i = 0; i < 5; i++) {
             if ((tmp + i)->arbolInt.raiz != NULL) {
-                Table t=Table();
-                t=*(tmp+i);
-                cout<<t.href->valueToCompare<<endl;
-                cout<<t.href->nodoSiguiente->valueToCompare<<endl;
+                Table t = Table();
+                t = *(tmp + i);
+                getStart = t.href;
+                encolaAux = t.inicio;
+                bool valid = true;
+                while (valid) {
+                    while (true) {
+                        if (getStart->nodoPrevio != NULL) {
+                            getStart = getStart->nodoPrevio;
+                        } else {
+                            break;
+                        }
+                    }
+                    bool v = true;
+                    int i = 0;
+                    while (v) {
+                        string nam = cd->get(i);
+                        Nodo *aux = getStart;
+                        v = true;
+                        while (v) {
+                            int opc = aux->typodeSeleccion;
+
+                            if (nam == aux->nombreDeColumna or isAll) {
+                                if (opc == 1) {
+                                    cout << aux->valorInt << " | ";
+                                } else if (opc == 2) {
+                                    cout << aux->valorString << " | ";
+                                } else if (opc == 3) {
+                                    cout << aux->valorChar << " | ";
+                                } else if (opc == 4) {
+                                    cout << aux->valorDouble << " | ";
+                                }
+                            }
+                            if (aux->nodoSiguiente != NULL) {
+                                aux = aux->nodoSiguiente;
+                            } else {
+                                v = false;
+                            }
+                        }
+                        v = true;
+                        if (getStart->nodoSiguiente != NULL) {
+                            getStart = getStart->nodoSiguiente;
+                        } else {
+                            v = false;
+                        }
+                        i++;
+                    }
+                    cout << "\n " << endl;
+                    if (encolaAux != NULL) {
+                        getStart = encolaAux;
+                        encolaAux = encolaAux->encolado;
+                    } else {
+                        valid = false;
+                    }
+                }
             }
         }
-        tmp=tmp->tablaSiguiente;
+        tmp = tmp->tablaSiguiente;
     }
 }
 
@@ -95,23 +148,23 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
         aux = (tmp + getSumForPunt);
 
         while (isFound) {
-            int index = indice % 10;
-            if (index >= 5) {
-                index -= 5;
-            }
+            
             if (tipo_ == 1) {
                 nodoSave = Nodo(valor);
+                nodoSave.nombreDeColumna = nombreColumna;
                 if (aux->arbolInt.raiz == NULL) {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
                     aux->size = 1;
                     datasInsert += 1;
+
                 } else {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     if (aux->size == 1) {
                         aux->size = 2;
                         aux->encolado = aux->arbolInt.lastInserted;
                         aux->inicio = aux->encolado;
+
                     } else {
                         aux->encolado->encolado = aux->arbolInt.lastInserted;
                         aux->encolado = aux->encolado->encolado;
@@ -124,6 +177,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                 char char_array[1];
                 strcpy(char_array, valor.c_str());
                 nodoSave = Nodo(char_array[0]);
+                nodoSave.nombreDeColumna = nombreColumna;
                 if (aux->arbolInt.raiz == NULL) {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
@@ -140,7 +194,6 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                     } else {
                         aux->encolado->encolado = aux->arbolInt.lastInserted;
                         aux->encolado = aux->encolado->encolado;
-
                     }
                 }
 
@@ -149,17 +202,20 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
             } else if (tipo_ == 3) {
                 int k = stoi(valor);
                 nodoSave = Nodo(k);
+                nodoSave.nombreDeColumna = nombreColumna;
                 if (aux->arbolInt.raiz == NULL) {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
                     aux->size = 1;
                     datasInsert += 1;
+
                 } else {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     if (aux->size == 1) {
                         aux->size = 2;
                         aux->encolado = aux->arbolInt.lastInserted;
                         aux->inicio = aux->encolado;
+
                     } else {
                         aux->encolado->encolado = aux->arbolInt.lastInserted;
                         aux->encolado = aux->encolado->encolado;
@@ -170,7 +226,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
             } else if (tipo_ == 4) {
                 double j = atof(valor.c_str());
                 nodoSave = Nodo(j);
-                nodoSave.nombreDeColumna=nombreColumna;
+                nodoSave.nombreDeColumna = nombreColumna;
                 if (aux->arbolInt.raiz == NULL) {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
@@ -202,5 +258,6 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
     if (factorDeCarga > 0.6) {
         cout << "hacer rehashing" << endl;
     }
+
     return aux->arbolInt.lastInserted;
 }

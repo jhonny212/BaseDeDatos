@@ -14,9 +14,9 @@
 #ifndef COLUMNASDATA_H
 #define COLUMNASDATA_H
 #include "columna.h"
+#include "seleccion.h"
 #include "NodoColumna.h"
 #include "Nodo.h"
-
 #include <iostream>
 
 using namespace std;
@@ -26,17 +26,16 @@ public:
     columnasData();
     virtual ~columnasData();
     void add(columna c);
-    void addC(string simple);
-    void get(int i);
-    void buscarColumna(string nameColumn);
+    string get(int i);
+    void buscarColumna(string nameColumn,seleccion* cd);
     NodoColumna *valor;
     NodoColumna *sigu;
     Nodo* insertarEnColumna(string nameColumn,string);
     void actualizarColumnas(string nameColumn,string);
-    
+     int size;
    
 private:
-    int size;
+   
 };
 
 #endif /* COLUMNASDATA_H */

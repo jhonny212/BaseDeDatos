@@ -18,7 +18,8 @@ Nodo::Nodo() {
     encolado = NULL;
     right = NULL;
     left = NULL;
-    dad = NULL;;
+    dad = NULL;
+    ;
 }
 
 Nodo::~Nodo() {
@@ -35,8 +36,8 @@ Nodo::Nodo(int data) {
     valueToCompare = data;
     typodeSeleccion = 1;
     encolado = NULL;
-    nodoSiguiente=NULL;
-    nodoPrevio=NULL;
+    nodoSiguiente = NULL;
+    nodoPrevio = NULL;
 }
 
 Nodo::Nodo(string data) {
@@ -59,8 +60,8 @@ Nodo::Nodo(string data) {
     }
     valueToCompare = indice;
     typodeSeleccion = 2;
-      nodoSiguiente=NULL;
-    nodoPrevio=NULL;
+    nodoSiguiente = NULL;
+    nodoPrevio = NULL;
 }
 
 Nodo::Nodo(char data) {
@@ -77,12 +78,12 @@ Nodo::Nodo(char data) {
     valueToCompare = numcar;
     typodeSeleccion = 3;
     encolado = NULL;
-      nodoSiguiente=NULL;
-    nodoPrevio=NULL;
+    nodoSiguiente = NULL;
+    nodoPrevio = NULL;
 }
 
 Nodo::Nodo(double data) {
-    valorDouble = 10.2;
+    valorDouble = data;
     siguiente = NULL;
     left = NULL;
     right = NULL;
@@ -92,8 +93,8 @@ Nodo::Nodo(double data) {
     valueToCompare = data;
     typodeSeleccion = 4;
     encolado = NULL;
-      nodoSiguiente=NULL;
-    nodoPrevio=NULL;
+    nodoSiguiente = NULL;
+    nodoPrevio = NULL;
 }
 
 int Nodo::getValueOfInt() {

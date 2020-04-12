@@ -162,25 +162,24 @@ void BinaryThreeForInt::setString(string nuevotxt) {
 }
 
 void BinaryThreeForInt::insertarNodo(Nodo nodo) {
-
     if (raiz == NULL) {
         switch (nodo.typodeSeleccion) {
             case 1:
                 raiz = new Nodo(nodo.getValueOfInt());
-                raiz->nombreDeColumna=nodo.nombreDeColumna;
+                raiz->nombreDeColumna = nodo.nombreDeColumna;
                 break;
             case 2:
                 raiz = new Nodo(nodo.valorString);
-                raiz->nombreDeColumna=nodo.nombreDeColumna;
+                raiz->nombreDeColumna = nodo.nombreDeColumna;
                 break;
             case 3:
                 raiz = new Nodo(nodo.valorChar);
-                raiz->nombreDeColumna=nodo.nombreDeColumna;
+                raiz->nombreDeColumna = nodo.nombreDeColumna;
                 break;
             case 4:
                 raiz = new Nodo(nodo.valorDouble);
-                raiz->nombreDeColumna=nodo.nombreDeColumna;
-                
+                raiz->nombreDeColumna = nodo.nombreDeColumna;
+
                 break;
         }
         lastInserted = raiz;
@@ -211,8 +210,6 @@ void BinaryThreeForInt::insertarNodo(Nodo nodo) {
         }
         detectRotation(lastInserted->dad);
     }
-   // cout<<lastInserted<<"dir"<<endl;
-
 }
 
 int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
@@ -223,19 +220,19 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
             switch (data.typodeSeleccion) {
                 case 1:
                     add->right = new Nodo(data.getValueOfInt());
-                    add->right->nombreDeColumna=data.nombreDeColumna;
+                    add->right->nombreDeColumna = data.nombreDeColumna;
                     break;
                 case 2:
                     add->right = new Nodo(data.valorString);
-                    add->right->nombreDeColumna=data.nombreDeColumna;
+                    add->right->nombreDeColumna = data.nombreDeColumna;
                     break;
                 case 3:
                     add->right = new Nodo(data.valorChar);
-                    add->right->nombreDeColumna=data.nombreDeColumna;
+                    add->right->nombreDeColumna = data.nombreDeColumna;
                     break;
                 case 4:
                     add->right = new Nodo(data.valorDouble);
-                    add->right->nombreDeColumna=data.nombreDeColumna;
+                    add->right->nombreDeColumna = data.nombreDeColumna;
                     break;
             }
             add->right->dad = add;
@@ -264,20 +261,20 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
             switch (data.typodeSeleccion) {
                 case 1:
                     add->left = new Nodo(data.getValueOfInt());
-                    add->left->nombreDeColumna=data.nombreDeColumna;
+                    add->left->nombreDeColumna = data.nombreDeColumna;
                     break;
                 case 2:
 
                     add->left = new Nodo(data.valorString);
-                    add->left->nombreDeColumna=data.nombreDeColumna;
+                    add->left->nombreDeColumna = data.nombreDeColumna;
                     break;
                 case 3:
                     add->left = new Nodo(data.valorChar);
-                    add->left->nombreDeColumna=data.nombreDeColumna;
+                    add->left->nombreDeColumna = data.nombreDeColumna;
                     break;
                 case 4:
                     add->left = new Nodo(data.valorDouble);
-                    add->left->nombreDeColumna=data.nombreDeColumna;
+                    add->left->nombreDeColumna = data.nombreDeColumna;
                     break;
             }
 

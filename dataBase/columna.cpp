@@ -14,17 +14,33 @@
 #include "columna.h"
 
 columna::columna() {
-   
+
 }
 
 columna::~columna() {
 }
 
-
-void columna::search() {
+void columna::search(seleccion* cd) {
     string data;
-    cout << "******* Datos de la Columna \"" << name << "\" *******" << endl;
-    tablaHash.searchData(name);
+    data = cd->get(0);
+    int i;
+    bool v = false;
+    if (data == "*") {
+        i = 1;
+        v = true;
+    } else {
+        i = 0;
+    }
+    data = "";
+    for (; i < cd->tm; i++) {
+        data += cd->get(i);
+        data += " | ";
+    }
+    cout << "\n" << endl;
+    cout << "******* Datos de la Columna \"" << "\" *******" << endl;
+    cout << data << endl;
+
+    tablaHash.searchData(name, cd, v);
 
 }
 
@@ -53,8 +69,8 @@ void columna::insertarDato(std::string dato) {
         double i = atof(dato.c_str());
         int clave = t.getIdForDouble(i);
         int index = t.getIndex(clave, tablaHash.getSize());
-        ultimo=tablaHash.insertData(index, 4, dato,name);
-    
+        ultimo = tablaHash.insertData(index, 4, dato, name);
+
     }
 
 }

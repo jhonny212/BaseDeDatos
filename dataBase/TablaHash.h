@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
+#include "seleccion.h"
 
 
 using namespace std;
@@ -34,7 +35,7 @@ public:
    
     void actualizarInicio();
     string tipo;
-    void searchData(string);
+    void searchData(string,seleccion* cd,bool);
     virtual ~TablaHash();
     Table *start = NULL;
     Table *next = NULL;

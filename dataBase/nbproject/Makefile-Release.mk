@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/BinaryThreeForString.o \
 	${OBJECTDIR}/Nodo.o \
 	${OBJECTDIR}/NodoColumna.o \
+	${OBJECTDIR}/NodoColumnaAux.o \
 	${OBJECTDIR}/NuevaTabla.o \
 	${OBJECTDIR}/Tabla.o \
 	${OBJECTDIR}/TablaHash.o \
@@ -51,7 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hashFunctions.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/mensajes.o \
-	${OBJECTDIR}/select.o
+	${OBJECTDIR}/seleccion.o
 
 
 # C Compiler Flags
@@ -102,6 +103,11 @@ ${OBJECTDIR}/NodoColumna.o: NodoColumna.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoColumna.o NodoColumna.cpp
+
+${OBJECTDIR}/NodoColumnaAux.o: NodoColumnaAux.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NodoColumnaAux.o NodoColumnaAux.cpp
 
 ${OBJECTDIR}/NuevaTabla.o: NuevaTabla.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -158,10 +164,10 @@ ${OBJECTDIR}/mensajes.o: mensajes.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mensajes.o mensajes.cpp
 
-${OBJECTDIR}/select.o: select.cpp
+${OBJECTDIR}/seleccion.o: seleccion.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/select.o select.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/seleccion.o seleccion.cpp
 
 # Subprojects
 .build-subprojects:

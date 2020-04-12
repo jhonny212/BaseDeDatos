@@ -26,6 +26,8 @@
 #include "Tabla.h"
 #include "TablaHash.h"
 #include "hashFunctions.h"
+#include "seleccion.h"
+
 
 using namespace std;
 void querys(int);
@@ -44,7 +46,12 @@ int main() {
     cin>>name;
     createDatabase();
     insertar();
-   // select();
+    insertar();
+    insertar();
+    insertar();
+    insertar();
+
+    //select();
     /*cout << "Escriba el nombre de las base de datos" << endl;
     cin>>name;
     createDatabase();
@@ -80,7 +87,7 @@ int main() {
 }
 
 void createDatabase() {
-    string Palabra = "create table alumnos ( nombre double , edad double );";
+    string Palabra = "create table alumnos ( nombre double , edad double , apellido double );";
     cout << "Create table..." << endl;
     // cin>> Palabra;
     // getline(cin, Palabra);
@@ -143,7 +150,7 @@ void insertar() {
     Nodo *tmP = NULL;
     Nodo *tmP2 = NULL;
 
-    string Palabra = "insert into alumnos ( nombre , edad ) VALUES ( 10.2 , 9.2 );";
+    string Palabra = "insert into alumnos ( nombre , edad , apellido ) VALUES ( 10.2 , 6.2 , 5.9 );";
     //cin>> Palabra;
     // getline(cin, Palabra);
     vector<string> TempBuff(0);
@@ -179,9 +186,9 @@ void insertar() {
 }
 
 void select() {
-    columnasData cd=columnasData();
-    
-    string Palabra = "select nombre , edad from alumnos ;";
+    seleccion os = seleccion();
+
+    string Palabra = "select *  from alumnos ;";
     //cin>> Palabra;
     // getline(cin, Palabra);
     vector<string> TempBuff(0);
@@ -193,29 +200,37 @@ void select() {
         cout << "found!" << '\n';
     } else {
         string tabla = TempBuff[TotalVector - 2];
-
-        if (TempBuff[2] == "*") {
-            
+        string param = "";
+        int count = 0;
+        if (TempBuff[1] == "*") {
+            param = "*";
+            string insertData;
+            os.addC("*");
+            for (int i = 0; i < bs.tabla.columns.size + 1; i++) {
+                insertData = bs.tabla.columns.get(i);
+                os.addC(insertData);
+            }
+            bs.tabla.columns.buscarColumna("*", &os);
         } else {
             for (int i = 1; i < TotalVector; i++) {
                 if (TempBuff[i] != "FROM" && TempBuff[i] != "from") {
                     if (TempBuff[i] != ",") {
-                        cd.addC(TempBuff[i]);
-                        //bs.tabla.columns.buscarColumna(TempBuff[i]);
+                        if (count == 0) {
+                            param = TempBuff[i];
+                            count++;
+                        }
+                        os.addC(TempBuff[i]);
+
                     }
                 } else {
                     break;
                 }
             }
-            
-            
-            
+            bs.tabla.columns.buscarColumna(param, &os);
         }
 
+
     }
-
-
-
 
 
 }

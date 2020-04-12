@@ -47,30 +47,6 @@ void columnasData::add(columna c) {
     }
 }
 
-void columnasData::addC(string simple) {
-    if (sigu == NULL) {
-        NodoColumna *t = new NodoColumna();
-        t->name=simple;
-        t->siguiente = NULL;
-        sigu = t;
-        valor = sigu;
-        sigu->siguiente = NULL;
-        size += 1;
-       
-    } else {
-        if (sigu->siguiente == NULL) {
-            NodoColumna *t = new NodoColumna();
-            t->name=simple;
-            t->siguiente = NULL;
-            sigu->siguiente = t;
-        }
-        sigu = sigu->siguiente;
-        size += 1;
-
-    }
-
-}
-
 Nodo* columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
     if (valor != NULL) {
         NodoColumna *aux = valor;
@@ -98,19 +74,39 @@ void columnasData::actualizarColumnas(string nameColumn, string valorRecibido) {
     }
 }
 
-void columnasData::buscarColumna(string nameColumn) {
+void columnasData::buscarColumna(string nameColumn, seleccion* cd) {
     if (valor != NULL) {
-        NodoColumna *aux = valor;
-        for (int i = 0; i < size; i++) {
-            if (aux->column.name == nameColumn) {
-                aux->column.search();
-                break;
+        if (nameColumn == "*") {
+            valor->column.search(cd);
+        } else {
+            NodoColumna *aux = valor;
+            for (int i = 0; i < size; i++) {
+                if (aux->column.name == nameColumn) {
+                    aux->column.search(cd);
+                    break;
+                }
+                aux = aux->siguiente;
             }
-            aux = aux->siguiente;
         }
-
-
     }
 }
+
+string columnasData::get(int x) {
+    string retorno = "";
+    if (size >0) {
+        NodoColumna *aux = valor;
+        for (int i = 0; i < x; i++) {
+            retorno = aux->column.name;
+            if (aux->siguiente != NULL) {
+                aux = aux->siguiente;
+            } else {
+                break;
+            }
+        }
+    }
+    return retorno;
+}
+
+
 
 

@@ -19,6 +19,8 @@
 #include "hashFunctions.h"
 #include "Nodo.h"
 #include <stdio.h> 
+#include "seleccion.h"
+
 using namespace std;
 
 class columna {
@@ -32,7 +34,7 @@ public:
     int getIdForChar(char value);
     int getIdForDouble(double value);
     int getIndex(int clave, int espacio);
-    void search();
+    void search(seleccion*);
     void actualizarDato(string dato);
     Nodo *ultimo;
     string name;

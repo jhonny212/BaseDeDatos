@@ -29,7 +29,7 @@ public:
     virtual ~Tabla();
     string nombre;
     columnasData columns;
-
+    int totalD;
 private:
 
 

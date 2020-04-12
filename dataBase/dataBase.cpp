@@ -16,46 +16,89 @@
 dataBase::dataBase() {
 }
 
-
-
 dataBase::~dataBase() {
 }
-void dataBase::get(string par){
-    Tabla *aux=valor;
-  while(aux!=NULL){
-      if(par==aux->nombre){
-          cout<<" el valor es"<<aux->nombre<<endl;
-          break;
-      }else{
-          aux=aux->siguiente;
-      }
-  }
-  
+
+void dataBase::get(string par) {
+    Tabla *aux = valor;
+    while (aux != NULL) {
+        if (par == aux->nombre) {
+            cout << " el valor es" << aux->nombre << endl;
+            break;
+        } else {
+            aux = aux->siguiente;
+        }
+    }
+
 }
+
 dataBase::dataBase(Tabla tb, string name) {
     tabla = tb;
     Name = name;
     valor = &tb;
     sigu = NULL;
-   
+    tamTabla = 1;
+
+}
+
+void dataBase::cantOfColumns() {
+    Tabla *aux = valor;
+    int tam = 0;
+    int total = 0;
+    cout << "\n \n " << endl;
+    for (int i = 0; i < tamTabla; i++) {
+        tam = aux->columns.size;
+        cout << "La tabla " << aux->nombre << " contiene " << tam << " columnas" << endl;
+        aux = aux->siguiente;
+        total += tam;
+    }
+    cout << "La base de datos seleccionada \"" << nombreDeLaBaseDeDatos << "\" contiene un total de " << total << " columnas " << endl;
+}
+
+void dataBase::equalsCantTypeRowsForATable(string param) {
+    Tabla *aux = valor;
+    cout << "\n \n " << endl;
+    for (int i = 0; i < tamTabla; i++) {
+        if (aux->nombre == param) {
+            aux->columns.types();
+            break;
+        }
+        aux = aux->siguiente;
+
+    }
+}
+
+void dataBase::totalDeDatos() {
+    int total = 0;
+    cout << "\n \n -------------------------------------------------------" << endl;
+    if (valor != NULL) {
+        Tabla *aux = valor;
+        for (int i = 0; i < tamTabla; i++) {
+            aux->columns.dataForColumns();
+            aux = aux->siguiente;
+        }
+        cout << " la base de datos tiene " << total << " datos ingresados " << endl;
+    }
 }
 
 string dataBase::getName() {
-    cout<<"el nombre es"<<tabla.nombre<<endl;
+    cout << "el nombre es" << tabla.nombre << endl;
     return Name;
 }
 
-void dataBase::addTable(columnasData tb, string name){
+void dataBase::addTable(columnasData tb, string name) {
     if (valor == NULL) {
         sigu = new Tabla();
-        sigu->columns=tb;
-        sigu->nombre=name;
+        sigu->columns = tb;
+        sigu->nombre = name;
         valor = sigu;
+        tamTabla += 1;
     } else {
         sigu->siguiente = new Tabla();
-        sigu->siguiente->columns=tb;
-        sigu->siguiente->nombre=name;
+        sigu->siguiente->columns = tb;
+        sigu->siguiente->nombre = name;
         sigu = sigu->siguiente;
+        tamTabla += 1;
     }
 }
 

@@ -20,6 +20,7 @@
     nombre=name;
 }*/
 Tabla::Tabla(){
+    totalD=0;
 }
 Tabla::~Tabla(){}
 

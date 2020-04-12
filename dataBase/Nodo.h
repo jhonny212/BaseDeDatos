@@ -21,7 +21,7 @@
 #include <iostream>
 using namespace std;
 
-class Nodo {
+    class Nodo {
 public:
     Nodo();
     Nodo(int data);

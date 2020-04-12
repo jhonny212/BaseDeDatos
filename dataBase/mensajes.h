@@ -25,6 +25,7 @@ public:
     int opcion();
     int seleccion();
     int typeQuery();
+    int reportes();
     virtual ~mensajes();
     
 private:

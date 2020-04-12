@@ -20,6 +20,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "seleccion.h"
+#include "ArbolBinario.h"
 
 
 using namespace std;
@@ -29,13 +30,13 @@ public:
     TablaHash();
     void createInitialTable();
     void makeRehashing();
-    void get(int);
     int getSize();
     Nodo* insertData(int indice, int tipo_, string valor,string);
    
     void actualizarInicio();
     string tipo;
     void searchData(string,seleccion* cd,bool);
+    void paintPosicion(string);
     virtual ~TablaHash();
     Table *start = NULL;
     Table *next = NULL;

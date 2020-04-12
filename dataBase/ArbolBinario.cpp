@@ -38,7 +38,7 @@ void ArbolBinario::print() {
         } else if (opc == 4) {
             padre = to_string(raiz->valorDouble);
         }
-
+       
         if (raiz->left != NULL) {
             string izq;
             if (opc == 1) {
@@ -52,7 +52,7 @@ void ArbolBinario::print() {
             } else if (opc == 4) {
                 izq = to_string(raiz->left->valorDouble);
             }
-            textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
+            //textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
             cout << padre << " -> " << izq << endl;
         }
 
@@ -70,14 +70,14 @@ void ArbolBinario::print() {
             } else if (opc == 4) {
                 der = to_string(raiz->right->valorDouble);
             }
-            textoGrafica = textoGrafica + padre + " -> " + der + " \n";
+           // textoGrafica = textoGrafica + padre + " -> " + der + " \n";
             cout << padre << " -> " << der << endl;
         }
         if (raiz != NULL) {
             starPrint(raiz);
         }
 
-        cout << textoGrafica << endl;
+        //cout << textoGrafica << endl;
     }
 }
 

@@ -40,7 +40,9 @@ public:
     string name;
     string type;
     int contador;
-
+    string arbolPintado();
+    int getTotal();
+    int totalData;
 private:
 
 

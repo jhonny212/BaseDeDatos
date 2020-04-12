@@ -44,14 +44,25 @@ int mensajes::seleccion() {
     cout << "3. Añadir una columna mas" << endl;
     cout << "4. salir" << endl;
     cin>> x;
-
+    return x;
 }
 
 int mensajes::typeQuery() {
     int x;
     cout << "1. Hacer select" << endl;
     cout << "2. Hacer Insert" << endl;
-    cout << "3. Hacer delete" << endl;
+    cin>>x;
+    return x;
+}
+
+int mensajes::reportes() {
+    int x;
+    cout << "-------------------REPORTES----------------------" << endl;
+    cout << "1. Cantidad de datos En todas las bases de datos" << endl;
+    cout << "2. Cantidad de datos (por base de datos)" << endl;
+    cout << "3. Cantidad de datos o filas de un mismo tipo de dato en una tabla" << endl;
+    cout << "4. Cantidad de todas las columnas de todas las tablas de una base de datos" << endl;
+    cout << "5. archivo log de la base de datos" << endl;
     cin>>x;
 }
 

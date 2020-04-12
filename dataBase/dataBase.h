@@ -32,15 +32,20 @@ public:
     int getInt(string valor);
     int getInt2(string valor);
     void addTable(columnasData tb, string name);
+    void cantOfColumns();
+    void totalDeDatos();
+    void equalsCantTypeRowsForATable(string param);
     virtual ~dataBase();
     void get(string par);
     Tabla tabla;
+        string nombreDeLaBaseDeDatos;
+
 private:
     
     Tabla *valor;
     Tabla *sigu;
+    int tamTabla;
     string Name;
-   
 };
 
 #endif /* DATABASE_H */

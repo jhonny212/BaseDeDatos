@@ -14,12 +14,20 @@
 #include "columna.h"
 
 columna::columna() {
-
+totalData=0;
 }
 
 columna::~columna() {
 }
-
+string columna::arbolPintado(){
+   
+    tablaHash.paintPosicion(type);
+    return "";
+}
+int columna::getTotal(){
+    cout<<" la columna  tiene un total de "<<" datos "<<endl;
+    return 1;
+}
 void columna::search(seleccion* cd) {
     string data;
     data = cd->get(0);
@@ -41,28 +49,26 @@ void columna::search(seleccion* cd) {
     cout << data << endl;
 
     tablaHash.searchData(name, cd, v);
-
+    
 }
 
 void columna::insertarDato(std::string dato) {
     if (type == "string") {
         int clave = getIdForString(dato);
         int index = getIndex(clave, tablaHash.getSize());
-        //return tablaHash.insertData(index, 1, dato);
+        ultimo= tablaHash.insertData(index, 1, dato,name);
     } else if (type == "char") {
         hashFunctions t = hashFunctions();
         char char_array[1];
         strcpy(char_array, dato.c_str());
         int clave = t.getIdForChar(char_array[0]);
         int index = t.getIndex(clave, tablaHash.getSize());
-        // return tablaHash.insertData(index, 2, dato);
+        ultimo = tablaHash.insertData(index, 2, dato,name);
     } else if (type == "int") {
         int i = std::stoi(dato);
         int clave = getIdForInt(dato, i);
         int index = getIndex(clave, tablaHash.getSize());
-
-
-        // return tablaHash.insertData(index, 3, dato);
+        ultimo = tablaHash.insertData(index, 3, dato, name);
 
     } else if (type == "double") {
         hashFunctions t = hashFunctions();
@@ -72,32 +78,12 @@ void columna::insertarDato(std::string dato) {
         ultimo = tablaHash.insertData(index, 4, dato, name);
 
     }
-
+    totalData+=1;
+    
 }
 
 void columna::actualizarDato(std::string dato) {
-    if (type == "string") {
-        int clave = getIdForString(dato);
-        int index = getIndex(clave, tablaHash.getSize());
-    } else if (type == "char") {
-        hashFunctions t = hashFunctions();
-        char char_array[1];
-        strcpy(char_array, dato.c_str());
-        int clave = t.getIdForChar(char_array[0]);
-        int index = t.getIndex(clave, tablaHash.getSize());
-    } else if (type == "int") {
-        int i = std::stoi(dato);
-        int clave = getIdForInt(dato, i);
-        int index = getIndex(clave, tablaHash.getSize());
-
-    } else if (type == "double") {
-        hashFunctions t = hashFunctions();
-        double i = atof(dato.c_str());
-        int clave = t.getIdForDouble(i);
-        int index = t.getIndex(clave, tablaHash.getSize());
-        //tablaHash.getLastInserted(index);
-    }
-
+    
 }
 
 int columna::getIdForString(string value) {

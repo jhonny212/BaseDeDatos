@@ -34,7 +34,7 @@ void querys(int);
 void createDatabase();
 void menuSeleccion();
 void insertar();
-
+void reportes(int);
 void select();
 void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector);
 int Cuenta(string s, const char Separadorr, int &TotalChars);
@@ -46,12 +46,19 @@ int main() {
     cin>>name;
     createDatabase();
     insertar();
+    reportes(2);
+
+    // reportes(2);
+    /*cout << "Escriba el nombre de las base de datos" << endl;
+    cin>>name;
+    createDatabase();
+    insertar();
     insertar();
     insertar();
     insertar();
     insertar();
 
-    //select();
+    select();*/
     /*cout << "Escriba el nombre de las base de datos" << endl;
     cin>>name;
     createDatabase();
@@ -87,7 +94,7 @@ int main() {
 }
 
 void createDatabase() {
-    string Palabra = "create table alumnos ( nombre double , edad double , apellido double );";
+    string Palabra = "create table alumnos ( nombre int , edad int , apellido string );";
     cout << "Create table..." << endl;
     // cin>> Palabra;
     // getline(cin, Palabra);
@@ -96,21 +103,41 @@ void createDatabase() {
     split(Palabra, *" ", TempBuff, TotalVector);
     string nameD = TempBuff[2];
     columnasData cd = columnasData();
-
     for (int i = 4; i < TotalVector - 1; i += 3) {
         cout << "creando columna" << endl;
         columna c = columna();
         c.name = TempBuff[i];
         c.type = TempBuff[i + 1];
+        c.totalData = 0;
         cd.add(c);
-
     }
     Tabla tab = Tabla();
     tab.columns = cd;
-    tab.nombre = name;
+    tab.nombre = nameD;
     bs = dataBase(tab, name);
+    bs.nombreDeLaBaseDeDatos = name;
+    bs.tabla.columns.count = 0;
 
 
+}
+
+void reportes(int opc) {
+    switch (opc) {
+        case 1:
+
+            break;
+        case 2:
+            bs.totalDeDatos();
+            break;
+        case 3:
+            bs.equalsCantTypeRowsForATable("alumnos");
+            break;
+        case 4:
+            bs.cantOfColumns();
+            break;
+        case 5:
+            break;
+    }
 }
 
 void menuSeleccion() {
@@ -150,7 +177,7 @@ void insertar() {
     Nodo *tmP = NULL;
     Nodo *tmP2 = NULL;
 
-    string Palabra = "insert into alumnos ( nombre , edad , apellido ) VALUES ( 10.2 , 6.2 , 5.9 );";
+    string Palabra = "insert into alumnos ( nombre , edad , apellido ) VALUES ( 10 , 6 , juan );";
     //cin>> Palabra;
     // getline(cin, Palabra);
     vector<string> TempBuff(0);
@@ -211,6 +238,7 @@ void select() {
                 os.addC(insertData);
             }
             bs.tabla.columns.buscarColumna("*", &os);
+            bs.tabla.columns.createDiagram(bs.tabla.nombre);
         } else {
             for (int i = 1; i < TotalVector; i++) {
                 if (TempBuff[i] != "FROM" && TempBuff[i] != "from") {

@@ -28,8 +28,7 @@ BinaryThreeForInt::~BinaryThreeForInt() {
 }
 
 void BinaryThreeForInt::showIntegerThree(int opc) {
-
-    /*if (raiz != NULL) {
+    if (raiz != NULL) {
         string padre;
         if (opc == 1) {
             int i = raiz->getValueOfInt();
@@ -56,7 +55,7 @@ void BinaryThreeForInt::showIntegerThree(int opc) {
                 izq = to_string(raiz->left->valorDouble);
             }
             textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
-            cout << padre << " -> " << izq << endl;
+            //cout << padre << " -> " << izq << endl;
         }
 
         if (raiz->right != NULL) {
@@ -74,14 +73,14 @@ void BinaryThreeForInt::showIntegerThree(int opc) {
                 der = to_string(raiz->right->valorDouble);
             }
             textoGrafica = textoGrafica + padre + " -> " + der + " \n";
-            cout << padre << " -> " << der << endl;
+            //cout << padre << " -> " << der << endl;
         }
         if (raiz != NULL) {
             starPrint(raiz);
         }
 
          cout << textoGrafica << endl;
-    }*/
+    }
 }
 
 void BinaryThreeForInt::starPrint(Nodo* father) {
@@ -117,7 +116,7 @@ void BinaryThreeForInt::starPrint(Nodo* father) {
                 }
                 textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
 
-                cout << padre << " -> " << izq << endl;
+                //cout << padre << " -> " << izq << endl;
             }
 
             if (father->right != NULL) {
@@ -135,7 +134,7 @@ void BinaryThreeForInt::starPrint(Nodo* father) {
                 }
                 textoGrafica = textoGrafica + padre + " -> " + der + " \n";
 
-                cout << padre << " -> " << der << endl;
+                //cout << padre << " -> " << der << endl;
             }
 
         }
@@ -210,6 +209,7 @@ void BinaryThreeForInt::insertarNodo(Nodo nodo) {
         }
         detectRotation(lastInserted->dad);
     }
+  
 }
 
 int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {

@@ -27,15 +27,20 @@ public:
     virtual ~columnasData();
     void add(columna c);
     string get(int i);
-    void buscarColumna(string nameColumn,seleccion* cd);
+    void buscarColumna(string nameColumn, seleccion* cd);
     NodoColumna *valor;
     NodoColumna *sigu;
-    Nodo* insertarEnColumna(string nameColumn,string);
-    void actualizarColumnas(string nameColumn,string);
-     int size;
-   
+    Nodo* insertarEnColumna(string nameColumn, string);
+    void actualizarColumnas(string nameColumn, string);
+    void createDiagram(string nameTable);
+    void types();
+    void dataForColumns();
+    void actualizarDato();
+    int size;
+    int count;
+    int fc;
 private:
-   
+
 };
 
 #endif /* COLUMNASDATA_H */

@@ -45,7 +45,7 @@ void TablaHash::makeRehashing() {
 
     next->tablaSiguiente = obj;
     next = next->tablaSiguiente;
-    size += 1;
+    size += 10;
 
 }
 
@@ -56,7 +56,30 @@ int TablaHash::getSize() {
 void TablaHash::actualizarInicio() {
     next = array;
     start = next;
-    // makeRehashing();
+}
+
+void TablaHash::paintPosicion(string x) {
+    Table *tmp = start;
+    for (int i = 0; i < size; i++) {
+        for (int i = 0; i < 5; i++) {
+            if ((tmp + i)->arbolInt.raiz != NULL) {
+                Table t = Table();
+                t = *(tmp + 1);
+                if (x == "string") {
+                    ((tmp + i)->arbolInt.showIntegerThree(2));
+                } else if (x == "char") {
+                    ((tmp + i)->arbolInt.showIntegerThree(3));
+                } else if (x == "double") {
+                    ((tmp + i)->arbolInt.showIntegerThree(4));
+                } else if (x == "int") {
+                    ((tmp + i)->arbolInt.showIntegerThree(1));
+                }
+
+            }
+        }
+    }
+
+
 }
 
 void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
@@ -92,6 +115,7 @@ void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
                             if (nam == aux->nombreDeColumna or isAll) {
                                 if (opc == 1) {
                                     cout << aux->valorInt << " | ";
+
                                 } else if (opc == 2) {
                                     cout << aux->valorString << " | ";
                                 } else if (opc == 3) {
@@ -148,7 +172,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
         aux = (tmp + getSumForPunt);
 
         while (isFound) {
-            
+
             if (tipo_ == 1) {
                 nodoSave = Nodo(valor);
                 nodoSave.nombreDeColumna = nombreColumna;

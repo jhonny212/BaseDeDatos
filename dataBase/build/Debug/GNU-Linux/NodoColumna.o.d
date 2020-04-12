@@ -1,8 +1,8 @@
-build/Debug/GNU-Linux/columnasData.o: columnasData.cpp columnasData.h \
+build/Debug/GNU-Linux/NodoColumna.o: NodoColumna.cpp NodoColumna.h \
  columna.h TablaHash.h Table.h BinaryThreeForInt.h Nodo.h seleccion.h \
- NodoColumnaAux.h ArbolBinario.h hashFunctions.h NodoColumna.h
+ NodoColumnaAux.h ArbolBinario.h hashFunctions.h
 
-columnasData.h:
+NodoColumna.h:
 
 columna.h:
 
@@ -21,5 +21,3 @@ NodoColumnaAux.h:
 ArbolBinario.h:
 
 hashFunctions.h:
-
-NodoColumna.h:

@@ -27,6 +27,8 @@ using namespace std;
 class dataBase {
 public:
     dataBase();
+    dataBase(string);
+    
     dataBase(Tabla tb, string v);
     string getName();
     int getTypeHashFunction(string valor);
@@ -37,18 +39,19 @@ public:
     void totalDeDatos();
     void equalsCantTypeRowsForATable(string param);
     virtual ~dataBase();
-    void get(string par);
+    Tabla* get(string par);
     Tabla* getT(string);
     Tabla tabla;
     string nombreDeLaBaseDeDatos;
     Tabla *valor;
     Tabla *tablaAux;
-
+    dataBase *siguienteBaseDeDatos;
+    string Name;
 private:
 
     Tabla *sigu;
     int tamTabla;
-    string Name;
+    
 };
 
 #endif /* DATABASE_H */

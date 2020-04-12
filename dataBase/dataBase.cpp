@@ -16,22 +16,30 @@
 dataBase::dataBase() {
 }
 
-dataBase::~dataBase() {
-
-    cout << " delete " << endl;
+dataBase::dataBase(string s) {
+    nombreDeLaBaseDeDatos = s;
+    valor = NULL;
+    siguienteBaseDeDatos = NULL;
+    sigu = NULL;
+    tamTabla = 0;
+    tablaAux = NULL;
 }
 
-void dataBase::get(string par) {
+dataBase::~dataBase() {
+}
+
+Tabla* dataBase::get(string par) {
     Tabla *aux = valor;
     while (aux != NULL) {
         if (par == aux->nombre) {
-            cout << " el valor es" << aux->nombre << endl;
+            return aux;
             break;
         } else {
             aux = aux->siguiente;
         }
     }
 
+    return NULL;
 }
 
 Tabla* dataBase::getT(string par) {
@@ -103,13 +111,14 @@ string dataBase::getName() {
 }
 
 void dataBase::addTable(columnasData tb, string name) {
-
-    if (valor->siguiente == NULL) {
+    if(getT(name)==NULL){
+    if (valor == NULL) {
         sigu = new Tabla();
         sigu->columns = tb;
         sigu->nombre = name;
         valor = sigu;
         tamTabla += 1;
+
     } else {
         sigu->siguiente = new Tabla();
         sigu->siguiente->columns = tb;
@@ -117,7 +126,9 @@ void dataBase::addTable(columnasData tb, string name) {
         sigu = sigu->siguiente;
         tamTabla += 1;
     }
-
+    }else{
+        cout<<"\n la tabla ya existe, no puede crear tablas iguales "<<endl;
+    }
 }
 
 int dataBase::getTypeHashFunction(string valor) {

@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/ArbolBinario.o \
 	${OBJECTDIR}/BinaryThreeForInt.o \
 	${OBJECTDIR}/BinaryThreeForString.o \
+	${OBJECTDIR}/Data.o \
 	${OBJECTDIR}/Nodo.o \
 	${OBJECTDIR}/NodoColumna.o \
 	${OBJECTDIR}/NodoColumnaAux.o \
@@ -93,6 +94,11 @@ ${OBJECTDIR}/BinaryThreeForString.o: BinaryThreeForString.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BinaryThreeForString.o BinaryThreeForString.cpp
+
+${OBJECTDIR}/Data.o: Data.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Data.o Data.cpp
 
 ${OBJECTDIR}/Nodo.o: Nodo.cpp
 	${MKDIR} -p ${OBJECTDIR}

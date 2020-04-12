@@ -38,11 +38,13 @@ int mensajes::opcion() {
 
 int mensajes::seleccion() {
     int x;
+    cout<<" \n \n "<<endl;
     cout << "¿Que desea hacer?" << endl;
     cout << "1. Ejecutar querys" << endl;
     cout << "2. Reportes" << endl;
-    cout << "3. Añadir una columna mas" << endl;
-    cout << "4. salir" << endl;
+    cout << "3. Añadir una columna mas a una tabla " << endl;
+    cout << "4. Crear una tabla " << endl;
+    cout << "5. salir" << endl;
     cin>> x;
     return x;
 }

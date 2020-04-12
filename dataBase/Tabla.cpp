@@ -25,7 +25,7 @@ Tabla::Tabla(){
     
 }
 Tabla::~Tabla(){
-    cout<<&columns<<endl;
+ //   cout<<&columns<<endl;
 }
 
 

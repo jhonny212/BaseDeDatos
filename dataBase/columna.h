@@ -36,6 +36,7 @@ public:
     int getIndex(int clave, int espacio);
     void search(seleccion*);
     void actualizarDato(string dato);
+    void buscarDato(string dato,seleccion* cd2);
     Nodo *ultimo;
     string name;
     string type;

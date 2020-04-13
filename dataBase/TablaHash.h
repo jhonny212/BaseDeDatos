@@ -32,10 +32,13 @@ public:
     void makeRehashing();
     int getSize();
     Nodo* insertData(int indice, int tipo_, string valor,string);
-   
+    void buscarData(int indice, int tipo_, string valor,seleccion* cd2);
+    
     void actualizarInicio();
     string tipo;
     void searchData(string,seleccion* cd,bool);
+    void searchDataForCond(seleccion* cd);
+    
     string paintPosicion(string,string);
     virtual ~TablaHash();
     Table *start = NULL;

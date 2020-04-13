@@ -26,10 +26,14 @@ public:
     seleccion(const seleccion& orig);
     virtual ~seleccion();
     void addC(string simple);
+    void addD(string,string,string);
     string get(int);
+    NodoColumnaAux * getCond(int);
+    
     string name;
     NodoColumnaAux *value;
     NodoColumnaAux *siguT;
+    string tipoDeCondicion;
     int tm;
 private:
     

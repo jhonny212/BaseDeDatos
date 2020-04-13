@@ -17,6 +17,7 @@ seleccion::seleccion() {
     tm = 0;
     siguT = NULL;
     value = NULL;
+    tipoDeCondicion="";
 }
 
 seleccion::seleccion(const seleccion& orig) {
@@ -44,7 +45,29 @@ void seleccion::addC(string c) {
     }
 
 }
+void seleccion::addD(string c,string a ,string b) {
+    if (siguT == NULL) {
+        NodoColumnaAux *t = new NodoColumnaAux();
+        t->name = c;
+        t->cond=a;
+        t->comp=b;
+        t->siguiente = NULL;
+        siguT = t;
+        value = siguT;
+        siguT->siguiente = NULL;
+        tm += 1;
+    } else {
+        NodoColumnaAux *t = new NodoColumnaAux();
+        t->name = c;
+        t->comp=b;
+        t->cond=a;
+        t->siguiente = NULL;
+        siguT->siguiente = t;
+        siguT = siguT->siguiente;
+        tm += 1;
+    }
 
+}
 string seleccion::get(int x) {
     string retorno = "";
     if (value!=NULL) {
@@ -59,4 +82,17 @@ string seleccion::get(int x) {
         }
     }
     return retorno;
+}
+NodoColumnaAux* seleccion::getCond(int x){
+  NodoColumnaAux *t = value;
+    if (value!=NULL) {
+        for (int i = 0; i < (x+1); i++) {
+            if(t->siguiente!=NULL){
+            t = t->siguiente;
+            }else{
+                break;
+            }
+        }
+    }
+    return t;
 }

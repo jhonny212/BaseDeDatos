@@ -21,16 +21,16 @@ class NodoColumnaAux {
 public:
     NodoColumnaAux();
     NodoColumnaAux(int data);
-    /*
-    NodoColumnaAux(string data);
-    NodoColumnaAux(char data);
-    NodoColumnaAux(double data);*/
     
     
     NodoColumnaAux(const NodoColumnaAux& orig);
     virtual ~NodoColumnaAux();
     NodoColumnaAux *siguiente;
     string name;
+    
+    string cond;
+    string comp;
+    
     string valor;
     int valor_;
 private:

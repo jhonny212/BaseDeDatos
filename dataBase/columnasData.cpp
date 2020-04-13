@@ -86,18 +86,32 @@ void columnasData::actualizarColumnas(string nameColumn, string valorRecibido) {
     }
 }
 
-void columnasData::buscarColumna(string nameColumn, seleccion* cd) {
+void columnasData::buscarColumna(string nameColumn, seleccion* cd, seleccion* cd2, bool v) {
     if (valor != NULL) {
         if (nameColumn == "*") {
-            valor->column.search(cd);
-        } else {
-            NodoColumna *aux = valor;
-            for (int i = 0; i < size; i++) {
-                if (aux->column.name == nameColumn) {
-                    aux->column.search(cd);
-                    break;
+            if ((v)) {
+                for (int i = 0; i < cd2->tm; i++) {
+                    NodoColumnaAux* nam = cd2->getCond(i);
+                    NodoColumna* nod = getTipo(nam->name);
+                    if (nod != NULL) {
+                        nod->column.buscarDato(nam->comp,cd);
+                    }
                 }
-                aux = aux->siguiente;
+            } else {
+                valor->column.search(cd);
+            }
+        } else {
+            if (v) {
+                
+            } else {
+                NodoColumna *aux = valor;
+                for (int i = 0; i < size; i++) {
+                    if (aux->column.name == nameColumn) {
+                        aux->column.search(cd);
+                        break;
+                    }
+                    aux = aux->siguiente;
+                }
             }
         }
     }
@@ -208,6 +222,25 @@ string columnasData::get(int x) {
     return retorno;
 }
 
+NodoColumna* columnasData::getTipo(string dato) {
+    string retorno = "";
+    if (size > 0) {
+        NodoColumna *aux = valor;
+        for (int i = 0; i < size; i++) {
+            retorno = aux->column.name;
+            if (retorno == dato) {
+                return aux;
+
+            }
+            if (aux->siguiente != NULL) {
+                aux = aux->siguiente;
+            } else {
+                break;
+            }
+        }
+    }
+    return NULL;
+}
 
 
 

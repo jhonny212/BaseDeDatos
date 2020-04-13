@@ -27,7 +27,8 @@ public:
     virtual ~columnasData();
     void add(columna c);
     string get(int i);
-    void buscarColumna(string nameColumn, seleccion* cd);
+    NodoColumna* getTipo(string);
+    void buscarColumna(string nameColumn, seleccion* cd, seleccion* cd2,bool);
     NodoColumna *valor;
     NodoColumna *sigu;
     Nodo* insertarEnColumna(string nameColumn, string);

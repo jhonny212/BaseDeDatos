@@ -116,6 +116,13 @@ string TablaHash::paintPosicion(string x, string paramname) {
     return txt;
 }
 
+void TablaHash::searchDataForCond(seleccion* cd) {
+    for (int i = 0; i < cd->tm; i++) {
+
+    }
+
+}
+
 void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
     Table *tmp = start;
     Table *aux = NULL;
@@ -154,6 +161,7 @@ void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
                             int opc = aux->typodeSeleccion;
 
                             if (nam == aux->nombreDeColumna) {
+
                                 tmDatos++;
                                 if (opc == 1) {
                                     valor = to_string(aux->valorInt);
@@ -202,23 +210,193 @@ void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
         }
         tmp = tmp->tablaSiguiente;
     }
-    /*int config = 0;
-    if (isAll) {
-        config = 1;
-    }
-    for (int j = 0; j < (longitud * cd->tm); j += cd->tm) {
-        for (int i = 0; i < cd->tm - config; i++) {
-            cout << datosGet.get(j + i);
-            int auxT = 6;
-            for (int k = 0; k < auxT; k++) {
-
-                cout << " ";
-            }
-            cout << "|";
-        }
-        cout << "\n" << endl;
-    }*/
     cout << " ------------------------------------------------------------------------" << endl;
+}
+
+void TablaHash::buscarData(int indice, int tipo_, string valor, seleccion* cd2) {
+    Table *aux = NULL;
+    int auxInd = (indice / 5) + 1;
+    Table *tmp = start;
+    for (int i = 0; i < auxInd - 1; i++) {
+        if (tmp->tablaSiguiente != NULL) {
+            tmp = tmp->tablaSiguiente;
+        } else {
+            break;
+        }
+    }
+    int getSumForPunt = indice - ((auxInd - 1)*5);
+    aux = (tmp + getSumForPunt);
+    Nodo *encolado = aux->href;
+    Nodo *getS = aux->inicio;
+    while (encolado != NULL) {
+        
+        if (tipo_ == 1) {
+            if (encolado->valorString == valor) {
+                Nodo *temporal = encolado;
+                while (temporal != NULL) {
+                    if (temporal->nodoPrevio == NULL) {
+                        break;
+                    } else {
+                        temporal = temporal->nodoPrevio;
+                    }
+                }
+                while (temporal != NULL) {
+                    int tipo = temporal->typodeSeleccion;
+                    switch (tipo) {
+                        case 1:
+                            cout << "|" << temporal->valorInt << "      |";
+
+                            break;
+                        case 2:
+                            cout << "|" << temporal->valorString << "      |";
+
+                            break;
+                        case 3:
+                            cout << "|" << temporal->valorChar << "      |";
+
+                            break;
+                        case 4:
+                            cout << "|" << temporal->valorDouble << "      |";
+                            break;
+
+                    }
+                    if (temporal->nodoSiguiente != NULL) {
+                        temporal = temporal->nodoSiguiente;
+                    } else {
+                        break;
+                    }
+                }
+
+            }
+        } else if (tipo_ == 2) {
+            string saux(1, encolado->valorChar);
+            if (saux == valor) {
+                Nodo *temporal = encolado;
+                while (temporal != NULL) {
+                    if (temporal->nodoPrevio == NULL) {
+                        break;
+                    } else {
+                        temporal = temporal->nodoPrevio;
+                    }
+                }
+                while (temporal != NULL) {
+                    int tipo = temporal->typodeSeleccion;
+                    switch (tipo) {
+                        case 1:
+                            cout << "|" << temporal->valorInt << "      |";
+
+                            break;
+                        case 2:
+                            cout << "|" << temporal->valorString << "      |";
+
+                            break;
+                        case 3:
+                            cout << "|" << temporal->valorChar << "      |";
+
+                            break;
+                        case 4:
+                            cout << "|" << temporal->valorDouble << "      |";
+                            break;
+
+                    }
+                    if (temporal->nodoSiguiente != NULL) {
+                        temporal = temporal->nodoSiguiente;
+                    } else {
+                        break;
+                    }
+                }
+
+            }
+
+        } else if (tipo_ == 3) {
+            string saux = to_string(encolado->valorInt);
+            if (saux == valor) {
+                Nodo *temporal = encolado;
+                while (temporal != NULL) {
+                    if (temporal->nodoPrevio == NULL) {
+                        break;
+                    } else {
+                        temporal = temporal->nodoPrevio;
+                    }
+                }
+                while (temporal != NULL) {
+                    int tipo = temporal->typodeSeleccion;
+                    switch (tipo) {
+                        case 1:
+                            cout << "|" << temporal->valorInt << "      |";
+
+                            break;
+                        case 2:
+                            cout << "|" << temporal->valorString << "      |";
+
+                            break;
+                        case 3:
+                            cout << "|" << temporal->valorChar << "      |";
+
+                            break;
+                        case 4:
+                            cout << "|" << temporal->valorDouble << "      |";
+                            break;
+
+                    }
+                    if (temporal->nodoSiguiente != NULL) {
+                        temporal = temporal->nodoSiguiente;
+                    } else {
+                        break;
+                    }
+                }
+
+            }
+
+        } else if (tipo_ == 4) {
+            string saux = to_string(encolado->valorDouble);
+            if (saux == valor) {
+                Nodo *temporal = encolado;
+                while (temporal != NULL) {
+                    if (temporal->nodoPrevio == NULL) {
+                        break;
+                    } else {
+                        temporal = temporal->nodoPrevio;
+                    }
+                }
+                while (temporal != NULL) {
+                    int tipo = temporal->typodeSeleccion;
+                    switch (tipo) {
+                        case 1:
+                            cout << "|" << temporal->valorInt << "      |";
+
+                            break;
+                        case 2:
+                            cout << "|" << temporal->valorString << "      |";
+
+                            break;
+                        case 3:
+                            cout << "|" << temporal->valorChar << "      |";
+
+                            break;
+                        case 4:
+                            cout << "|" << temporal->valorDouble << "      |";
+                            break;
+
+                    }
+                    if (temporal->nodoSiguiente != NULL) {
+                        temporal = temporal->nodoSiguiente;
+                    } else {
+                        break;
+                    }
+                }
+
+            }
+        }
+        if (getS != NULL) {
+            encolado = getS;
+            getS = getS->encolado;
+        } else {
+            break;
+        }
+        cout << "\n";
+    }
+
 }
 
 Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreColumna) {

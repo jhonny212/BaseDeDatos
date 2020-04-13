@@ -37,6 +37,7 @@ void menuSeleccion();
 void insertar();
 void reportes(int);
 void select();
+void addColumn();
 void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector);
 int Cuenta(string s, const char Separadorr, int &TotalChars);
 void createTable();
@@ -96,12 +97,12 @@ void createDatabase() {
 
 void reportes(int opc) {
     string param;
-    int total=0;
+    int total = 0;
     switch (opc) {
         case 1:
             cout << "******************************************" << endl;
-            total=controlDeBaseDeDatos.cantDatos();
-            cout<<" en total hay "<<total<<" datos ingresados "<<endl;
+            total = controlDeBaseDeDatos.cantDatos();
+            cout << " en total hay " << total << " datos ingresados " << endl;
             cout << "******************************************" << endl;
             break;
         case 2:
@@ -163,6 +164,8 @@ void menuSeleccion() {
                 reportes(opc2);
                 break;
             case 3:
+                cout << "ingrese en nombre de la tabla " << endl;
+                addColumn();
                 break;
             case 4:
                 createTable();
@@ -175,6 +178,23 @@ void menuSeleccion() {
         }
     }
 
+}
+
+void addColumn() {
+    string tab;
+    string col;
+    string typ;
+    cin>>tab;
+    Tabla *auxD = baseDeDatosActual->getT(tab);
+    cout << " ingrese el nombre de la columna " << endl;
+    cin>>col;
+    cout << " ingrese el tipo de dato" << endl;
+    cin>>typ;
+    columna c = columna();
+    c.name=col;
+    c.type=typ;
+    c.totalData=0;
+    auxD->columns.add(c);
 }
 
 void querys(int opc) {
@@ -194,42 +214,6 @@ void querys(int opc) {
 void insertar() {
     Nodo *tmP = NULL;
     Nodo *tmP2 = NULL;
-    //baseDeDatosActual
-    //insert into alumnos ( nombre , edad , apellido ) VALUES ( 20 , 26 , juan );
-    /*string Palabra = "insert into alumnos ( nombre , edad , apellido ) VALUES ( 10 , 6 , juan );";
-    cin>> Palabra;
-    getline(cin, Palabra);
-    vector<string> TempBuff(0);
-    int TotalVector;
-    split(Palabra, *" ", TempBuff, TotalVector);
-    int distancia;
-    for (int i = 4; i < TotalVector; i++) {
-        if (TempBuff[i] == "(") {
-            distancia = i;
-        }
-    }
-    string nombreTabla = TempBuff[2];
-
-    int aux = distancia;
-    int count = 0;
-    for (int i = 4; i < TotalVector - 1; i += 2) {
-        if (TempBuff[i] != "VALUES") {
-            Tabla *auxD = bs.getT(nombreTabla);
-            if (count == 0) {
-                tmP = auxD->columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
-            } else {
-                tmP2 = auxD->columns.insertarEnColumna(TempBuff[i], TempBuff[distancia + 1]);
-                tmP2->nodoPrevio = tmP;
-                tmP->nodoSiguiente = tmP2;
-                tmP = tmP2;
-            }
-            count += 1;
-            distancia += 2;
-        } else {
-            break;
-        }
-    }*/
-
     string Palabra = "insert into alumnos ( nombre , edad , apellido , joder ) VALUES ( 20 , 26 , juan , lopez );";
     //cin>> Palabra;
     // getline(cin, Palabra);
@@ -267,7 +251,11 @@ void insertar() {
 
 void select() {
     seleccion os = seleccion();
-    string Palabra = "select * from alumnos ;";
+    seleccion os2 = seleccion();
+
+    bool v = false;
+
+    string Palabra = "select * from alumnos WHERE joder = lopez ;";
     //select *  from alumnos ;
     //cin>> Palabra;
     //getline(cin, Palabra);
@@ -276,41 +264,66 @@ void select() {
     split(Palabra, *" ", TempBuff, TotalVector);
 
     string string2 = "WHERE";
+    string tipocon = "";
     if (Palabra.find(string2) != string::npos) {
-        cout << "found!" << '\n';
-    } else {
-        string tabla = TempBuff[TotalVector - 2];
-        Tabla *auxD = baseDeDatosActual->getT(tabla);
-        string param = "";
-        int count = 0;
-        if (TempBuff[1] == "*") {
-            param = "*";
-            string insertData;
-            os.addC("*");
-            for (int i = 1; i < auxD->columns.size + 1; i++) {
-                insertData = auxD->columns.get(i);
-                os.addC(insertData);
-            }
-            auxD->columns.buscarColumna("*", &os);
-            auxD->columns.createDiagram(auxD->nombre,&os);
-        } else {
-            for (int i = 1; i < TotalVector; i++) {
-                if (TempBuff[i] != "FROM" && TempBuff[i] != "from") {
-                    if (TempBuff[i] != ",") {
-                        if (count == 0) {
-                            param = TempBuff[i];
-                            count++;
-                        }
-                        os.addC(TempBuff[i]);
-                    }
-                } else {
+        for (int i = 1; i < TotalVector; i++) {
+            if (v) {
+                os2.addD(TempBuff[i], TempBuff[i + 1], TempBuff[i + 2]);
+                if (TempBuff[i + 3] == ";") {
                     break;
+                } else {
+                    i += 3;
                 }
+
             }
-            auxD->columns.buscarColumna(param, &os);
-            auxD->columns.createDiagram(auxD->nombre,&os);
+            if (TempBuff[i] == "WHERE" or TempBuff[i] == "where") {
+                v = true;
+            }
+
+            if (TempBuff[i] == "and" or TempBuff[i] == "AND") {
+                tipocon = "and";
+            } else if (TempBuff[i] == "or" or TempBuff[i] == "OR") {
+                tipocon = "or";
+            }
+        }
+        os2.tipoDeCondicion = tipocon;
+    }
+    string tabla = TempBuff[3];
+    Tabla *auxD = baseDeDatosActual->getT("alumnos");
+    string param = "";
+    int count = 0;
+    if (TempBuff[1] == "*") {
+        param = "*";
+        string insertData;
+        os.addC("*");
+        for (int i = 1; i < auxD->columns.size + 1; i++) {
+            insertData = auxD->columns.get(i);
+            os.addC(insertData);
+        }
+        auxD->columns.buscarColumna("*", &os, &os2, v);
+        if (!v) {
+            auxD->columns.createDiagram(auxD->nombre, &os);
+        }
+    } else {
+        for (int i = 1; i < TotalVector; i++) {
+            if (TempBuff[i] != "FROM" && TempBuff[i] != "from") {
+                if (TempBuff[i] != ",") {
+                    if (count == 0) {
+                        param = TempBuff[i];
+                        count++;
+                    }
+                    os.addC(TempBuff[i]);
+                }
+            } else {
+                break;
+            }
+        }
+        auxD->columns.buscarColumna(param, &os, &os2, v);
+        if (!v) {
+            auxD->columns.createDiagram(auxD->nombre, &os);
         }
     }
+
 }
 
 void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector) {

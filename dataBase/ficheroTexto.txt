@@ -1,25 +1,8 @@
 digraph G { node [shape=record]; 
-struct0 [label=" <f1> 1 |<f2> 2 |<f3> 3 |<f4> 4 |<f5> 5 | <f0> nombre "]; 
- node1 [fillcolor=yellow, style="rounded,filled", shape=circle, label=20] 
+struct100 [label=" <f1> 1 |<f2> 2 |<f3> 3 |<f4> 4 |<f5> 5 | <f0> nombre "]; 
+ node235 [fillcolor=yellow, style="rounded,filled", shape=circle, label=juan] 
+node237 [fillcolor=yellow, style="rounded,filled", shape=circle, label=al] 
 
-struct0:f3 -> node1; 
-
- node [shape=record]; 
-struct100 [label=" <f1> 1 |<f2> 2 |<f3> 3 |<f4> 4 |<f5> 5 | <f0> edad "]; 
- node51 [fillcolor=yellow, style="rounded,filled", shape=circle, label=26] 
-
-struct100:f2 -> node51; 
-
- node [shape=record]; 
-struct200 [label=" <f1> 1 |<f2> 2 |<f3> 3 |<f4> 4 |<f5> 5 | <f0> apellido "]; 
- node101 [fillcolor=yellow, style="rounded,filled", shape=circle, label=juan] 
-
-struct200:f4 -> node101; 
-
- node [shape=record]; 
-struct300 [label=" <f1> 1 |<f2> 2 |<f3> 3 |<f4> 4 |<f5> 5 | <f0> joder "]; 
- node151 [fillcolor=yellow, style="rounded,filled", shape=circle, label=lopez] 
-
-struct300:f3 -> node151; 
+node235 -> node237 ;struct100:f4 -> node235; 
 
 }

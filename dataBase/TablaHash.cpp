@@ -23,7 +23,7 @@ TablaHash::TablaHash() {
 }
 
 TablaHash::~TablaHash() {
-    if (start != NULL) {
+    /*if (start != NULL) {
         while (start != NULL) {
             Table *tmp=(start+4);
             for (int i = 0; i < 3; i++) {
@@ -31,7 +31,7 @@ TablaHash::~TablaHash() {
             }
             start  = tmp;
         }
-    }
+    }*/
 }
 
 void TablaHash::createInitialTable() {
@@ -49,6 +49,7 @@ void TablaHash::makeRehashing() {
     Table obj[5];
     for (int i = 0; i < 5; i++) {
         obj[i] = Table();
+        obj[i].arbolInt.contarNodos = ((i + 10)*5);
     }
 
     next->tablaSiguiente = obj;
@@ -432,7 +433,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                 nodoSave = Nodo(valor);
                 nodoSave.nombreDeColumna = nombreColumna;
                 if (aux->arbolInt.raiz == NULL) {
-                    aux->arbolInt.contarNodos = factorVariador;
+                    aux->arbolInt.contarNodos += factorVariador;
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
                     aux->size = 1;
@@ -459,7 +460,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                 nodoSave = Nodo(char_array[0]);
                 nodoSave.nombreDeColumna = nombreColumna;
                 if (aux->arbolInt.raiz == NULL) {
-                    aux->arbolInt.contarNodos = factorVariador;
+                    aux->arbolInt.contarNodos += factorVariador;
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
                     aux->size = 1;
@@ -485,7 +486,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                 nodoSave = Nodo(k);
                 nodoSave.nombreDeColumna = nombreColumna;
                 if (aux->arbolInt.raiz == NULL) {
-                    aux->arbolInt.contarNodos = factorVariador;
+                    aux->arbolInt.contarNodos += factorVariador;
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
                     aux->size = 1;
@@ -510,7 +511,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                 nodoSave = Nodo(j);
                 nodoSave.nombreDeColumna = nombreColumna;
                 if (aux->arbolInt.raiz == NULL) {
-                    aux->arbolInt.contarNodos = factorVariador;
+                    aux->arbolInt.contarNodos += factorVariador;
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
                     aux->size = 1;

@@ -128,10 +128,10 @@ void reportes(int opc) {
 
 void createTable() {
     //create table alumnos ( nombre int , edad int , apellido string );
-    string Palabra = "create table alumnos ( nombre int , edad int , apellido string , joder string );";
+    string Palabra;
     cout << "Create table..." << endl;
-    //cin>> Palabra;
-    // getline(cin, Palabra);
+    cin>> Palabra;
+    getline(cin, Palabra);
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -191,9 +191,9 @@ void addColumn() {
     cout << " ingrese el tipo de dato" << endl;
     cin>>typ;
     columna c = columna();
-    c.name=col;
-    c.type=typ;
-    c.totalData=0;
+    c.name = col;
+    c.type = typ;
+    c.totalData = 0;
     auxD->columns.add(c);
 }
 
@@ -214,9 +214,10 @@ void querys(int opc) {
 void insertar() {
     Nodo *tmP = NULL;
     Nodo *tmP2 = NULL;
-    string Palabra = "insert into alumnos ( nombre , edad , apellido , joder ) VALUES ( 20 , 26 , juan , lopez );";
-    //cin>> Palabra;
-    // getline(cin, Palabra);
+    // "insert into alumnos ( nombre , edad , apellido , joder ) VALUES ( 20 , 26 , juan , lopez );";
+    string Palabra;
+    cin>> Palabra;
+    getline(cin, Palabra);
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -228,7 +229,6 @@ void insertar() {
     }
     string nombreTabla = TempBuff[2];
 
-    int aux = distancia;
     int count = 0;
     for (int i = 4; i < TotalVector - 1; i += 2) {
         if (TempBuff[i] != "VALUES") {
@@ -254,11 +254,10 @@ void select() {
     seleccion os2 = seleccion();
 
     bool v = false;
-
-    string Palabra = "select * from alumnos WHERE joder = lopez ;";
-    //select *  from alumnos ;
-    //cin>> Palabra;
-    //getline(cin, Palabra);
+    //= "select * from alumnos WHERE joder = lopez ;";
+    string Palabra;
+    cin>> Palabra;
+    getline(cin, Palabra);
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -289,7 +288,7 @@ void select() {
         os2.tipoDeCondicion = tipocon;
     }
     string tabla = TempBuff[3];
-    Tabla *auxD = baseDeDatosActual->getT("alumnos");
+    Tabla *auxD = baseDeDatosActual->getT(tabla);
     string param = "";
     int count = 0;
     if (TempBuff[1] == "*") {

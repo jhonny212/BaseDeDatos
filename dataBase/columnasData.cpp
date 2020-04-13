@@ -34,7 +34,7 @@ void columnasData::add(columna c) {
     if (sigu == NULL) {
         NodoColumna *t = new NodoColumna();
         t->column = c;
-        t->column.tablaHash.factorVariador = (50 * size);
+        t->column.tablaHash.factorVariador = (50 );
         t->siguiente = NULL;
         sigu = t;
         valor = sigu;
@@ -45,7 +45,7 @@ void columnasData::add(columna c) {
         if (sigu->siguiente == NULL) {
             NodoColumna *t = new NodoColumna();
             t->column = c;
-            t->column.tablaHash.factorVariador = (50 * size);
+            t->column.tablaHash.factorVariador = (50 * size*2);
             t->siguiente = NULL;
             sigu->siguiente = t;
             t->column.tablaHash.actualizarInicio();
@@ -98,6 +98,7 @@ void columnasData::buscarColumna(string nameColumn, seleccion* cd, seleccion* cd
                     }
                 }
             } else {
+                cout<<" entro aca "<<endl;
                 valor->column.search(cd);
             }
         } else {

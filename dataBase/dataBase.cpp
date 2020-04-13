@@ -52,7 +52,7 @@ Tabla* dataBase::getT(string par) {
         aux = aux->siguiente;
     }
 
-}
+return NULL;}
 
 dataBase::dataBase(Tabla tb, string name) {
     valor = NULL;

@@ -22,7 +22,10 @@ BinaryThreeForInt::BinaryThreeForInt() {
     opc = 0;
     contador = 0;
     estruct = "";
-    contarNodos = 0;
+    int a;
+
+    a = rand()%100;
+    contarNodos = a*2;
     txtGraficaTmp = "";
 }
 
@@ -38,8 +41,8 @@ void BinaryThreeForInt::eliminarNodo(Nodo* param) {
     } else {
         if (param->dad != NULL) {
             param->dad = NULL;
-      }
-        delete param;
+        }
+       // delete param;
     }
     if (param->right != NULL) {
         eliminarNodo(param->right);
@@ -47,7 +50,7 @@ void BinaryThreeForInt::eliminarNodo(Nodo* param) {
         if (param->dad != NULL) {
             param->dad = NULL;
         }
-        delete param;
+       // delete param;
     }
 }
 
@@ -114,6 +117,7 @@ string BinaryThreeForInt::showIntegerThree(int opc) {
         }
         // cout << textoGrafica << "\n" << txtGraficaTmp << endl;
     }
+
     return (textoGrafica + txtGraficaTmp);
 }
 
@@ -275,6 +279,7 @@ void BinaryThreeForInt::insertarNodo(Nodo nodo) {
         detectRotation(lastInserted->dad);
     }
 
+
 }
 
 int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
@@ -336,6 +341,7 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
             if (add->left == NULL) {
                 retorno = 1;
             }
+
         } else {
             retorno = addInteger(add->right, data);
             int x = add->right->NivelDer;

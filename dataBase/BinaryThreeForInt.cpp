@@ -27,7 +27,28 @@ BinaryThreeForInt::BinaryThreeForInt() {
 }
 
 BinaryThreeForInt::~BinaryThreeForInt() {
-    //cout << raiz<<endl;
+    if (raiz != NULL) {
+        eliminarNodo(raiz);
+    }
+}
+
+void BinaryThreeForInt::eliminarNodo(Nodo* param) {
+    if (param->left != NULL) {
+        eliminarNodo(param->left);
+    } else {
+        if (param->dad != NULL) {
+            param->dad = NULL;
+      }
+        delete param;
+    }
+    if (param->right != NULL) {
+        eliminarNodo(param->right);
+    } else {
+        if (param->dad != NULL) {
+            param->dad = NULL;
+        }
+        delete param;
+    }
 }
 
 string BinaryThreeForInt::showIntegerThree(int opc) {
@@ -91,9 +112,10 @@ string BinaryThreeForInt::showIntegerThree(int opc) {
         if (raiz != NULL) {
             starPrint(raiz);
         }
-       // cout << textoGrafica << "\n" << txtGraficaTmp << endl;
+        // cout << textoGrafica << "\n" << txtGraficaTmp << endl;
     }
-return (textoGrafica+txtGraficaTmp);}
+    return (textoGrafica + txtGraficaTmp);
+}
 
 void BinaryThreeForInt::starPrint(Nodo* father) {
     if (father != NULL) {

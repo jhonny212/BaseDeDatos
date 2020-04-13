@@ -15,10 +15,6 @@
 
 
 
-/*Tabla::Tabla(columnasData c, string name){
-    columns=c;
-    nombre=name;
-}*/
 Tabla::Tabla(){
     totalD=0;
     siguiente=NULL;

@@ -32,7 +32,7 @@ public:
     void printLeft(Nodo *izq);
     void printRight(Nodo *der);
     void starPrint(Nodo *father);
-
+    void eliminarNodo(Nodo*);
     void SimpleRotationTurnLeft(Nodo *param);
     void SimpleRotationTurnRight(Nodo *param);
     void RotationLeftRight(Nodo *param);

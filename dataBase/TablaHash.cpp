@@ -23,7 +23,15 @@ TablaHash::TablaHash() {
 }
 
 TablaHash::~TablaHash() {
-
+    if (start != NULL) {
+        while (start != NULL) {
+            Table *tmp=(start+4);
+            for (int i = 0; i < 3; i++) {
+                delete (start + i);
+            }
+            start  = tmp;
+        }
+    }
 }
 
 void TablaHash::createInitialTable() {
@@ -229,7 +237,7 @@ void TablaHash::buscarData(int indice, int tipo_, string valor, seleccion* cd2) 
     Nodo *encolado = aux->href;
     Nodo *getS = aux->inicio;
     while (encolado != NULL) {
-        
+
         if (tipo_ == 1) {
             if (encolado->valorString == valor) {
                 Nodo *temporal = encolado;
@@ -531,7 +539,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
 
     factorDeCarga = datasInsert / (size * 5);
     if (factorDeCarga > 0.6) {
-        cout << "hacer rehashing" << endl;
+        makeRehashing();
     }
 
     return aux->arbolInt.lastInserted;

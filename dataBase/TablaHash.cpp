@@ -23,7 +23,7 @@ TablaHash::TablaHash() {
 }
 
 TablaHash::~TablaHash() {
-    /*if (start != NULL) {
+    if (start != NULL) {
         while (start != NULL) {
             Table *tmp=(start+4);
             for (int i = 0; i < 3; i++) {
@@ -31,7 +31,7 @@ TablaHash::~TablaHash() {
             }
             start  = tmp;
         }
-    }*/
+    }
 }
 
 void TablaHash::createInitialTable() {

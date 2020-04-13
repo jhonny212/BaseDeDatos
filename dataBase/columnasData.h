@@ -18,7 +18,7 @@
 #include "NodoColumna.h"
 #include "Nodo.h"
 #include <iostream>
-
+#include <fstream>
 using namespace std;
 
 class columnasData {

@@ -38,6 +38,5 @@ mensajes.o:		mensajes.cpp
 			g++ -c mensajes.cpp
 seleccion.o:		seleccion.cpp
 			g++ -c seleccion.cpp
-clean:			
+clean:
 			rm -rf *o dataBase
-

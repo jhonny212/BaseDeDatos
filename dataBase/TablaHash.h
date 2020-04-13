@@ -15,7 +15,6 @@
 #define TABLAHASH_H
 #include "Table.h"
 #include "Nodo.h"
-
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>

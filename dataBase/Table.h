@@ -14,7 +14,6 @@
 #ifndef TABLE_H
 #define TABLE_H
 #include "BinaryThreeForInt.h"
-
 #include "Nodo.h"
 
 class Table {

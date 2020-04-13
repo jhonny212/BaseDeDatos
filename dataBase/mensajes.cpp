@@ -66,6 +66,7 @@ int mensajes::reportes() {
     cout << "4. Cantidad de todas las columnas de todas las tablas de una base de datos" << endl;
     cout << "5. archivo log de la base de datos" << endl;
     cin>>x;
+    return x;
 }
 
 

@@ -20,121 +20,140 @@ BinaryThreeForInt::BinaryThreeForInt() {
     textoGrafica = "";
     isEmpty = false;
     opc = 0;
-
+    contador = 0;
+    estruct = "";
+    contarNodos = 0;
+    txtGraficaTmp = "";
 }
 
 BinaryThreeForInt::~BinaryThreeForInt() {
-    cout << raiz;
+    //cout << raiz<<endl;
 }
 
-void BinaryThreeForInt::showIntegerThree(int opc) {
+string BinaryThreeForInt::showIntegerThree(int opc) {
+    contador = 0;
+    txtGraficaTmp = "\n";
     if (raiz != NULL) {
-        string padre;
+        string padre = to_string(raiz->claveGenerada);
         if (opc == 1) {
             int i = raiz->getValueOfInt();
-            padre = to_string(i);
+            //padre = to_string(i);
         } else if (opc == 2) {
-            padre = raiz->valorString;
+            //padre = raiz->valorString;
         } else if (opc == 3) {
-            padre = raiz->valorChar;
+            //padre = raiz->valorChar;
         } else if (opc == 4) {
-            padre = to_string(raiz->valorDouble);
+            //padre = to_string(raiz->valorDouble);
         }
-
         if (raiz->left != NULL) {
-            string izq;
+            string izq = to_string(raiz->left->claveGenerada);
+            txtGraficaTmp += "node" + padre + " -> node" + izq + " ;";
+
             if (opc == 1) {
                 int j = raiz->left->getValueOfInt();
-                izq = to_string(j);
+                //izq = to_string(j);
 
             } else if (opc == 2) {
-                izq = raiz->left->valorString;
+                //izq = raiz->left->valorString;
             } else if (opc == 3) {
-                izq = raiz->left->valorChar;
+                //izq = raiz->left->valorChar;
             } else if (opc == 4) {
-                izq = to_string(raiz->left->valorDouble);
+                //izq = to_string(raiz->left->valorDouble);
             }
-            textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
-            //cout << padre << " -> " << izq << endl;
+
+
+            /*string count = to_string(contador + 1);
+            textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + izq + "] \n";
+            string count2 = to_string(contador);
+            textoGrafica += "node" + count2 + " -> node" + count + ";\n";*/
         }
 
         if (raiz->right != NULL) {
-            string der;
+            string der = to_string(raiz->right->claveGenerada);
+            txtGraficaTmp += "node" + padre + " -> node" + der + " ;";
 
             if (opc == 1) {
                 int k = raiz->right->getValueOfInt();
-                der = to_string(k);
+                //der = to_string(k);
 
             } else if (opc == 2) {
-                der = raiz->right->valorString;
+                //der = raiz->right->valorString;
             } else if (opc == 3) {
-                der = raiz->right->valorChar;
+                //der = raiz->right->valorChar;
             } else if (opc == 4) {
-                der = to_string(raiz->right->valorDouble);
+                //der = to_string(raiz->right->valorDouble);
             }
-            textoGrafica = textoGrafica + padre + " -> " + der + " \n";
-            //cout << padre << " -> " << der << endl;
+            /*string count = to_string(contador + 2);
+            textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + der + "] \n";
+            string count2 = to_string(contador);
+            textoGrafica += "node" + count2 + " -> node" + count + ";\n";*/
         }
         if (raiz != NULL) {
             starPrint(raiz);
         }
-
-         cout << textoGrafica << endl;
+       // cout << textoGrafica << "\n" << txtGraficaTmp << endl;
     }
-}
+return (textoGrafica+txtGraficaTmp);}
 
 void BinaryThreeForInt::starPrint(Nodo* father) {
     if (father != NULL) {
         if (father->dad != NULL) {
-            string padre;
+            string padre = to_string(father->claveGenerada);
             int opc = father->typodeSeleccion;
 
             if (opc == 1) {
                 int i = father->getValueOfInt();
-                padre = to_string(i);
+                //padre = to_string(i);
             } else if (opc == 2) {
-                padre = father->valorString;
+                //padre = father->valorString;
             } else if (opc == 3) {
-                padre = father->valorChar;
+                //padre = father->valorChar;
             } else if (opc == 4) {
-                padre = to_string(father->valorDouble);
+                //padre = to_string(father->valorDouble);
             }
-
-
             if (father->left != NULL) {
-                string izq;
+                string izq = to_string(father->left->claveGenerada);
+                txtGraficaTmp += "node" + padre + " -> node" + izq + " ; \n";
+
                 if (opc == 1) {
                     int j = father->left->getValueOfInt();
-                    izq = to_string(j);
+                    //izq = to_string(j);
 
                 } else if (opc == 2) {
-                    izq = father->left->valorString;
+                    //izq = father->left->valorString;
                 } else if (opc == 3) {
-                    izq = father->left->valorChar;
+                    //izq = father->left->valorChar;
                 } else if (opc == 4) {
-                    izq = to_string(father->left->valorDouble);
+                    //izq = to_string(father->left->valorDouble);
                 }
-                textoGrafica = textoGrafica + padre + " -> " + izq + " \n";
+                /*string count = to_string(contador + 1);
+                textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + izq + "] \n";
+                string count2 = to_string(contador);
+                textoGrafica += "node" + count2 + " -> node" + count + ";\n";*/
 
-                //cout << padre << " -> " << izq << endl;
+
             }
 
             if (father->right != NULL) {
-                string der;
+
+                string der = to_string(father->right->claveGenerada);
+                txtGraficaTmp += "node" + padre + " -> node" + der + " ; \n";
+
                 if (opc == 1) {
                     int k = father->right->getValueOfInt();
-                    der = to_string(k);
+                    //der = to_string(k);
 
                 } else if (opc == 2) {
-                    der = father->right->valorString;
+                    //der = father->right->valorString;
                 } else if (opc == 3) {
-                    der = father->right->valorChar;
+                    //der = father->right->valorChar;
                 } else if (opc == 4) {
-                    der = to_string(father->right->valorDouble);
+                    //der = to_string(father->right->valorDouble);
                 }
-                textoGrafica = textoGrafica + padre + " -> " + der + " \n";
-
-                //cout << padre << " -> " << der << endl;
+                /*string count = to_string(contador + 1);
+                textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + der + "] \n";
+                string count2 = to_string(contador);
+                textoGrafica += "node" + count2 + " -> node" + count + ";\n";*/
             }
 
         }
@@ -145,7 +164,7 @@ void BinaryThreeForInt::starPrint(Nodo* father) {
 
 void BinaryThreeForInt::printLeft(Nodo* izq) {
     if (izq != NULL) {
-        cout << izq->getValueOfInt() << endl;
+        //cout << izq->getValueOfInt() << endl;
         starPrint(izq);
     }
 }
@@ -161,29 +180,53 @@ void BinaryThreeForInt::setString(string nuevotxt) {
 }
 
 void BinaryThreeForInt::insertarNodo(Nodo nodo) {
+    contarNodos++;
+    string count;
+    string dato;
+    count = to_string(contarNodos);
+
     if (raiz == NULL) {
         switch (nodo.typodeSeleccion) {
             case 1:
                 raiz = new Nodo(nodo.getValueOfInt());
                 raiz->nombreDeColumna = nodo.nombreDeColumna;
+                raiz->claveGenerada = contarNodos;
+                dato = to_string(nodo.getValueOfInt());
+                textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
                 break;
             case 2:
                 raiz = new Nodo(nodo.valorString);
                 raiz->nombreDeColumna = nodo.nombreDeColumna;
+                raiz->claveGenerada = contarNodos;
+                dato = nodo.valorString;
+                textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
+
                 break;
             case 3:
                 raiz = new Nodo(nodo.valorChar);
                 raiz->nombreDeColumna = nodo.nombreDeColumna;
+                raiz->claveGenerada = contarNodos;
+
+                dato = nodo.valorChar;
+                textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
                 break;
             case 4:
                 raiz = new Nodo(nodo.valorDouble);
                 raiz->nombreDeColumna = nodo.nombreDeColumna;
+                raiz->claveGenerada = contarNodos;
+
+                dato = to_string(nodo.valorDouble);
+                textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
 
                 break;
         }
         lastInserted = raiz;
 
     } else {
+        contarNodos++;
         addInteger(raiz, nodo);
         if (raiz->right != NULL) {
             int x = raiz->right->NivelDer;
@@ -209,10 +252,14 @@ void BinaryThreeForInt::insertarNodo(Nodo nodo) {
         }
         detectRotation(lastInserted->dad);
     }
-  
+
 }
 
 int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
+    string count;
+    string dato;
+    count = to_string(contarNodos);
+
     int valor1 = add->valueToCompare;
     int retorno = 0;
     if (data.valueToCompare > valor1) {
@@ -221,18 +268,42 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
                 case 1:
                     add->right = new Nodo(data.getValueOfInt());
                     add->right->nombreDeColumna = data.nombreDeColumna;
+                    add->right->claveGenerada = contarNodos;
+
+                    dato = to_string(data.valorInt);
+                    textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
+
                     break;
                 case 2:
                     add->right = new Nodo(data.valorString);
                     add->right->nombreDeColumna = data.nombreDeColumna;
+                    add->right->claveGenerada = contarNodos;
+
+                    dato = data.valorString;
+                    textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
+
                     break;
                 case 3:
                     add->right = new Nodo(data.valorChar);
                     add->right->nombreDeColumna = data.nombreDeColumna;
+                    add->right->claveGenerada = contarNodos;
+
+                    dato = data.valorChar;
+                    textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
+
                     break;
                 case 4:
                     add->right = new Nodo(data.valorDouble);
                     add->right->nombreDeColumna = data.nombreDeColumna;
+                    add->right->claveGenerada = contarNodos;
+
+                    dato = to_string(data.valorDouble);
+                    textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
+
                     break;
             }
             add->right->dad = add;
@@ -262,19 +333,40 @@ int BinaryThreeForInt::addInteger(Nodo* add, Nodo data) {
                 case 1:
                     add->left = new Nodo(data.getValueOfInt());
                     add->left->nombreDeColumna = data.nombreDeColumna;
+                    add->left->claveGenerada = contarNodos;
+
+                    dato = to_string(data.valorInt);
+                    textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
                     break;
                 case 2:
 
                     add->left = new Nodo(data.valorString);
                     add->left->nombreDeColumna = data.nombreDeColumna;
+                    add->left->claveGenerada = contarNodos;
+
+                    dato = data.valorString;
+                    textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
                     break;
                 case 3:
                     add->left = new Nodo(data.valorChar);
                     add->left->nombreDeColumna = data.nombreDeColumna;
+                    add->left->claveGenerada = contarNodos;
+
+                    dato = data.valorChar;
+                    textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
+
                     break;
                 case 4:
                     add->left = new Nodo(data.valorDouble);
                     add->left->nombreDeColumna = data.nombreDeColumna;
+                    add->left->claveGenerada = contarNodos;
+
+                    dato = to_string(data.valorDouble);
+                    textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + dato + "] \n";
+
                     break;
             }
 

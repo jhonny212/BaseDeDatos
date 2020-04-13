@@ -20,9 +20,7 @@ totalData=0;
 columna::~columna() {
 }
 string columna::arbolPintado(){
-   
-    tablaHash.paintPosicion(type);
-    return "";
+    return tablaHash.paintPosicion(type,name);
 }
 int columna::getTotal(){
     cout<<" la columna  tiene un total de "<<" datos "<<endl;

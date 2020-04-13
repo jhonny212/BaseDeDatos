@@ -17,6 +17,8 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
+#include "seleccion.h"
+
 using namespace std;
 
 class BinaryThreeForInt {
@@ -26,7 +28,7 @@ public:
     virtual ~BinaryThreeForInt();
     void insertarNodo(Nodo nodo);
     int addInteger(Nodo *add, Nodo data);
-    void showIntegerThree(int);
+    string showIntegerThree(int);
     void printLeft(Nodo *izq);
     void printRight(Nodo *der);
     void starPrint(Nodo *father);
@@ -41,9 +43,13 @@ public:
     int opc;
     int TamanoArbol;
     string textoGrafica;
+    string txtGraficaTmp;
     Nodo *lastInserted;
     Nodo *raiz = NULL;
     bool isEmpty;
+    int contador;
+    string estruct;
+    int contarNodos;
     void setString(string nuevotxt);
 private:
 

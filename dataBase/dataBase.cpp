@@ -69,7 +69,6 @@ void dataBase::cantOfColumns() {
     Tabla *aux = valor;
     int tam = 0;
     int total = 0;
-    cout << "\n \n " << endl;
     for (int i = 0; i < tamTabla; i++) {
         tam = aux->columns.size;
         cout << "La tabla " << aux->nombre << " contiene " << tam << " columnas" << endl;
@@ -81,7 +80,6 @@ void dataBase::cantOfColumns() {
 
 void dataBase::equalsCantTypeRowsForATable(string param) {
     Tabla *aux = valor;
-    cout << "\n \n " << endl;
     for (int i = 0; i < tamTabla; i++) {
         if (aux->nombre == param) {
             aux->columns.types();
@@ -92,15 +90,28 @@ void dataBase::equalsCantTypeRowsForATable(string param) {
     }
 }
 
+int dataBase::getTotal() {
+    int total = 0;
+    if (valor != NULL) {
+        Tabla *aux = valor;
+        for (int i = 0; i < tamTabla; i++) {
+            total += aux->columns.count;
+            aux = aux->siguiente;
+        }
+    }
+    return total;
+}
+
 void dataBase::totalDeDatos() {
     int total = 0;
     cout << "\n \n -------------------------------------------------------" << endl;
     if (valor != NULL) {
         Tabla *aux = valor;
         for (int i = 0; i < tamTabla; i++) {
-            aux->columns.dataForColumns();
+            total += aux->columns.dataForColumns();
             aux = aux->siguiente;
         }
+        cout << "----------------total en la base de datos--------------------------" << endl;
         cout << " la base de datos tiene " << total << " datos ingresados " << endl;
     }
 }
@@ -111,23 +122,23 @@ string dataBase::getName() {
 }
 
 void dataBase::addTable(columnasData tb, string name) {
-    if(getT(name)==NULL){
-    if (valor == NULL) {
-        sigu = new Tabla();
-        sigu->columns = tb;
-        sigu->nombre = name;
-        valor = sigu;
-        tamTabla += 1;
+    if (getT(name) == NULL) {
+        if (valor == NULL) {
+            sigu = new Tabla();
+            sigu->columns = tb;
+            sigu->nombre = name;
+            valor = sigu;
+            tamTabla += 1;
 
+        } else {
+            sigu->siguiente = new Tabla();
+            sigu->siguiente->columns = tb;
+            sigu->siguiente->nombre = name;
+            sigu = sigu->siguiente;
+            tamTabla += 1;
+        }
     } else {
-        sigu->siguiente = new Tabla();
-        sigu->siguiente->columns = tb;
-        sigu->siguiente->nombre = name;
-        sigu = sigu->siguiente;
-        tamTabla += 1;
-    }
-    }else{
-        cout<<"\n la tabla ya existe, no puede crear tablas iguales "<<endl;
+        cout << "\n la tabla ya existe, no puede crear tablas iguales " << endl;
     }
 }
 

@@ -21,6 +21,7 @@
 #include <iostream>
 #include "seleccion.h"
 #include "ArbolBinario.h"
+#include "NodoColumnaAux.h"
 
 
 using namespace std;
@@ -36,7 +37,7 @@ public:
     void actualizarInicio();
     string tipo;
     void searchData(string,seleccion* cd,bool);
-    void paintPosicion(string);
+    string paintPosicion(string,string);
     virtual ~TablaHash();
     Table *start = NULL;
     Table *next = NULL;
@@ -44,6 +45,7 @@ public:
     Table d[1];
     //Table *f;
     int size;
+    int factorVariador;
 private:
     double factorDeCarga;
     int datasInsert;

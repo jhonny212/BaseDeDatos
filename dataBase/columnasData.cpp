@@ -12,6 +12,9 @@
  */
 
 #include "columnasData.h"
+#include <iostream>
+#include <fstream>
+
 using namespace std;
 
 columnasData::columnasData() {
@@ -32,6 +35,7 @@ void columnasData::add(columna c) {
     if (sigu == NULL) {
         NodoColumna *t = new NodoColumna();
         t->column = c;
+        t->column.tablaHash.factorVariador = (50 * size);
         t->siguiente = NULL;
         sigu = t;
         valor = sigu;
@@ -42,6 +46,7 @@ void columnasData::add(columna c) {
         if (sigu->siguiente == NULL) {
             NodoColumna *t = new NodoColumna();
             t->column = c;
+            t->column.tablaHash.factorVariador = (50 * size);
             t->siguiente = NULL;
             sigu->siguiente = t;
             t->column.tablaHash.actualizarInicio();
@@ -100,13 +105,24 @@ void columnasData::buscarColumna(string nameColumn, seleccion* cd) {
 }
 
 void columnasData::createDiagram(string nameTable) {
+    string txt = "";
     if (valor != NULL) {
         NodoColumna *aux = valor;
         while (aux != NULL) {
-            aux->column.arbolPintado();
+            txt += aux->column.arbolPintado();
+            txt += "\n";
             aux = aux->siguiente;
         }
     }
+    ofstream ficheroSalida;
+    ficheroSalida.open("ficheroTexto.txt");
+    ficheroSalida << "digraph G {";
+    ficheroSalida << txt;
+    ficheroSalida << "}";
+    ficheroSalida.close();
+    system("dot -Tpng ficheroTexto.txt -o diagrama.png");
+    system("eog diagrama.png");
+
 }
 
 void columnasData::types() {
@@ -121,12 +137,27 @@ void columnasData::types() {
         string tmp = aux->column.type;
         if (tmp == "string") {
             forstring += (aux->column.tablaHash.size * 5);
+            cout << " Columna: " << aux->column.name << endl;
+            cout << "     No. Filas : " << aux->column.tablaHash.size * 5 << endl;
+            cout << "           tipo: string" << endl;
+
         } else if (tmp == "char") {
             forchar += (aux->column.tablaHash.size * 5);
+            cout << " Columna: " << aux->column.name << endl;
+            cout << "     No. Filas : " << aux->column.tablaHash.size * 5 << endl;
+            cout << "           tipo: char" << endl;
+
         } else if (tmp == "int") {
             forint += (aux->column.tablaHash.size * 5);
+            cout << " Columna: " << aux->column.name << endl;
+            cout << "     No. Filas : " << aux->column.tablaHash.size * 5 << endl;
+            cout << "           tipo: int" << endl;
+
         } else if (tmp == "double") {
             fordouble += (aux->column.tablaHash.size * 5);
+            cout << " Columna: " << aux->column.name << endl;
+            cout << "     No. Filas : " << aux->column.tablaHash.size * 5 << endl;
+            cout << "           tipo: double" << endl;
         }
         aux = aux->siguiente;
     }
@@ -140,11 +171,16 @@ void columnasData::types() {
 
 void columnasData::actualizarDato() {
     fc = 0;
+
 }
 
-void columnasData::dataForColumns() {
-    cout << " ostia " << count << endl;
-
+int columnasData::dataForColumns() {
+    NodoColumna *aux = valor;
+    for (int i = 0; i < size; i++) {
+        cout << " la columna " << aux->column.name << " tiene un total de " << aux->column.totalData << " datos insertados \n";
+        aux = aux->siguiente;
+    }
+    return count;
 }
 
 string columnasData::get(int x) {

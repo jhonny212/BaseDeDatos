@@ -38,6 +38,7 @@ Nodo::Nodo(int data) {
     encolado = NULL;
     nodoSiguiente = NULL;
     nodoPrevio = NULL;
+
 }
 
 Nodo::Nodo(string data) {

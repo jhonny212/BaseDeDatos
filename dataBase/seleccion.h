@@ -21,6 +21,8 @@ using namespace std;
 class seleccion {
 public:
     seleccion();
+   
+    
     seleccion(const seleccion& orig);
     virtual ~seleccion();
     void addC(string simple);

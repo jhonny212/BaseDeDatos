@@ -14,14 +14,25 @@
 #ifndef NODOCOLUMNAAUX_H
 #define NODOCOLUMNAAUX_H
 #include <iostream>
+#include <string>
+
 using namespace std;
 class NodoColumnaAux {
 public:
     NodoColumnaAux();
+    NodoColumnaAux(int data);
+    /*
+    NodoColumnaAux(string data);
+    NodoColumnaAux(char data);
+    NodoColumnaAux(double data);*/
+    
+    
     NodoColumnaAux(const NodoColumnaAux& orig);
     virtual ~NodoColumnaAux();
     NodoColumnaAux *siguiente;
     string name;
+    string valor;
+    int valor_;
 private:
 
 };

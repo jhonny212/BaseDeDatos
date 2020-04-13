@@ -51,6 +51,7 @@ public:
     char valorChar;
     double valorDouble;
     int typodeSeleccion;
+    int claveGenerada;
 private:
 
 

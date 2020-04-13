@@ -29,6 +29,7 @@ public:
     void add(string);
     dataBase* get(string);
     bool valid(string);
+    int cantDatos();
 private:
 
 };

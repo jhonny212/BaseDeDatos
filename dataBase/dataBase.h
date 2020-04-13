@@ -47,6 +47,7 @@ public:
     Tabla *tablaAux;
     dataBase *siguienteBaseDeDatos;
     string Name;
+    int getTotal();
 private:
 
     Tabla *sigu;

@@ -36,9 +36,26 @@ void Data::add(string s) {
             siguienteBaseDeDatos->siguienteBaseDeDatos = new dataBase(s);
             siguienteBaseDeDatos = siguienteBaseDeDatos->siguienteBaseDeDatos;
         }
-    }else{
-        cout<<" la base de datos ya existe "<<endl;
+    } else {
+        cout << " la base de datos ya existe " << endl;
     }
+}
+
+int Data::cantDatos() {
+    int total = 0;
+    if (inicial != NULL) {
+        dataBase *aux = inicial;
+        while (aux != NULL) {
+            int tmp = aux->getTotal();
+            cout << " base de datos " << aux->nombreDeLaBaseDeDatos << " tiene un total de " << tmp << " datos ingresados" << endl;
+            total += tmp;
+            aux = aux->siguienteBaseDeDatos;
+        }
+    } else {
+        cout << " no hay base de datos " << endl;
+
+    }
+    return total;
 }
 
 dataBase* Data::get(string s) {
@@ -57,7 +74,8 @@ dataBase* Data::get(string s) {
         cout << " no hay base de datos " << endl;
 
     }
-return NULL;}
+    return NULL;
+}
 
 bool Data::valid(string name) {
     if (inicial != NULL) {

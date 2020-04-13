@@ -14,7 +14,7 @@
 #include "NodoColumnaAux.h"
 
 NodoColumnaAux::NodoColumnaAux() {
-    siguiente=NULL;
+    siguiente = NULL;
 }
 
 NodoColumnaAux::NodoColumnaAux(const NodoColumnaAux& orig) {
@@ -23,3 +23,20 @@ NodoColumnaAux::NodoColumnaAux(const NodoColumnaAux& orig) {
 NodoColumnaAux::~NodoColumnaAux() {
 }
 
+NodoColumnaAux::NodoColumnaAux(int data) {
+    valor_ = data;
+}
+
+
+/*
+NodoColumnaAux::NodoColumnaAux(string data) {
+    valor=data;
+}
+
+NodoColumnaAux::NodoColumnaAux(char data) {
+    valor=data;
+}
+
+NodoColumnaAux::NodoColumnaAux(double data) {
+    valor = to_string(data);
+}*/

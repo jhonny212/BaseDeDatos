@@ -34,7 +34,7 @@ public:
     void actualizarColumnas(string nameColumn, string);
     void createDiagram(string nameTable);
     void types();
-    void dataForColumns();
+    int dataForColumns();
     void actualizarDato();
     int size;
     int count;

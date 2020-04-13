@@ -81,30 +81,7 @@ int main() {
 }
 
 void createDatabase() {
-    /*string Palabra = "create table alumnos ( nombre int , edad int , apellido string );";
-    cout << "Create table..." << endl;
-    cin>> Palabra;
-    getline(cin, Palabra);
-    vector<string> TempBuff(0);
-    int TotalVector;
-    split(Palabra, *" ", TempBuff, TotalVector);
-    string nameD = TempBuff[2];
-    columnasData cd = columnasData();
-    for (int i = 4; i < TotalVector - 1; i += 3) {
-        cout << "creando columna" << endl;
-        columna c = columna();
-        c.name = TempBuff[i];
-        c.type = TempBuff[i + 1];
-        c.totalData = 0;
-        cd.add(c);
-    }
-    Tabla tab = Tabla();
-    tab.columns = cd;
-    tab.nombre = nameD;
-    bs = dataBase(tab, name);
-    bs.nombreDeLaBaseDeDatos = name;
-    bs.tabla.columns.count = 0;
-    bs.valor = &(bs.tabla);*/
+
     string Palabra;
     cout << "Create data base..." << endl;
     cin>> Palabra;
@@ -118,30 +95,42 @@ void createDatabase() {
 }
 
 void reportes(int opc) {
+    string param;
+    int total=0;
     switch (opc) {
         case 1:
-
+            cout << "******************************************" << endl;
+            total=controlDeBaseDeDatos.cantDatos();
+            cout<<" en total hay "<<total<<" datos ingresados "<<endl;
+            cout << "******************************************" << endl;
             break;
         case 2:
-            bs.totalDeDatos();
+            baseDeDatosActual->totalDeDatos();
             break;
         case 3:
-            bs.equalsCantTypeRowsForATable("alumnos");
+            cout << "*************Ingrese la tabla ****************" << endl;
+            cin>>param;
+            baseDeDatosActual->equalsCantTypeRowsForATable(param);
+            cout << "*************************************" << endl;
+
             break;
         case 4:
-            bs.cantOfColumns();
+            cout << "*************************************" << endl;
+            baseDeDatosActual->cantOfColumns();
+            cout << "*************************************" << endl;
             break;
         case 5:
+            cout << " opcion no valida salga al primer menu " << endl;
             break;
     }
 }
 
 void createTable() {
     //create table alumnos ( nombre int , edad int , apellido string );
-    string Palabra;
+    string Palabra = "create table alumnos ( nombre int , edad int , apellido string , joder string );";
     cout << "Create table..." << endl;
-    cin>> Palabra;
-    getline(cin, Palabra);
+    //cin>> Palabra;
+    // getline(cin, Palabra);
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -161,7 +150,7 @@ void createTable() {
 void menuSeleccion() {
     mensajes msj = mensajes();
     int opc = 0;
-
+    int opc2 = 0;
     while (opc != 5) {
         opc = msj.seleccion();
         switch (opc) {
@@ -170,6 +159,8 @@ void menuSeleccion() {
                 querys(opc);
                 break;
             case 2:
+                opc2 = msj.reportes();
+                reportes(opc2);
                 break;
             case 3:
                 break;
@@ -239,9 +230,9 @@ void insertar() {
         }
     }*/
 
-    string Palabra;
-    cin>> Palabra;
-    getline(cin, Palabra);
+    string Palabra = "insert into alumnos ( nombre , edad , apellido , joder ) VALUES ( 20 , 26 , juan , lopez );";
+    //cin>> Palabra;
+    // getline(cin, Palabra);
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -276,10 +267,10 @@ void insertar() {
 
 void select() {
     seleccion os = seleccion();
-    string Palabra;
+    string Palabra = "select *  from alumnos ;";
     //select *  from alumnos ;
-    cin>> Palabra;
-    getline(cin, Palabra);
+    //cin>> Palabra;
+    //getline(cin, Palabra);
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -296,11 +287,11 @@ void select() {
             param = "*";
             string insertData;
             os.addC("*");
-            for (int i = 0; i < auxD->columns.size + 1; i++) {
+            for (int i = 1; i < auxD->columns.size + 1; i++) {
                 insertData = auxD->columns.get(i);
                 os.addC(insertData);
             }
-            auxD->columns.buscarColumna("*", &os);
+            //auxD->columns.buscarColumna("*", &os);
             auxD->columns.createDiagram(auxD->nombre);
         } else {
             for (int i = 1; i < TotalVector; i++) {

@@ -142,6 +142,9 @@ void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
                     }
                     bool v = true;
                     int k = 0;
+                    if (isAll) {
+                        k = 1;
+                    }
                     while (v) {
                         string nam = cd->get(k);
                         Nodo *aux = getStart;
@@ -150,23 +153,23 @@ void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
                         while (v) {
                             int opc = aux->typodeSeleccion;
 
-                            if (nam == aux->nombreDeColumna or isAll) {
+                            if (nam == aux->nombreDeColumna) {
                                 tmDatos++;
                                 if (opc == 1) {
                                     valor = to_string(aux->valorInt);
                                     datosGet.addC(valor);
-                                    //cout << aux->valorInt << "|";
+                                    cout << "|" << aux->valorInt << "      |";
 
                                 } else if (opc == 2) {
-                                    //cout << aux->valorString << "|";
+                                    cout << "|" << aux->valorString << "      |";
                                     valor = aux->valorString;
                                     datosGet.addC(valor);
                                 } else if (opc == 3) {
-                                    //cout << aux->valorChar << "|";
+                                    cout << "|" << aux->valorChar << "      |";
                                     valor = aux->valorChar;
                                     datosGet.addC(valor);
                                 } else if (opc == 4) {
-                                    //cout << aux->valorDouble << "|";
+                                    cout << "|" << aux->valorDouble << "      |";
                                     valor = to_string(aux->valorDouble);
                                     datosGet.addC(valor);
 
@@ -199,7 +202,7 @@ void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
         }
         tmp = tmp->tablaSiguiente;
     }
-    int config = 0;
+    /*int config = 0;
     if (isAll) {
         config = 1;
     }
@@ -214,7 +217,7 @@ void TablaHash::searchData(string column, seleccion* cd, bool isAll) {
             cout << "|";
         }
         cout << "\n" << endl;
-    }
+    }*/
     cout << " ------------------------------------------------------------------------" << endl;
 }
 

@@ -32,7 +32,7 @@ public:
     NodoColumna *sigu;
     Nodo* insertarEnColumna(string nameColumn, string);
     void actualizarColumnas(string nameColumn, string);
-    void createDiagram(string nameTable);
+    void createDiagram(string nameTable,seleccion* cd);
     void types();
     int dataForColumns();
     void actualizarDato();

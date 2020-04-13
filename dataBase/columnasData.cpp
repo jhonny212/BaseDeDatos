@@ -104,15 +104,25 @@ void columnasData::buscarColumna(string nameColumn, seleccion* cd) {
     }
 }
 
-void columnasData::createDiagram(string nameTable) {
+void columnasData::createDiagram(string nameTable, seleccion* cd) {
     string txt = "";
+    string tmP = "";
     if (valor != NULL) {
-        NodoColumna *aux = valor;
-        while (aux != NULL) {
-            txt += aux->column.arbolPintado();
-            txt += "\n";
-            aux = aux->siguiente;
+        for (int i = 0; i < cd->tm; i++) {
+            tmP = cd->get(i);
+            NodoColumna *aux = valor;
+            while (aux != NULL) {
+                if (tmP == aux->column.name) {
+                    txt += aux->column.arbolPintado();
+                    txt += "\n";
+                    break;
+                }
+                aux = aux->siguiente;
+            }
+
         }
+
+
     }
     ofstream ficheroSalida;
     ficheroSalida.open("ficheroTexto.txt");

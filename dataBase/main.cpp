@@ -267,7 +267,7 @@ void insertar() {
 
 void select() {
     seleccion os = seleccion();
-    string Palabra = "select *  from alumnos ;";
+    string Palabra = "select * from alumnos ;";
     //select *  from alumnos ;
     //cin>> Palabra;
     //getline(cin, Palabra);
@@ -291,8 +291,8 @@ void select() {
                 insertData = auxD->columns.get(i);
                 os.addC(insertData);
             }
-            //auxD->columns.buscarColumna("*", &os);
-            auxD->columns.createDiagram(auxD->nombre);
+            auxD->columns.buscarColumna("*", &os);
+            auxD->columns.createDiagram(auxD->nombre,&os);
         } else {
             for (int i = 1; i < TotalVector; i++) {
                 if (TempBuff[i] != "FROM" && TempBuff[i] != "from") {
@@ -308,6 +308,7 @@ void select() {
                 }
             }
             auxD->columns.buscarColumna(param, &os);
+            auxD->columns.createDiagram(auxD->nombre,&os);
         }
     }
 }

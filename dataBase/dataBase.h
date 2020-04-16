@@ -47,6 +47,7 @@ public:
     Tabla *tablaAux;
     dataBase *siguienteBaseDeDatos;
     string Name;
+    string archivoLog;
     int getTotal();
 private:
 

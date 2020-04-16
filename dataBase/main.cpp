@@ -28,7 +28,9 @@
 #include "hashFunctions.h"
 #include "seleccion.h"
 #include "Data.h"
-
+#include <ctime>
+#include <iomanip>
+#include <sstream>
 
 using namespace std;
 void querys(int);
@@ -41,6 +43,7 @@ void addColumn();
 void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector);
 int Cuenta(string s, const char Separadorr, int &TotalChars);
 void createTable();
+string getTime();
 dataBase bs;
 dataBase *baseDeDatosActual;
 
@@ -49,6 +52,7 @@ Data controlDeBaseDeDatos;
 string nombreDeBase;
 
 int main() {
+
     controlDeBaseDeDatos = Data();
     mensajes msj = mensajes();
     msj.welcome();
@@ -78,11 +82,22 @@ int main() {
                 break;
         }
     }
+}
 
+string getTime() {
+    string tmp = "";
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%d-%m-%Y %H-%M-%S");
+    auto str = oss.str();
+
+    tmp = str;
+    return tmp;
 }
 
 void createDatabase() {
-
     string Palabra;
     cout << "Create data base..." << endl;
     cin>> Palabra;
@@ -121,17 +136,21 @@ void reportes(int opc) {
             cout << "*************************************" << endl;
             break;
         case 5:
-            cout << " opcion no valida salga al primer menu " << endl;
+            cout << "***************LOG*******************" << endl;
+            cout << "Base de dato: " << baseDeDatosActual->nombreDeLaBaseDeDatos << endl;
+            cout << baseDeDatosActual->archivoLog << endl;
             break;
     }
 }
 
 void createTable() {
-    //create table alumnos ( nombre int , edad int , apellido string );
-    string Palabra;
+    string Palabra="c t a ( n string );";
     cout << "Create table..." << endl;
-    cin>> Palabra;
-    getline(cin, Palabra);
+    //cin>> Palabra;
+    //getline(cin, Palabra);
+    baseDeDatosActual->archivoLog += "Creacion de tabla \n";
+    baseDeDatosActual->archivoLog += "    " + Palabra + " fecha: " + getTime() + "\n";
+
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -190,6 +209,9 @@ void addColumn() {
     cin>>col;
     cout << " ingrese el tipo de dato" << endl;
     cin>>typ;
+    baseDeDatosActual->archivoLog += "Agregando columna a tabla " + auxD->nombre + " \n";
+    baseDeDatosActual->archivoLog += "    Columna: " + col + " Tipo: " + typ + "\n";
+
     columna c = columna();
     c.name = col;
     c.type = typ;
@@ -214,10 +236,12 @@ void querys(int opc) {
 void insertar() {
     Nodo *tmP = NULL;
     Nodo *tmP2 = NULL;
-    // "insert into alumnos ( nombre , edad , apellido , joder ) VALUES ( 20 , 26 , juan , lopez );";
-    string Palabra;
-    cin>> Palabra;
-    getline(cin, Palabra);
+    string Palabra="i i a ( n ) VALUES ( j );";
+    //cin>> Palabra;
+    //getline(cin, Palabra);
+    baseDeDatosActual->archivoLog += "Insert: \n";
+    baseDeDatosActual->archivoLog += "   " + Palabra + " Fecha: " + getTime() + " \n";
+
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -254,10 +278,14 @@ void select() {
     seleccion os2 = seleccion();
 
     bool v = false;
-    //= "select * from alumnos WHERE joder = lopez ;";
-    string Palabra;
-    cin>> Palabra;
-    getline(cin, Palabra);
+    string Palabra="s * f a ;";
+    //cin>> Palabra;
+
+   // getline(cin, Palabra);
+    baseDeDatosActual->archivoLog += "Select : \n";
+
+    baseDeDatosActual->archivoLog += "   " + Palabra + " Fecha: " + getTime();
+
     vector<string> TempBuff(0);
     int TotalVector;
     split(Palabra, *" ", TempBuff, TotalVector);
@@ -299,7 +327,7 @@ void select() {
             insertData = auxD->columns.get(i);
             os.addC(insertData);
         }
-        auxD->columns.buscarColumna("*", &os, &os2, v);
+        //auxD->columns.buscarColumna("*", &os, &os2, v);
         if (!v) {
             auxD->columns.createDiagram(auxD->nombre, &os);
         }

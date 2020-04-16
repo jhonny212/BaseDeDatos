@@ -31,7 +31,7 @@ public:
     void createInitialTable();
     void makeRehashing();
     int getSize();
-    Nodo* insertData(int indice, int tipo_, string valor,string);
+    Nodo* insertData(int indice, int tipo_, string valor,string,int);
     void buscarData(int indice, int tipo_, string valor,seleccion* cd2);
     
     void actualizarInicio();
@@ -45,6 +45,7 @@ public:
     Table *next = NULL;
     Table array[5];
     Table d[1];
+    
     //Table *f;
     int size;
     int factorVariador;

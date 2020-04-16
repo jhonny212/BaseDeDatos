@@ -22,6 +22,7 @@ columnasData::columnasData() {
     size = 0;
     count = 0;
     fc = 0;
+    numDeDatos=0;
 
 }
 
@@ -62,6 +63,7 @@ Nodo* columnasData::insertarEnColumna(string nameColumn, string valorRecibido) {
         NodoColumna *aux = valor;
         for (int i = 0; i < size; i++) {
             if (aux->column.name == nameColumn) {
+                aux->column.numeroOfNodo=(count+1);
                 aux->column.insertarDato(valorRecibido);
                 count += 1;
                 return aux->column.ultimo;

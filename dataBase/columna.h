@@ -44,6 +44,7 @@ public:
     string arbolPintado();
     int getTotal();
     int totalData;
+    int numeroOfNodo;
 private:
 
 

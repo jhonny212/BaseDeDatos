@@ -40,6 +40,7 @@ public:
     int size;
     int count;
     int fc;
+    int numDeDatos;
 private:
 
 };

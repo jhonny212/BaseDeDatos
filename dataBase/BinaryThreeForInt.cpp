@@ -24,14 +24,14 @@ BinaryThreeForInt::BinaryThreeForInt() {
     estruct = "";
     int a;
 
-    a = rand()%100;
-    contarNodos = a*2;
+    a = rand() % 100;
+    contarNodos = a * 2;
     txtGraficaTmp = "";
 }
 
 BinaryThreeForInt::~BinaryThreeForInt() {
     if (raiz != NULL) {
-        eliminarNodo(raiz);
+        //eliminarNodo(raiz);
     }
 }
 
@@ -39,19 +39,14 @@ void BinaryThreeForInt::eliminarNodo(Nodo* param) {
     if (param->left != NULL) {
         eliminarNodo(param->left);
     } else {
-        if (param->dad != NULL) {
-            param->dad = NULL;
-        }
-       // delete param;
-    }
+        delete param->left;
+   }
     if (param->right != NULL) {
         eliminarNodo(param->right);
     } else {
-        if (param->dad != NULL) {
-            param->dad = NULL;
-        }
-       // delete param;
+        delete param->right;
     }
+    delete param;
 }
 
 string BinaryThreeForInt::showIntegerThree(int opc) {
@@ -59,127 +54,44 @@ string BinaryThreeForInt::showIntegerThree(int opc) {
     txtGraficaTmp = "\n";
     if (raiz != NULL) {
         string padre = to_string(raiz->claveGenerada);
-        if (opc == 1) {
-            int i = raiz->getValueOfInt();
-            //padre = to_string(i);
-        } else if (opc == 2) {
-            //padre = raiz->valorString;
-        } else if (opc == 3) {
-            //padre = raiz->valorChar;
-        } else if (opc == 4) {
-            //padre = to_string(raiz->valorDouble);
-        }
+        
         if (raiz->left != NULL) {
             string izq = to_string(raiz->left->claveGenerada);
             txtGraficaTmp += "node" + padre + " -> node" + izq + " ;";
 
-            if (opc == 1) {
-                int j = raiz->left->getValueOfInt();
-                //izq = to_string(j);
-
-            } else if (opc == 2) {
-                //izq = raiz->left->valorString;
-            } else if (opc == 3) {
-                //izq = raiz->left->valorChar;
-            } else if (opc == 4) {
-                //izq = to_string(raiz->left->valorDouble);
-            }
-
-
-            /*string count = to_string(contador + 1);
-            textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + izq + "] \n";
-            string count2 = to_string(contador);
-            textoGrafica += "node" + count2 + " -> node" + count + ";\n";*/
+            
         }
 
         if (raiz->right != NULL) {
             string der = to_string(raiz->right->claveGenerada);
             txtGraficaTmp += "node" + padre + " -> node" + der + " ;";
-
-            if (opc == 1) {
-                int k = raiz->right->getValueOfInt();
-                //der = to_string(k);
-
-            } else if (opc == 2) {
-                //der = raiz->right->valorString;
-            } else if (opc == 3) {
-                //der = raiz->right->valorChar;
-            } else if (opc == 4) {
-                //der = to_string(raiz->right->valorDouble);
-            }
-            /*string count = to_string(contador + 2);
-            textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + der + "] \n";
-            string count2 = to_string(contador);
-            textoGrafica += "node" + count2 + " -> node" + count + ";\n";*/
         }
         if (raiz != NULL) {
             starPrint(raiz);
         }
-        // cout << textoGrafica << "\n" << txtGraficaTmp << endl;
+
     }
 
     return (textoGrafica + txtGraficaTmp);
 }
 
 void BinaryThreeForInt::starPrint(Nodo* father) {
+
     if (father != NULL) {
         if (father->dad != NULL) {
             string padre = to_string(father->claveGenerada);
-            int opc = father->typodeSeleccion;
 
-            if (opc == 1) {
-                int i = father->getValueOfInt();
-                //padre = to_string(i);
-            } else if (opc == 2) {
-                //padre = father->valorString;
-            } else if (opc == 3) {
-                //padre = father->valorChar;
-            } else if (opc == 4) {
-                //padre = to_string(father->valorDouble);
-            }
             if (father->left != NULL) {
                 string izq = to_string(father->left->claveGenerada);
                 txtGraficaTmp += "node" + padre + " -> node" + izq + " ; \n";
-
-                if (opc == 1) {
-                    int j = father->left->getValueOfInt();
-                    //izq = to_string(j);
-
-                } else if (opc == 2) {
-                    //izq = father->left->valorString;
-                } else if (opc == 3) {
-                    //izq = father->left->valorChar;
-                } else if (opc == 4) {
-                    //izq = to_string(father->left->valorDouble);
-                }
-                /*string count = to_string(contador + 1);
-                textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + izq + "] \n";
-                string count2 = to_string(contador);
-                textoGrafica += "node" + count2 + " -> node" + count + ";\n";*/
 
 
             }
 
             if (father->right != NULL) {
-
                 string der = to_string(father->right->claveGenerada);
                 txtGraficaTmp += "node" + padre + " -> node" + der + " ; \n";
 
-                if (opc == 1) {
-                    int k = father->right->getValueOfInt();
-                    //der = to_string(k);
-
-                } else if (opc == 2) {
-                    //der = father->right->valorString;
-                } else if (opc == 3) {
-                    //der = father->right->valorChar;
-                } else if (opc == 4) {
-                    //der = to_string(father->right->valorDouble);
-                }
-                /*string count = to_string(contador + 1);
-                textoGrafica += "node" + count + " [fillcolor=yellow, style=\"rounded,filled\", shape=circle, label=" + der + "] \n";
-                string count2 = to_string(contador);
-                textoGrafica += "node" + count2 + " -> node" + count + ";\n";*/
             }
 
         }
@@ -190,7 +102,6 @@ void BinaryThreeForInt::starPrint(Nodo* father) {
 
 void BinaryThreeForInt::printLeft(Nodo* izq) {
     if (izq != NULL) {
-        //cout << izq->getValueOfInt() << endl;
         starPrint(izq);
     }
 }

@@ -29,6 +29,7 @@ public:
     int size;
     BinaryThreeForInt arbolInt;
     Nodo *href;
+    Table *contenido;
     bool bandera;
 private:
     int factroDeCarga;

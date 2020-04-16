@@ -14,6 +14,7 @@
 #include "dataBase.h"
 
 dataBase::dataBase() {
+    archivoLog="";
 }
 
 dataBase::dataBase(string s) {
@@ -23,6 +24,7 @@ dataBase::dataBase(string s) {
     sigu = NULL;
     tamTabla = 0;
     tablaAux = NULL;
+    archivoLog="";
 }
 
 dataBase::~dataBase() {

@@ -15,6 +15,7 @@
 
 columna::columna() {
     totalData = 0;
+    numeroOfNodo=0;
 }
 
 columna::~columna() {
@@ -59,26 +60,27 @@ void columna::insertarDato(string dato) {
         int clave = getIdForString(dato);
         int index = getIndex(clave, tablaHash.getSize());
 
-        ultimo = tablaHash.insertData(index, 1, dato, name);
+        ultimo = tablaHash.insertData(index, 1, dato, name,numeroOfNodo);
     } else if (type == "char") {
         hashFunctions t = hashFunctions();
         char char_array[1];
         strcpy(char_array, dato.c_str());
         int clave = t.getIdForChar(char_array[0]);
         int index = t.getIndex(clave, tablaHash.getSize());
-        ultimo = tablaHash.insertData(index, 2, dato, name);
+        cout<<" llego  hasta aca "<<endl;
+        ultimo = tablaHash.insertData(index, 2, dato, name,numeroOfNodo);
     } else if (type == "int") {
         int i = std::stoi(dato);
         int clave = getIdForInt(dato, i);
         int index = getIndex(clave, tablaHash.getSize());
-        ultimo = tablaHash.insertData(index, 3, dato, name);
+        ultimo = tablaHash.insertData(index, 3, dato, name,numeroOfNodo);
 
     } else if (type == "double") {
         hashFunctions t = hashFunctions();
         double i = atof(dato.c_str());
         int clave = t.getIdForDouble(i);
         int index = t.getIndex(clave, tablaHash.getSize());
-        ultimo = tablaHash.insertData(index, 4, dato, name);
+        ultimo = tablaHash.insertData(index, 4, dato, name,numeroOfNodo);
 
     }
     totalData += 1;

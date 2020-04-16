@@ -31,7 +31,7 @@ BinaryThreeForInt::BinaryThreeForInt() {
 
 BinaryThreeForInt::~BinaryThreeForInt() {
     if (raiz != NULL) {
-        //eliminarNodo(raiz);
+        eliminarNodo(raiz);
     }
 }
 
@@ -46,7 +46,7 @@ void BinaryThreeForInt::eliminarNodo(Nodo* param) {
     } else {
         delete param->right;
     }
-    delete param;
+   // delete param;
 }
 
 string BinaryThreeForInt::showIntegerThree(int opc) {

@@ -88,8 +88,10 @@ string TablaHash::paintPosicion(string x, string paramname) {
             txtAux += "<f" + key + "> " + key + " |";
             
             if ((tmp + i)->arbolInt.raiz != NULL) {
-
                 t = *(tmp + i);
+                
+               
+                
                 if (x == "string") {
                     getpaint += ((tmp + i)->arbolInt.showIntegerThree(2));
                     int aux = ((tmp + i)->arbolInt.raiz->claveGenerada);
@@ -123,11 +125,12 @@ string TablaHash::paintPosicion(string x, string paramname) {
             }
             cont++;
         }
-        /*if ((start)->tablaSiguiente != NULL) {
+        /*if ((tmp)->tablaSiguiente != NULL) {
             (tmp) = (tmp->tablaSiguiente);
           
         } else {
             cout << " vacio " << endl;
+            break;
         }*/
 
     }
@@ -472,7 +475,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                 strcpy(char_array, valor.c_str());
                 nodoSave = Nodo(char_array[0]);
                 nodoSave.nombreDeColumna = nombreColumna;
-                aux->arbolInt.contarNodos = numeroOfNodo;
+                aux->arbolInt.contarNodos += numeroOfNodo;
                 if (aux->arbolInt.raiz == NULL) {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
@@ -498,7 +501,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                 int k = stoi(valor);
                 nodoSave = Nodo(k);
                 nodoSave.nombreDeColumna = nombreColumna;
-                aux->arbolInt.contarNodos = numeroOfNodo;
+                aux->arbolInt.contarNodos += numeroOfNodo;
                 if (aux->arbolInt.raiz == NULL) {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
@@ -523,7 +526,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
                 double j = atof(valor.c_str());
                 nodoSave = Nodo(j);
                 nodoSave.nombreDeColumna = nombreColumna;
-                aux->arbolInt.contarNodos = numeroOfNodo;
+                aux->arbolInt.contarNodos += numeroOfNodo;
                 if (aux->arbolInt.raiz == NULL) {
                     (aux)->arbolInt.insertarNodo(nodoSave);
                     aux->href = aux->arbolInt.lastInserted;
@@ -554,7 +557,7 @@ Nodo* TablaHash::insertData(int indice, int tipo_, string valor, string nombreCo
 
 
     if (alter >= 20) {
-       // makeRehashing();
+        //makeRehashing();
 
     }
 

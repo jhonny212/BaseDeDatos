@@ -67,7 +67,6 @@ void columna::insertarDato(string dato) {
         strcpy(char_array, dato.c_str());
         int clave = t.getIdForChar(char_array[0]);
         int index = t.getIndex(clave, tablaHash.getSize());
-        cout<<" llego  hasta aca "<<endl;
         ultimo = tablaHash.insertData(index, 2, dato, name,numeroOfNodo);
     } else if (type == "int") {
         int i = std::stoi(dato);

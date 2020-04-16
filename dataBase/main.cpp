@@ -144,10 +144,10 @@ void reportes(int opc) {
 }
 
 void createTable() {
-    string Palabra="c t a ( n string );";
+    string Palabra;
     cout << "Create table..." << endl;
-    //cin>> Palabra;
-    //getline(cin, Palabra);
+    cin>> Palabra;
+    getline(cin, Palabra);
     baseDeDatosActual->archivoLog += "Creacion de tabla \n";
     baseDeDatosActual->archivoLog += "    " + Palabra + " fecha: " + getTime() + "\n";
 
@@ -236,9 +236,9 @@ void querys(int opc) {
 void insertar() {
     Nodo *tmP = NULL;
     Nodo *tmP2 = NULL;
-    string Palabra="i i a ( n ) VALUES ( j );";
-    //cin>> Palabra;
-    //getline(cin, Palabra);
+    string Palabra;
+    cin>> Palabra;
+    getline(cin, Palabra);
     baseDeDatosActual->archivoLog += "Insert: \n";
     baseDeDatosActual->archivoLog += "   " + Palabra + " Fecha: " + getTime() + " \n";
 
@@ -278,10 +278,9 @@ void select() {
     seleccion os2 = seleccion();
 
     bool v = false;
-    string Palabra="s * f a ;";
-    //cin>> Palabra;
-
-   // getline(cin, Palabra);
+    string Palabra;
+    cin>> Palabra;
+    getline(cin, Palabra);
     baseDeDatosActual->archivoLog += "Select : \n";
 
     baseDeDatosActual->archivoLog += "   " + Palabra + " Fecha: " + getTime();
@@ -327,7 +326,7 @@ void select() {
             insertData = auxD->columns.get(i);
             os.addC(insertData);
         }
-        //auxD->columns.buscarColumna("*", &os, &os2, v);
+        auxD->columns.buscarColumna("*", &os, &os2, v);
         if (!v) {
             auxD->columns.createDiagram(auxD->nombre, &os);
         }

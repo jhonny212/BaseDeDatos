@@ -254,7 +254,6 @@ void TablaHash::buscarData(int indice, int tipo_, string valor, seleccion* cd2) 
     Nodo *encolado = aux->href;
     Nodo *getS = aux->inicio;
     while (encolado != NULL) {
-
         if (tipo_ == 1) {
             if (encolado->valorString == valor) {
                 Nodo *temporal = encolado;
@@ -265,6 +264,7 @@ void TablaHash::buscarData(int indice, int tipo_, string valor, seleccion* cd2) 
                         temporal = temporal->nodoPrevio;
                     }
                 }
+                system("PAUSE()");
                 while (temporal != NULL) {
                     int tipo = temporal->typodeSeleccion;
                     switch (tipo) {

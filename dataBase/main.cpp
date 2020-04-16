@@ -173,6 +173,7 @@ void menuSeleccion() {
     int opc2 = 0;
     while (opc != 5) {
         opc = msj.seleccion();
+        system("PAUSE()");
         switch (opc) {
             case 1:
                 opc = msj.typeQuery();
